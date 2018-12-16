@@ -1,0 +1,38 @@
+﻿<UserControl
+    x:Class="raumPlayer.Views.WithSecondaryItemNavigationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:raumPlayer.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <Button Height="{StaticResource HamburgerButtonHeight}" Margin="0" Padding="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+            Background="Transparent" Foreground="{ThemeResource AppForegroundColorBrush}" BorderThickness="0"
+            AutomationProperties.AccessibilityView="Control"
+            AutomationProperties.LandmarkType="Navigation"
+            AutomationProperties.Name="{Binding Label, Mode=OneWay}"
+            Command="{Binding Parent.ItemSelectedCommand}"
+            CommandParameter="{Binding}">
+        <Grid Height="{StaticResource HamburgerButtonHeight}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource HamburgerButtonWidthGrid}" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="{StaticResource HamburgerButtonWidthGrid}" />
+            </Grid.ColumnDefinitions>
+            <ToolTipService.ToolTip>
+                <TextBlock Text="{Binding Label, Mode=OneWay}"/>
+            </ToolTipService.ToolTip>
+            <Rectangle Width="4" HorizontalAlignment="Left" VerticalAlignment="Stretch" Fill="{ThemeResource SystemControlForegroundAccentBrush}"
+                                   Visibility="{Binding SelectedVisibility, Mode=OneWay}" />
+            <FontIcon Glyph="{Binding SymbolAsString}" Style="{StaticResource AppFontIcon}"/>
+            <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Label, Mode=OneWay}" Style="{StaticResource MenuTextStyle}" />
+            <Button Grid.Column="2" Style="{StaticResource TransactionButtonStyle}"
+                    Command="{Binding Parent.ItemSelectedCommand}"
+                    CommandParameter="{Binding}">
+                <FontIcon  Glyph="&#xE835;" Style="{StaticResource AppFontIcon}"/>
+            </Button>
+        </Grid>
+    </Button>
+</UserControl>

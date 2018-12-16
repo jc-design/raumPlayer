@@ -1,0 +1,41 @@
+﻿<prismUnity:PrismUnityApplication
+    x:Class="raumPlayer.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prismUnity="using:Prism.Unity.Windows"
+    xmlns:cv="using:raumPlayer.Converter"
+    xmlns:view="using:raumPlayer.Views"
+    RequestedTheme="Light">
+
+    <prismUnity:PrismUnityApplication.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/_Colors.xaml"/>
+                <ResourceDictionary Source="/Styles/_FontSizes.xaml"/>
+                <ResourceDictionary Source="/Styles/_Thickness.xaml"/>
+
+                <ResourceDictionary Source="/Styles/Definitions.xaml"/>
+                <ResourceDictionary Source="/Styles/Page.xaml"/>
+                <ResourceDictionary Source="/Styles/TextBlock.xaml"/>
+                <ResourceDictionary Source="/Styles/UIElements.xaml"/>
+
+                <ResourceDictionary>
+                    <cv:UrlToBitmap x:Key="urlToBitmap"/>
+                    <cv:StringToVisibility x:Key="stringToVisibility"/>
+                    <cv:IntToString x:Key="intToString"/>
+                </ResourceDictionary>
+
+                <ResourceDictionary>
+                    <view:ViewModelTemplateSelector x:Key="ViewModelTemplateSelector"/>
+                    <DataTemplate x:Key="ShellNavigationViewModel">
+                        <view:ShellNavigationView/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="WithSecondaryItemNavigationViewModel">
+                        <view:WithSecondaryItemNavigationView/>
+                    </DataTemplate>
+                </ResourceDictionary>
+                
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </prismUnity:PrismUnityApplication.Resources>
+</prismUnity:PrismUnityApplication>

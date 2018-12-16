@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3DE877B6-5484-4CBC-93FB-D2D671C4C61D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>raumPlayerClassLibrary</RootNamespace>
+    <AssemblyName>raumPlayerClassLibrary</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Converter\IntToString.cs" />
+    <Compile Include="Converter\StringToVisibility.cs" />
+    <Compile Include="Converter\URLToBitmap.cs" />
+    <Compile Include="Dialogs\FirstRunDialog.xaml.cs">
+      <DependentUpon>FirstRunDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ShowDialog.xaml.cs">
+      <DependentUpon>ShowDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\WhatsNewDialog.xaml.cs">
+      <DependentUpon>WhatsNewDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\EnumToBooleanConverter.cs" />
+    <Compile Include="Helpers\HtmlExtension.cs" />
+    <Compile Include="Helpers\Json.cs" />
+    <Compile Include="Helpers\ResourceExtensions.cs" />
+    <Compile Include="Helpers\SettingsStorageExtensions.cs" />
+    <Compile Include="Helpers\UIExtension.cs" />
+    <Compile Include="Helpers\XMLExtension.cs" />
+    <Compile Include="Interfaces\Network\INetWorkDeviceWatcher.cs" />
+    <Compile Include="Interfaces\Network\INetWorkSocketListener.cs" />
+    <Compile Include="Interfaces\Network\INetWorkSubscriber.cs" />
+    <Compile Include="Interfaces\RaumFeld\IRaumFeldService.cs" />
+    <Compile Include="Interfaces\Services\IFirstRunDisplayService.cs" />
+    <Compile Include="Interfaces\Services\ILoggingService.cs" />
+    <Compile Include="Interfaces\Services\IMessagingService.cs" />
+    <Compile Include="Interfaces\Services\IWhatsNewDisplayService.cs" />
+    <Compile Include="Interfaces\UI\IBrowseViewModel.cs" />
+    <Compile Include="Interfaces\UI\IElementBase.cs" />
+    <Compile Include="Interfaces\UI\IPivotItemViewModel.cs" />
+    <Compile Include="Interfaces\UI\IRoomViewModel.cs" />
+    <Compile Include="Interfaces\UI\IShellNavigationItem.cs" />
+    <Compile Include="Interfaces\UI\IShellViewModel.cs" />
+    <Compile Include="Interfaces\UI\IZoneViewModel.cs" />
+    <Compile Include="Interfaces\Upnp\Devices\IMediaDevice.cs" />
+    <Compile Include="Models\Network\NetWorkDeviceWatcher.cs" />
+    <Compile Include="Models\Network\NetWorkSocketListener.cs" />
+    <Compile Include="Models\Network\NetWorkSubscriber.cs" />
+    <Compile Include="Models\Network\NetWorkSubscriberPayload.cs" />
+    <Compile Include="Models\RaumFeld\Events\RaumFeldEvent.cs" />
+    <Compile Include="Models\RaumFeld\Events\RaumFeldEventProperty.cs" />
+    <Compile Include="Models\RaumFeld\Events\RaumFeldEventPropertySet.cs" />
+    <Compile Include="Models\RaumFeld\RaumfeldDevice.cs" />
+    <Compile Include="Models\RaumFeld\RaumfeldDevices.cs" />
+    <Compile Include="Models\RaumFeld\RaumfeldRenderer.cs" />
+    <Compile Include="Models\RaumFeld\RaumfeldRoom.cs" />
+    <Compile Include="Models\RaumFeld\RaumFeldService.cs" />
+    <Compile Include="Models\RaumFeld\RaumfeldZone.cs" />
+    <Compile Include="Models\RaumFeld\RaumfeldZoneConfig.cs" />
+    <Compile Include="Models\Upnp\Devices\Device.cs" />
+    <Compile Include="Models\Upnp\Devices\DeviceDescription.cs" />
+    <Compile Include="Models\Upnp\Devices\Icon.cs" />
+    <Compile Include="Models\Upnp\Devices\MediaRenderer.cs" />
+    <Compile Include="Models\Upnp\Devices\MediaServer.cs" />
+    <Compile Include="Models\Upnp\DIDL\DIDLAlbumArtUriData.cs" />
+    <Compile Include="Models\Upnp\DIDL\DIDLContainer.cs" />
+    <Compile Include="Models\Upnp\DIDL\DIDLItem.cs" />
+    <Compile Include="Models\Upnp\DIDL\DIDLLite.cs" />
+    <Compile Include="Models\Upnp\DIDL\DIDLResData.cs" />
+    <Compile Include="Models\Upnp\Enum\ActionStatus.cs" />
+    <Compile Include="Models\Upnp\Enum\MediaDeviceType.cs" />
+    <Compile Include="Models\Upnp\Enum\RaumFeldStaticDefinitions.cs" />
+    <Compile Include="Models\Upnp\Enum\ServiceTypes.cs" />
+    <Compile Include="Models\Upnp\Enum\StaticDefinitions.cs" />
+    <Compile Include="Models\Upnp\Services\AllowedValueRange.cs" />
+    <Compile Include="Models\Upnp\Services\Argument.cs" />
+    <Compile Include="Models\Upnp\Services\AVTransport.cs" />
+    <Compile Include="Models\Upnp\Services\ConnectionManager.cs" />
+    <Compile Include="Models\Upnp\Services\ContentDirectory.cs" />
+    <Compile Include="Models\Upnp\Services\MediaReceiverRegistrar.cs" />
+    <Compile Include="Models\Upnp\Services\RenderingControl.cs" />
+    <Compile Include="Models\Upnp\Services\Service.cs" />
+    <Compile Include="Models\Upnp\Services\ServiceAction.cs" />
+    <Compile Include="Models\Upnp\Services\ServiceActionReturnMessage.cs" />
+    <Compile Include="Models\Upnp\Services\Services.cs" />
+    <Compile Include="Models\Upnp\Services\SpecVersionType.cs" />
+    <Compile Include="Models\Upnp\Services\StateVariable.cs" />
+    <Compile Include="PrismEvents\ActiveRendererChangedEvent.cs" />
+    <Compile Include="PrismEvents\NetWorkDeviceAddedEvent.cs" />
+    <Compile Include="PrismEvents\NetWorkDeviceRemovedEvent.cs" />
+    <Compile Include="PrismEvents\NetWorkDeviceUpdatedEvent.cs" />
+    <Compile Include="PrismEvents\RaumFeldChangedEvent.cs" />
+    <Compile Include="PrismEvents\RaumFeldEventPropertySetReceivedEvent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EventArgs.cs" />
+    <Compile Include="Services\FirstRunDisplayService.cs" />
+    <Compile Include="Services\LoggingService.cs" />
+    <Compile Include="Services\MessagingService.cs" />
+    <Compile Include="Services\ThemeSelectorService.cs" />
+    <Compile Include="Services\WhatsNewDisplayService.cs" />
+    <Compile Include="StateTriggers\DeviceFamilyStateTrigger.cs" />
+    <Compile Include="StateTriggers\IsMethodPresentStateTrigger.cs" />
+    <Compile Include="StateTriggers\ITriggerValue.cs" />
+    <Compile Include="ViewModels\BrowseViewModel.cs" />
+    <Compile Include="ViewModels\PivotItemViewModel.cs" />
+    <Compile Include="ViewModels\RoomViewModel.cs" />
+    <Compile Include="ViewModels\ShellNavigationItems\ManageZonesNavigationViewModel.cs" />
+    <Compile Include="ViewModels\ShellNavigationItems\ShellNavigationViewModel.cs" />
+    <Compile Include="ViewModels\ShellNavigationItems\TuneInNavigationViewModel.cs" />
+    <Compile Include="ViewModels\UIElements\ElementContainer.cs" />
+    <Compile Include="ViewModels\UIElements\ElementBase.cs" />
+    <Compile Include="ViewModels\UIElements\ElementItem.cs" />
+    <Compile Include="ViewModels\ZoneViewModel.cs" />
+    <EmbeddedResource Include="Properties\raumPlayerClassLibrary.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack">
+      <Version>1.8.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.1.4</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp">
+      <Version>2.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Unity">
+      <Version>6.3.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Upnp\Enum\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Dialogs\FirstRunDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ShowDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\WhatsNewDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

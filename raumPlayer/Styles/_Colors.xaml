@@ -1,0 +1,506 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="ThemeControlForegroundBaseHighBrush" Color="{ThemeResource SystemBaseHighColor}" />
+    <SolidColorBrush x:Key="SystemAccentColorBrush" Color="{StaticResource SystemAccentColor}" />
+
+    <ResourceDictionary.ThemeDictionaries>
+
+        <ResourceDictionary x:Key="Light">
+
+            <Color x:Key="AppForegroundColor">#FF001122</Color>
+            <Color x:Key="AppBackgroundColor">#FFF2F2F2</Color>
+            <Color x:Key="AppLightShadeColor">#AAF2F2F2</Color>
+            <Color x:Key="AppDarkShadeColor">#AA001122</Color>
+            <Color x:Key="AppForegroundSelectedColor">#FF1258DC</Color>
+            <Color x:Key="AppBackgroundSelectedColor">#FF99BCFF</Color>
+            <Color x:Key="AppForegroundPointOverColor">#AA1258DC</Color>
+            <Color x:Key="AppBackgroundPointOverColor">#AA99BCFF</Color>
+            <Color x:Key="AppForegroundDisabledColor">#77001122</Color>
+            <Color x:Key="AppBackgroundDisabledColor">#77F2F2F2</Color>
+            <Color x:Key="AppAccentColor">#FF1258DC</Color>
+
+            <SolidColorBrush x:Key="AppBackgroundColorBrush" Color="{StaticResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="AppLightShadeColorBrush" Color="{StaticResource AppLightShadeColor}" />
+            <SolidColorBrush x:Key="AppDarkShadeColorBrush" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="AppForegroundColorBrush" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="AppAccentColorBrush" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="AppForegroundSelectedColorBrush" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="AppBackgroundSelectedColorBrush" Color="{StaticResource AppBackgroundSelectedColor}" />
+            <SolidColorBrush x:Key="AppForegroundPointOverColorBrush" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="AppBackgroundPointOverColorBrush" Color="{StaticResource AppBackgroundPointOverColor}" />
+            <SolidColorBrush x:Key="AppForegroundDisabledColorBrush" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="AppBackgroundDisabledColorBrush" Color="{StaticResource AppBackgroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="HeaderItemBackgroundSelected" Color="{StaticResource AppBackgroundSelectedColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundSelected" Color="{StaticResource AppAccentColor}"/>
+            <SolidColorBrush x:Key="HeaderItemBackgroundSelectedPointOver" Color="{StaticResource AppBackgroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundSelectedPointOver" Color="{StaticResource AppForegroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemBackgroundSelectedPressed" Color="{StaticResource AppBackgroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundSelectedPressed" Color="{StaticResource AppForegroundPointOverColor}"/>
+
+            <SolidColorBrush x:Key="HeaderItemBackgroundUnSelected" Color="{StaticResource AppBackgroundSelectedColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundUnSelected" Color="{StaticResource AppBackgroundSelectedColor}"/>
+            <SolidColorBrush x:Key="HeaderItemBackgroundUnSelectedPointOver" Color="{StaticResource AppBackgroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundUnSelectedPointOver" Color="{StaticResource AppForegroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemBackgroundUnSelectedPressed" Color="{StaticResource AppBackgroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundUnSelectedPressed" Color="{StaticResource AppForegroundPointOverColor}"/>
+
+            <SolidColorBrush x:Key="RadioButtonForeground" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStroke" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseFill" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStroke" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFill" Color="{ThemeResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonCheckGlyphStroke" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="RadioButtonForegroundPointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStrokePointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseFillPointerOver" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPointerOver" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="RadioButtonCheckGlyphStrokePointerOver" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="RadioButtonForegroundPressed" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStrokePressed" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseFillPressed" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePressed" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPressed" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="RadioButtonCheckGlyphStrokePressed" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="RadioButtonForegroundDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStrokeDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseFillDisabled" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokeDisabled" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillDisabled" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="RadioButtonCheckGlyphStrokeDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundUnchecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUnchecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUnchecked" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundUnchecked" Color="{StaticResource AppDarkShadeColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundUncheckedPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUncheckedPointerOver" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundUncheckedPointerOver" Color="{StaticResource AppDarkShadeColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundUncheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUncheckedPressed" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundUncheckedPressed" Color="{StaticResource AppDarkShadeColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundUncheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUncheckedDisabled" Color="Transparent" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundUncheckedDisabled" Color="Transparent" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundChecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeChecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillChecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundChecked" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundCheckedPointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPointerOver" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundCheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPressed" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundCheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedDisabled" Color="Transparent" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundIndeterminate" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeIndeterminate" Color="{StaticResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillIndeterminate" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundIndeterminate" Color="{StaticResource AppForegroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundIndeterminatePointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeIndeterminatePointerOver" Color="{StaticResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillIndeterminatePointerOver" Color="{StaticResource AppBackgroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundIndeterminatePointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundIndeterminatePressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeIndeterminatePressed" Color="{StaticResource AppBackgroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillIndeterminatePressed" Color="{StaticResource AppBackgroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundIndeterminatePressed" Color="{StaticResource AppForegroundPointOverColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundIndeterminateDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeIndeterminateDisabled" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillIndeterminateDisabled" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundIndeterminateDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="ToggleSwitchContentForeground" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOff" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOff" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOn" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOn" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOn" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOff" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContainerBackground" Color="Transparent" />
+
+            <SolidColorBrush x:Key="ToggleSwitchFillOffPointerOver" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOnPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOffPointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOnPointerOver" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOffPointerOver" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOnPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContainerBackgroundPointerOver" Color="Transparent" />
+
+            <SolidColorBrush x:Key="ToggleSwitchFillOffPressed" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOnPressed" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOffPressed" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOnPressed" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOffPressed" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOnPressed" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContainerBackgroundPressed" Color="Transparent" />
+
+            <SolidColorBrush x:Key="ToggleSwitchHeaderForegroundDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContentForegroundDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOffDisabled" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOnDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOffDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOffDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOnDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContainerBackgroundDisabled" Color="Transparent" />
+
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Default">
+
+            <Color x:Key="AppBackgroundColor">#FF001122</Color>
+            <Color x:Key="AppForegroundColor">#FFF2F2F2</Color>
+            <Color x:Key="AppDarkShadeColor">#AAF2F2F2</Color>
+            <Color x:Key="AppLightShadeColor">#AA001122</Color>
+            <Color x:Key="AppBackgroundSelectedColor">#FF1258DC</Color>
+            <Color x:Key="AppForegroundSelectedColor">#FF99BCFF</Color>
+            <Color x:Key="AppBackgroundPointOverColor">#AA1258DC</Color>
+            <Color x:Key="AppForegroundPointOverColor">#AA99BCFF</Color>
+            <Color x:Key="AppBackgroundDisabledColor">#77001122</Color>
+            <Color x:Key="AppForegroundDisabledColor">#77F2F2F2</Color>
+            <Color x:Key="AppAccentColor">#FF1258DC</Color>
+
+            <SolidColorBrush x:Key="AppBackgroundColorBrush" Color="{StaticResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="AppLightShadeColorBrush" Color="{StaticResource AppLightShadeColor}" />
+            <SolidColorBrush x:Key="AppDarkShadeColorBrush" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="AppForegroundColorBrush" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="AppAccentColorBrush" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="AppForegroundSelectedColorBrush" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="AppBackgroundSelectedColorBrush" Color="{StaticResource AppBackgroundSelectedColor}" />
+            <SolidColorBrush x:Key="AppForegroundPointOverColorBrush" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="AppBackgroundPointOverColorBrush" Color="{StaticResource AppBackgroundPointOverColor}" />
+            <SolidColorBrush x:Key="AppForegroundDisabledColorBrush" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="AppBackgroundDisabledColorBrush" Color="{StaticResource AppBackgroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="HeaderItemBackgroundSelected" Color="{StaticResource AppBackgroundSelectedColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundSelected" Color="{StaticResource AppAccentColor}"/>
+            <SolidColorBrush x:Key="HeaderItemBackgroundSelectedPointOver" Color="{StaticResource AppBackgroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundSelectedPointOver" Color="{StaticResource AppForegroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemBackgroundSelectedPressed" Color="{StaticResource AppBackgroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundSelectedPressed" Color="{StaticResource AppForegroundPointOverColor}"/>
+
+            <SolidColorBrush x:Key="HeaderItemBackgroundUnSelected" Color="{StaticResource AppBackgroundSelectedColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundUnSelected" Color="{StaticResource AppBackgroundSelectedColor}"/>
+            <SolidColorBrush x:Key="HeaderItemBackgroundUnSelectedPointOver" Color="{StaticResource AppBackgroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundUnSelectedPointOver" Color="{StaticResource AppForegroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemBackgroundUnSelectedPressed" Color="{StaticResource AppBackgroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundUnSelectedPressed" Color="{StaticResource AppForegroundPointOverColor}"/>
+
+            <SolidColorBrush x:Key="RadioButtonForeground" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStroke" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseFill" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStroke" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFill" Color="{ThemeResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonCheckGlyphStroke" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="RadioButtonForegroundPointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStrokePointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseFillPointerOver" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPointerOver" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="RadioButtonCheckGlyphStrokePointerOver" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="RadioButtonForegroundPressed" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStrokePressed" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseFillPressed" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePressed" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPressed" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="RadioButtonCheckGlyphStrokePressed" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="RadioButtonForegroundDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStrokeDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseFillDisabled" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokeDisabled" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillDisabled" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="RadioButtonCheckGlyphStrokeDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundUnchecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUnchecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUnchecked" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundUnchecked" Color="{StaticResource AppDarkShadeColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundUncheckedPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUncheckedPointerOver" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundUncheckedPointerOver" Color="{StaticResource AppDarkShadeColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundUncheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUncheckedPressed" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundUncheckedPressed" Color="{StaticResource AppDarkShadeColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundUncheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUncheckedDisabled" Color="Transparent" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundUncheckedDisabled" Color="Transparent" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundChecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeChecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillChecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundChecked" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundCheckedPointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPointerOver" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundCheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPressed" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundCheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedDisabled" Color="Transparent" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundIndeterminate" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeIndeterminate" Color="{StaticResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillIndeterminate" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundIndeterminate" Color="{StaticResource AppForegroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundIndeterminatePointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeIndeterminatePointerOver" Color="{StaticResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillIndeterminatePointerOver" Color="{StaticResource AppBackgroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundIndeterminatePointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundIndeterminatePressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeIndeterminatePressed" Color="{StaticResource AppBackgroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillIndeterminatePressed" Color="{StaticResource AppBackgroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundIndeterminatePressed" Color="{StaticResource AppForegroundPointOverColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundIndeterminateDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeIndeterminateDisabled" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillIndeterminateDisabled" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundIndeterminateDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="ToggleSwitchContentForeground" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOff" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOff" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOn" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOn" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOn" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOff" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContainerBackground" Color="Transparent" />
+
+            <SolidColorBrush x:Key="ToggleSwitchFillOffPointerOver" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOnPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOffPointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOnPointerOver" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOffPointerOver" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOnPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContainerBackgroundPointerOver" Color="Transparent" />
+
+            <SolidColorBrush x:Key="ToggleSwitchFillOffPressed" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOnPressed" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOffPressed" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOnPressed" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOffPressed" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOnPressed" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContainerBackgroundPressed" Color="Transparent" />
+
+            <SolidColorBrush x:Key="ToggleSwitchHeaderForegroundDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContentForegroundDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOffDisabled" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOnDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOffDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOffDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOnDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContainerBackgroundDisabled" Color="Transparent" />
+
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="HighContrast">
+
+            <Color x:Key="AppForegroundColor">#FF001122</Color>
+            <Color x:Key="AppBackgroundColor">#FFF2F2F2</Color>
+            <Color x:Key="AppLightShadeColor">#AAF2F2F2</Color>
+            <Color x:Key="AppDarkShadeColor">#AA001122</Color>
+            <Color x:Key="AppForegroundSelectedColor">#FF1258DC</Color>
+            <Color x:Key="AppBackgroundSelectedColor">#FF99BCFF</Color>
+            <Color x:Key="AppForegroundPointOverColor">#AA1258DC</Color>
+            <Color x:Key="AppBackgroundPointOverColor">#AA99BCFF</Color>
+            <Color x:Key="AppForegroundDisabledColor">#77001122</Color>
+            <Color x:Key="AppBackgroundDisabledColor">#77F2F2F2</Color>
+            <Color x:Key="AppAccentColor">#FF1258DC</Color>
+
+            <SolidColorBrush x:Key="AppBackgroundColorBrush" Color="{StaticResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="AppLightShadeColorBrush" Color="{StaticResource AppLightShadeColor}" />
+            <SolidColorBrush x:Key="AppDarkShadeColorBrush" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="AppForegroundColorBrush" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="AppAccentColorBrush" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="AppForegroundSelectedColorBrush" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="AppBackgroundSelectedColorBrush" Color="{StaticResource AppBackgroundSelectedColor}" />
+            <SolidColorBrush x:Key="AppForegroundPointOverColorBrush" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="AppBackgroundPointOverColorBrush" Color="{StaticResource AppBackgroundPointOverColor}" />
+            <SolidColorBrush x:Key="AppForegroundDisabledColorBrush" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="AppBackgroundDisabledColorBrush" Color="{StaticResource AppBackgroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="HeaderItemBackgroundSelected" Color="{StaticResource AppBackgroundSelectedColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundSelected" Color="{StaticResource AppAccentColor}"/>
+            <SolidColorBrush x:Key="HeaderItemBackgroundSelectedPointOver" Color="{StaticResource AppBackgroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundSelectedPointOver" Color="{StaticResource AppForegroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemBackgroundSelectedPressed" Color="{StaticResource AppBackgroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundSelectedPressed" Color="{StaticResource AppForegroundPointOverColor}"/>
+
+            <SolidColorBrush x:Key="HeaderItemBackgroundUnSelected" Color="{StaticResource AppBackgroundSelectedColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundUnSelected" Color="{StaticResource AppBackgroundSelectedColor}"/>
+            <SolidColorBrush x:Key="HeaderItemBackgroundUnSelectedPointOver" Color="{StaticResource AppBackgroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundUnSelectedPointOver" Color="{StaticResource AppForegroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemBackgroundUnSelectedPressed" Color="{StaticResource AppBackgroundPointOverColor}"/>
+            <SolidColorBrush x:Key="HeaderItemForegroundUnSelectedPressed" Color="{StaticResource AppForegroundPointOverColor}"/>
+
+            <SolidColorBrush x:Key="RadioButtonForeground" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStroke" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseFill" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStroke" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFill" Color="{ThemeResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonCheckGlyphStroke" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="RadioButtonForegroundPointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStrokePointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseFillPointerOver" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPointerOver" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="RadioButtonCheckGlyphStrokePointerOver" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="RadioButtonForegroundPressed" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStrokePressed" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseFillPressed" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePressed" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPressed" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="RadioButtonCheckGlyphStrokePressed" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="RadioButtonForegroundDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStrokeDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseFillDisabled" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokeDisabled" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillDisabled" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="RadioButtonCheckGlyphStrokeDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundUnchecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUnchecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUnchecked" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundUnchecked" Color="{StaticResource AppDarkShadeColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundUncheckedPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUncheckedPointerOver" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundUncheckedPointerOver" Color="{StaticResource AppDarkShadeColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundUncheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUncheckedPressed" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundUncheckedPressed" Color="{StaticResource AppDarkShadeColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundUncheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUncheckedDisabled" Color="Transparent" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundUncheckedDisabled" Color="Transparent" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundChecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeChecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillChecked" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundChecked" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundCheckedPointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPointerOver" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundCheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPressed" Color="{StaticResource AppAccentColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundCheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedDisabled" Color="Transparent" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundIndeterminate" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeIndeterminate" Color="{StaticResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillIndeterminate" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundIndeterminate" Color="{StaticResource AppForegroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundIndeterminatePointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeIndeterminatePointerOver" Color="{StaticResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillIndeterminatePointerOver" Color="{StaticResource AppBackgroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundIndeterminatePointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundIndeterminatePressed" Color="{StaticResource AppForegroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeIndeterminatePressed" Color="{StaticResource AppBackgroundSelectedColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillIndeterminatePressed" Color="{StaticResource AppBackgroundPointOverColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundIndeterminatePressed" Color="{StaticResource AppForegroundPointOverColor}" />
+
+            <SolidColorBrush x:Key="CheckBoxForegroundIndeterminateDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeIndeterminateDisabled" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillIndeterminateDisabled" Color="{StaticResource AppBackgroundDisabledColor}" />
+            <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundIndeterminateDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+
+            <SolidColorBrush x:Key="ToggleSwitchContentForeground" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOff" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOff" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOn" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOn" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOn" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOff" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContainerBackground" Color="Transparent" />
+
+            <SolidColorBrush x:Key="ToggleSwitchFillOffPointerOver" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOnPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOffPointerOver" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOnPointerOver" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOffPointerOver" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOnPointerOver" Color="{StaticResource AppForegroundPointOverColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContainerBackgroundPointerOver" Color="Transparent" />
+
+            <SolidColorBrush x:Key="ToggleSwitchFillOffPressed" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOnPressed" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOffPressed" Color="{StaticResource AppForegroundColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOnPressed" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOffPressed" Color="{StaticResource AppDarkShadeColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOnPressed" Color="{StaticResource AppAccentColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContainerBackgroundPressed" Color="Transparent" />
+
+            <SolidColorBrush x:Key="ToggleSwitchHeaderForegroundDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContentForegroundDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOffDisabled" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOnDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOffDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOffDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchKnobFillOnDisabled" Color="{StaticResource AppForegroundDisabledColor}" />
+            <SolidColorBrush x:Key="ToggleSwitchContainerBackgroundDisabled" Color="Transparent" />
+
+        </ResourceDictionary>
+        
+    </ResourceDictionary.ThemeDictionaries>
+
+</ResourceDictionary>

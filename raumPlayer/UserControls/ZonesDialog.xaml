@@ -1,0 +1,126 @@
+﻿<ContentDialog
+    x:Class="raumPlayer.UserControls.ZonesDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:vm="using:raumPlayer.ViewModels"
+    xmlns:md="using:raumPlayer.Models"
+    mc:Ignorable="d"
+    x:Uid="zoneDialog"
+    Title="TITLE"
+    PrimaryButtonText="OKAY"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonText="CANCEL"
+    FullSizeDesired="True"
+    Background="{ThemeResource PrimaryColorBrush3_80}"
+    >
+    <RelativePanel x:Name="mainPanel" VerticalAlignment="Stretch">
+        <!--<ComboBox x:Name="comboBoxActiveZone" x:Uid="comboBoxActiveZone" Header="ACTIVEZONE" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" ItemsSource="{x:Bind ZoneViewModels, Mode=OneWay}">
+            <i:Interaction.Behaviors>
+                <ic:EventTriggerBehavior EventName="SelectionChanged">
+                    <ic:InvokeCommandAction Command="{x:Bind SelectionChangedCommand}" CommandParameter="{Binding ElementName=comboBoxActiveZone}"/>
+                </ic:EventTriggerBehavior>
+                <ic:EventTriggerBehavior EventName="Loaded">
+                    <ic:InvokeCommandAction Command="{x:Bind ComboBoxLoadedCommand}" CommandParameter="{Binding ElementName=comboBoxActiveZone}"/>
+                </ic:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
+            <ComboBox.ItemTemplate>
+                <DataTemplate x:DataType="vm:ZoneViewModel">
+                    <Grid>
+                        <TextBlock Text="{x:Bind Name, Mode=OneWay}" Margin="0,0,0,0"/>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>-->
+        <ListView x:Name="listViewZones" x:Uid="listViewZones"  Header="LISTVIEW" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" SelectionMode="None"
+                  ItemsSource="{x:Bind ZoneViewModels, Mode=OneWay}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="vm:ZoneViewModel">
+                    <StackPanel Orientation="Vertical">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton Grid.Column="0" x:Name="radioButtonChecked" GroupName="ZONES" IsChecked="{x:Bind IsActive, Mode=TwoWay}">
+                                <i:Interaction.Behaviors>
+                                    <ic:EventTriggerBehavior EventName="Checked">
+                                        <ic:InvokeCommandAction Command="{Binding ElementName=mainPanel, Path=DataContext.CheckedCommand}" CommandParameter="{Binding}"/>
+                                    </ic:EventTriggerBehavior>
+                                </i:Interaction.Behaviors>
+                            </RadioButton>
+                            <TextBlock Grid.Column="1" Text="{x:Bind Name, Mode=OneWay}" Margin="0,0,0,0" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ItemsControl x:Name="roomListView" x:Uid="roomListView" Margin="16,0,0,0"
+                                      ItemsSource="{x:Bind Rooms, Mode=OneWay}">
+                            <ItemsControl.ItemContainerStyle>
+                                <Style TargetType="ContentPresenter">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                </Style>
+                            </ItemsControl.ItemContainerStyle>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="md:Room">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{x:Bind Name, Mode=OneWay}" VerticalAlignment="Center" FontSize="12"/>
+                                        <ToggleSwitch Grid.Column="1" Grid.Row="1" x:Uid="toggleActiv" Margin="8,0,0,0" IsOn="{x:Bind IsActive, Mode=TwoWay}" OnContent="ACTIV" OffContent="NONACTIV" FontSize="12"/>
+                                        <Button Grid.Column="2" Style="{StaticResource TransactionButtonStyle}">
+                                            <Button.Flyout>
+                                                <Flyout>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <SymbolIcon Symbol="Volume" VerticalAlignment="Center"/>
+                                                        <Slider x:Name="roomVolumeSlider" Orientation="Horizontal" VerticalAlignment="Center" Margin="16,0,0,0" Foreground="{ThemeResource PrimaryColorBrush1}" Minimum="0" Maximum="100"  Width="160" StepFrequency="1" SnapsTo="StepValues" Value="{x:Bind RoomVolume, Mode=OneWay}"
+                                                                Tag="{Binding}">
+                                                            <i:Interaction.Behaviors>
+                                                                <ic:EventTriggerBehavior EventName="PointerCaptureLost">
+                                                                    <ic:InvokeCommandAction Command="{Binding ViewModel.RoomSetVolumeCommand}"
+                                                                            CommandParameter="{Binding ElementName=roomVolumeSlider}" />
+                                                                </ic:EventTriggerBehavior>
+                                                                <ic:EventTriggerBehavior EventName="LostFocus">
+                                                                    <ic:InvokeCommandAction Command="{Binding ViewModel.RoomSetVolumeCommand}"
+                                                                            CommandParameter="{Binding ElementName=roomVolumeSlider}" />
+                                                                </ic:EventTriggerBehavior>
+                                                            </i:Interaction.Behaviors>
+                                                        </Slider>
+                                                        <CheckBox x:Name="roomMuteCheckBox" x:Uid="checkboxMute" Margin="16,0,0,0" IsChecked="{x:Bind RoomMute, Mode=OneWay}" Content="MUTE" Tag="{Binding}">
+                                                            <i:Interaction.Behaviors>
+                                                                <ic:EventTriggerBehavior EventName="Checked">
+                                                                    <ic:InvokeCommandAction Command="{Binding ViewModel.RoomSetMuteCommand}"
+                                                                            CommandParameter="{Binding ElementName=roomMuteCheckBox}" />
+                                                                </ic:EventTriggerBehavior>
+                                                                <ic:EventTriggerBehavior EventName="Unchecked">
+                                                                    <ic:InvokeCommandAction Command="{Binding ViewModel.RoomSetMuteCommand}"
+                                                                            CommandParameter="{Binding ElementName=roomMuteCheckBox}" />
+                                                                </ic:EventTriggerBehavior>
+                                                            </i:Interaction.Behaviors>
+                                                        </CheckBox>
+                                                    </StackPanel>
+                                                </Flyout>
+                                            </Button.Flyout>
+                                            <SymbolIcon Symbol="Volume" />
+                                        </Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+    </RelativePanel>
+</ContentDialog>

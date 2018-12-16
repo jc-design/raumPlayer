@@ -1,0 +1,223 @@
+﻿<Page
+    x:Class="raumPlayer.Views.ShellPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+    prismMvvm:ViewModelLocator.AutoWireViewModel="True"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:vm="using:raumPlayer.ViewModels"
+    xmlns:interface="using:raumPlayer.Interfaces"
+    mc:Ignorable="d">
+    <Grid x:Name="ShellContent" >
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowStates">
+                <i:Interaction.Behaviors>
+                    <ic:EventTriggerBehavior EventName="CurrentStateChanged">
+                        <ic:InvokeCommandAction Command="{x:Bind ViewModel.StateChangedCommand}"/>
+                    </ic:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NormalState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <RelativePanel Grid.Row="0" Grid.RowSpan="3" x:Name="hostBackGround" />
+        <RelativePanel Grid.Row="0" Grid.RowSpan="3" x:Name="shellBackGround" Background="{ThemeResource AppAccentColorBrush}"/>
+        <!--Top-level navigation menu + app content-->
+        <SplitView x:Name="NavigationMenu" Grid.Row="2" Grid.RowSpan="1"
+                   OpenPaneLength="{StaticResource OpenPaneWidth}"
+                   CompactPaneLength="{StaticResource HamburgerButtonWidth}"
+                   IsPaneOpen="{x:Bind ViewModel.IsPaneOpen,Mode=TwoWay}"
+                   DisplayMode="{x:Bind ViewModel.DisplayMode, Mode=OneWay}">
+            <SplitView.PaneBackground>
+                <!--<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="{ThemeResource AppBackgroundColor}" Offset="0"/>
+                    <GradientStop Color="{ThemeResource AppAccentColor}" Offset="1"/>
+                </LinearGradientBrush>-->
+                <SolidColorBrush Color="{ThemeResource AppBackgroundColor}"/>
+            </SplitView.PaneBackground>
+            <SplitView.Pane>
+                <Grid Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ItemsControl x:Name="primaryItemListView" Grid.Row="0" VerticalAlignment="Top" IsTabStop="False"
+                              ItemTemplate="{StaticResource ShellNavigationViewModel}"
+                              ItemsSource="{x:Bind ViewModel.PrimaryItems, Mode=OneWay}" />
+                    <ItemsControl x:Name="secondaryItemListView" Grid.Row="1" VerticalAlignment="Top" IsTabStop="False" Margin="0,16,0,0"
+                              ItemTemplate="{StaticResource WithSecondaryItemNavigationViewModel}"
+                              ItemsSource="{x:Bind ViewModel.SecondaryItems, Mode=OneWay}" />
+                    <ItemsControl x:Name="otherItemListView" Grid.Row="2" VerticalAlignment="Top" IsTabStop="False"
+                              ItemTemplate="{StaticResource ShellNavigationViewModel}"
+                              ItemsSource="{x:Bind ViewModel.OtherItems, Mode=OneWay}" />
+                </Grid>
+            </SplitView.Pane>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Frame x:Name="shellFrame" Grid.ColumnSpan="2" Margin="0,-48,0,0"/>
+                <RelativePanel x:Name="relativePanelCurrentItem"  Height="80" Grid.ColumnSpan="2" Grid.Row="1" Background="{x:Bind ViewModel.ActiveZoneViewModel.CurrentTrackMetaData.AverageColorImageArt, Mode=OneWay}">
+                    <Image x:Name="imageCurrentItem" Width="80" Height="80" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf=""
+                           Source="{x:Bind ViewModel.ActiveZoneViewModel.CurrentTrackMetaData.ImageArt, Mode=OneWay}"/>
+                    <StackPanel x:Name="descriptionCurrentItem" RelativePanel.AlignVerticalCenterWith="imageCurrentItem" RelativePanel.RightOf="currentTrackCurrentItem" Margin="8,0,0,0" RelativePanel.AlignTopWith="">
+                        <TextBlock x:Name="textBlockTitle" Text="{x:Bind ViewModel.ActiveZoneViewModel.CurrentTrackMetaData.Title, Mode=OneWay}" Foreground="{ThemeResource AppForegroundColorBrush}" />
+                        <TextBlock x:Name="textBlockAlbum" Text="{x:Bind ViewModel.ActiveZoneViewModel.CurrentTrackMetaData.Line1, Mode=OneWay}" Foreground="{ThemeResource AppForegroundColorBrush}" />
+                        <TextBlock x:Name="textBlockArtist" Text="{x:Bind ViewModel.ActiveZoneViewModel.CurrentTrackMetaData.Line2, Mode=OneWay}" Foreground="{ThemeResource AppForegroundColorBrush}" />
+                    </StackPanel>
+                    <Border x:Name="currentTrackCurrentItem" RelativePanel.AlignVerticalCenterWith="imageCurrentItem" RelativePanel.RightOf="imageCurrentItem" Margin="8,0,0,0" RelativePanel.AlignTopWith="" VerticalAlignment="Center">
+                        <TextBlock x:Name="NumberBlock" Text="{x:Bind ViewModel.ActiveZoneViewModel.CurrentTrackMetaData.OriginalTrackNumber, Mode=OneWay}" FontFamily="ms-appx:///Assets/Fonts/LCD2N___.TTF#LCD2" FontSize="40" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{ThemeResource AppForegroundColorBrush}"/>
+                    </Border>
+                    <Grid x:Name="controlsCurrentItem" RelativePanel.AlignVerticalCenterWith="imageCurrentItem" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWith="">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Name="col1" Width="40"/>
+                            <ColumnDefinition x:Name="col2" Width="40"/>
+                            <ColumnDefinition x:Name="col3" Width="40"/>
+                            <ColumnDefinition x:Name="col4" Width="40"/>
+                            <ColumnDefinition x:Name="col5" Width="40"/>
+                            <ColumnDefinition x:Name="col6" Width="40"/>
+                            <ColumnDefinition x:Name="col7" Width="40"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" IsEnabled="{x:Bind ViewModel.ActiveZoneViewModel.IsEnabledPrevious, Mode=OneWay}"
+                                Command="{x:Bind ViewModel.ActiveZoneViewModel.PreviousCommand, Mode=OneWay}"
+                                Style="{StaticResource TransactionButtonStyle}">
+                            <SymbolIcon Symbol="Previous" />
+                        </Button>
+                        <Button Grid.Column="1" IsEnabled="{x:Bind ViewModel.ActiveZoneViewModel.IsEnabledPlay, Mode=OneWay}"
+                                Command="{x:Bind ViewModel.ActiveZoneViewModel.PlayCommand, Mode=OneWay}"
+                                Style="{StaticResource TransactionButtonStyle}" >
+                            <SymbolIcon Symbol="Play" />
+                        </Button>
+                        <Button Grid.Column="2" IsEnabled="{x:Bind ViewModel.ActiveZoneViewModel.IsEnabledPause, Mode=OneWay}"
+                                Command="{x:Bind ViewModel.ActiveZoneViewModel.PauseCommand, Mode=OneWay}"
+                                Style="{StaticResource TransactionButtonStyle}" >
+                            <SymbolIcon Symbol="Pause" />
+                        </Button>
+                        <Button Grid.Column="3" IsEnabled="{x:Bind ViewModel.ActiveZoneViewModel.IsEnabledStop, Mode=OneWay}"
+                                Command="{x:Bind ViewModel.ActiveZoneViewModel.StopCommand, Mode=OneWay}"
+                                Style="{StaticResource TransactionButtonStyle}" >
+                            <SymbolIcon Symbol="Stop" />
+                        </Button>
+                        <Button Grid.Column="4" IsEnabled="{x:Bind ViewModel.ActiveZoneViewModel.IsEnabledNext, Mode=OneWay}"
+                                Command="{x:Bind ViewModel.ActiveZoneViewModel.NextCommand, Mode=OneWay}"
+                                Style="{StaticResource TransactionButtonStyle}" >
+                            <SymbolIcon Symbol="Next" />
+                        </Button>
+                        <Button Grid.Column="5" Style="{StaticResource TransactionButtonStyle}" >
+                            <Button.Flyout>
+                                <Flyout>
+                                    <Flyout.FlyoutPresenterStyle>
+                                        <Style TargetType="FlyoutPresenter">
+                                            <Setter Property="Margin" Value="0"/>
+                                            <Setter Property="Padding" Value="4"/>
+                                            <Setter Property="BorderThickness" Value="2"/>
+                                            <Setter Property="MinHeight" Value="0"/>
+                                            <Setter Property="MinWidth" Value="0"/>
+                                            <Setter Property="Background" Value="#EE7B7B7B"/>
+                                        </Style>
+                                    </Flyout.FlyoutPresenterStyle>
+                                    <StackPanel Orientation="Horizontal">
+                                        <FontIcon Glyph="&#xE15D;" VerticalAlignment="Center" Style="{StaticResource AppFontIcon}"/>
+                                        <Slider x:Name="zoneVolumeSlider" Orientation="Horizontal" VerticalAlignment="Center" Margin="16,0,0,0" Foreground="{ThemeResource AppBackgroundColorBrush}" Minimum="0" Maximum="100"  Width="160" StepFrequency="1" SnapsTo="StepValues" Value="{x:Bind ViewModel.ActiveZoneViewModel.ZoneVolume, Mode=OneWay}" >
+                                            <i:Interaction.Behaviors>
+                                                <ic:EventTriggerBehavior EventName="PointerCaptureLost">
+                                                    <ic:InvokeCommandAction Command="{x:Bind ViewModel.ActiveZoneViewModel.SetZoneVolumeCommand, Mode=OneWay}"
+                                                                    CommandParameter="{x:Bind zoneVolumeSlider,Mode=OneWay}" />
+                                                </ic:EventTriggerBehavior>
+                                                <ic:EventTriggerBehavior EventName="LostFocus">
+                                                    <ic:InvokeCommandAction Command="{x:Bind ViewModel.ActiveZoneViewModel.SetZoneVolumeCommand, Mode=OneWay}"
+                                                                    CommandParameter="{x:Bind zoneVolumeSlider,Mode=OneWay}" />
+                                                </ic:EventTriggerBehavior>
+                                            </i:Interaction.Behaviors>
+                                        </Slider>
+                                        <CheckBox x:Name="zoneMuteCheckBox" x:Uid="checkboxMute" Style="{StaticResource appCheckBoxStyle}" Margin="16,0,0,0"  IsChecked="{x:Bind ViewModel.ActiveZoneViewModel.ZoneMute, Mode=OneWay}" Content="MUTE" >
+                                            <i:Interaction.Behaviors>
+                                                <ic:EventTriggerBehavior EventName="Checked">
+                                                    <ic:InvokeCommandAction Command="{x:Bind ViewModel.ActiveZoneViewModel.SetZoneMuteCommand, Mode=OneWay}"
+                                                                    CommandParameter="{x:Bind zoneMuteCheckBox,Mode=OneWay}" />
+                                                </ic:EventTriggerBehavior>
+                                                <ic:EventTriggerBehavior EventName="Unchecked">
+                                                    <ic:InvokeCommandAction Command="{x:Bind ViewModel.ActiveZoneViewModel.SetZoneMuteCommand, Mode=OneWay}"
+                                                                    CommandParameter="{x:Bind zoneMuteCheckBox,Mode=OneWay}" />
+                                                </ic:EventTriggerBehavior>
+                                            </i:Interaction.Behaviors>
+                                        </CheckBox>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                            <SymbolIcon Symbol="Volume" />
+                        </Button>
+                        <Button Grid.Column="6" Style="{StaticResource TransactionButtonStyle}" >
+                            <Button.Flyout>
+                                <Flyout>
+                                    <Flyout.FlyoutPresenterStyle>
+                                        <Style TargetType="FlyoutPresenter">
+                                            <Setter Property="Margin" Value="0"/>
+                                            <Setter Property="Padding" Value="4"/>
+                                            <Setter Property="BorderThickness" Value="2"/>
+                                            <Setter Property="MinHeight" Value="0"/>
+                                            <Setter Property="MinWidth" Value="0"/>
+                                            <Setter Property="Background" Value="#EE7B7B7B"/>
+                                        </Style>
+                                    </Flyout.FlyoutPresenterStyle>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock x:Uid="textBoxPlayModes" Text="PLAYMODES" Style="{StaticResource SettingsTextStyle}"/>
+                                        <RadioButton x:Uid="radioButtonNormal" Style="{StaticResource appRadioButtonStyle}" Content="NORMAL" Tag="NORMAL" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" GroupName="PlayMode" IsChecked="{x:Bind ViewModel.ActiveZoneViewModel.IsNormal, Mode=TwoWay}" />
+                                        <RadioButton x:Uid="radioButtonShuffle" Style="{StaticResource appRadioButtonStyle}" Content="SHUFFLE" Tag="SHUFFLE" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" GroupName="PlayMode" IsChecked="{x:Bind ViewModel.ActiveZoneViewModel.IsShuffle, Mode=TwoWay}" />
+                                        <RadioButton x:Uid="radioButtonRepeatOne" Style="{StaticResource appRadioButtonStyle}" Content="REPEAT_ONE" Tag="REPEAT_ONE" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" GroupName="PlayMode" IsChecked="{x:Bind ViewModel.ActiveZoneViewModel.IsRepeatOne, Mode=TwoWay}" />
+                                        <RadioButton x:Uid="radioButtonRepeatAll" Style="{StaticResource appRadioButtonStyle}" Content="REPEAT_ALL" Tag="REPEAT_ALL" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" GroupName="PlayMode" IsChecked="{x:Bind ViewModel.ActiveZoneViewModel.IsRepeatOne, Mode=TwoWay}" />
+                                        <RadioButton x:Uid="radioButtonRandom" Style="{StaticResource appRadioButtonStyle}" Content="RANDOM" Tag="RANDOM" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" GroupName="PlayMode" IsChecked="{x:Bind ViewModel.ActiveZoneViewModel.IsRandom, Mode=TwoWay}" />
+                                        <RadioButton x:Uid="radioButtonDirektOne" Style="{StaticResource appRadioButtonStyle}" Content="DIREKT_1" Tag="DIREKT_1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" GroupName="PlayMode" IsChecked="{x:Bind ViewModel.ActiveZoneViewModel.IsDirektOne, Mode=TwoWay}" />
+                                        <RadioButton x:Uid="radioButtonIntro" Style="{StaticResource appRadioButtonStyle}" Content="INTRO" Tag="INTRO" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" GroupName="PlayMode" IsChecked="{x:Bind ViewModel.ActiveZoneViewModel.IsIntro, Mode=TwoWay}" />
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                            <SymbolIcon Symbol="Repair" />
+                        </Button>
+                    </Grid>
+                </RelativePanel>
+                <!--  Mavigation menu button  -->
+            </Grid>
+        </SplitView>
+        <Button x:Name="HamburgerButton" Grid.Row="1"
+                Width="{StaticResource HamburgerButtonWidth}"
+                Height="{StaticResource HamburgerButtonHeight}" BorderThickness="0"
+                Background="Transparent"
+                Command="{x:Bind ViewModel.OpenPaneCommand}">
+            <FontIcon Glyph="&#xE700;" Style="{StaticResource AppFontIcon}"/>
+        </Button>
+        <TextBlock Text="{x:Bind ViewModel.Header, Mode=OneWay}" Margin="54,0,0,0" Style="{StaticResource AppHeaderTextStyle}"/>
+        <!--<RelativePanel x:Name="busyPanel" Background="Transparent" Grid.Row="1" Grid.RowSpan="2" IsHitTestVisible="True" Visibility="{x:Bind ViewModel.BusyVisibility, Mode=OneWay}">
+            <Image x:Name="imageRaumPlayer" Source="ms-appx:///Assets/Logo_white.png" Height="200" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Opacity="0.5"/>
+            <TextBlock x:Name="textblockScanning" x:Uid="textblockScanning" Text="SCANNING" RelativePanel.Below="imageRaumPlayer" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource GreetingsTextStyle}"/>
+            <ProgressRing Width="50" Height="50" Margin="8" Foreground="{ThemeResource ContrastColorBrush}" IsActive="{x:Bind ViewModel.IsBusy, Mode=OneWay}" RelativePanel.Below="textblockScanning" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+        </RelativePanel>-->
+    </Grid>
+</Page>

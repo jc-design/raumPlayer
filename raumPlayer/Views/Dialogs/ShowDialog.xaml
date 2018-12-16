@@ -1,0 +1,19 @@
+﻿<ContentDialog
+    x:Class="raumPlayer.Views.ShowDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:foto_assistant.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="TITLE"
+    PrimaryButtonText="OK">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <FontIcon Width="48" Height="48" FontFamily="Segoe MDL2 Assets" Glyph="{x:Bind SymbolString, Mode=OneWay}" FontSize="24" VerticalAlignment="Center" />
+        <TextBlock Grid.Column="1" Text="{x:Bind ContentString, Mode=OneWay}" TextWrapping="WrapWholeWords" VerticalAlignment="Center" />
+    </Grid>
+</ContentDialog>

@@ -1,0 +1,80 @@
+﻿<UserControl
+    x:Class="raumPlayer.UserControls.ListBrowserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="using:raumPlayer.Models"
+    xmlns:interface="using:raumPlayer.Interfaces"
+    xmlns:uc="using:raumPlayer.UserControls"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+
+        <ItemsPanelTemplate x:Key="ListItemsPanelTemplate">
+            <ItemsStackPanel />
+        </ItemsPanelTemplate>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for narrow view  -->
+                        <Setter Target="gridViewBrowse.ItemsPanel" Value="{StaticResource ListItemsPanelTemplate}"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for normal view  -->
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for wide view  -->
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <GridView x:Name="gridViewBrowse" ItemsSource="{x:Bind ListSource, Mode=OneWay}" ScrollViewer.IsHorizontalScrollChainingEnabled="False" ItemClick="gridViewBrowse_ItemClick" IsItemClickEnabled="True" SelectionMode="None"
+                  IsSwipeEnabled="True" AllowDrop="True"
+                  ItemContainerStyle="{StaticResource appGridViewItemStyle}">
+            <!--<GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </GridView.ItemContainerStyle>-->
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="interface:IElement">
+                    <uc:ElementControl Element="{x:Bind Element, Mode=OneWay}" ImageUri="{x:Bind AlbumArtUri, Mode=OneWay}"
+                                       NewQueueClicked="UserControl_OnNewQueueClicked"
+                                       AddQueueClicked="UserControl_OnAddQueueClicked"
+                                       RemQueueClicked="UserControl_OnRemQueueClicked"
+                                       FavQueueClicked="UserControl_OnFavQueueClicked"
+                                       FavRemQueueClicked="UserControl_OnFavRemQueueClicked"
+                                       Title="{x:Bind Title, Mode=OneWay}"
+                                       Line1="{x:Bind Line1, Mode=OneWay}"
+                                       Line2="{x:Bind Line2, Mode=OneWay}"
+                                       VisibleCount="{x:Bind VisibleCount, Mode=OneWay}"
+                                       VisibleCountVisibility="{x:Bind VisibleCountVisibility, Mode=OneWay}"/>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </Grid>
+
+</UserControl>

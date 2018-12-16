@@ -1,0 +1,94 @@
+﻿<UserControl
+    x:Class="raumPlayer.UserControls.ZoneListViewItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:raumPlayer.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid x:Name="rootPanel" RenderTransformOrigin="0.5,0.5">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for narrow view  -->
+
+                        <Setter Target="breakLineStackPanel.(UIElement.Visibility)" Value="Visible"/>
+                        <Setter Target="playGlyph.(Grid.RowSpan)" Value="2"/>
+                        <Setter Target="textBlockAlbum.(UIElement.Visibility)" Value="Collapsed"/>
+                        <Setter Target="textBlockArtist.(UIElement.Visibility)" Value="Collapsed"/>
+                        <Setter Target="textBlockGenre.(UIElement.Visibility)" Value="Collapsed"/>
+                        <Setter Target="textBlockTitle.(Grid.RowSpan)" Value="1"/>
+                        <Setter Target="textBlockTitle.(Grid.ColumnSpan)" Value="4"/>
+
+                        <Setter Target="col3.(Width)" Value="0"/>
+                        <Setter Target="col4.(Width)" Value="0"/>
+                        <Setter Target="col5.(Width)" Value="0"/>
+                        <Setter Target="textBlockTitle.(TextBlock.FontSize)" Value="12"/>
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for normal view  -->
+
+                        <Setter Target="textBlockTitle.(Grid.ColumnSpan)" Value="2"/>
+                        <Setter Target="textBlockAlbum.(Grid.Column)" Value="3"/>
+                        <Setter Target="textBlockArtist.(Grid.Column)" Value="4"/>
+                        <Setter Target="textBlockGenre.(UIElement.Visibility)" Value="Collapsed"/>
+
+                        <Setter Target="col3.(Width)" Value="0"/>
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for wide view  -->
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <!--<ColumnDefinition Width="32" />-->
+                <ColumnDefinition Width="*" MinWidth="200"/>
+                <ColumnDefinition x:Name="col3" Width="*" />
+                <ColumnDefinition x:Name="col4" Width="*" />
+                <ColumnDefinition x:Name="col5" Width="*" />
+                <ColumnDefinition Width="64" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <FontIcon Name="playGlyph" FontFamily="Segoe MDL2 Assets" Glyph="&#xEDB5;" Width="20" Height="20" Visibility="{x:Bind IsSelectedVisibility, Mode=OneWay}" />
+            <!--<TextBlock Grid.Column="1" Text="{x:Bind Index, Mode=OneWay}" TextAlignment="Right" Margin="8,0,0,0" />-->
+            <TextBlock Name="textBlockTitle" Grid.Column="1" Text="{x:Bind Title, Mode=OneWay}" Margin="8,0,0,0" Style="{StaticResource MenuTextStyle}" FontWeight="SemiBold" Foreground="{ThemeResource PrimaryColorBrush5}"/>
+            <TextBlock Name="textBlockAlbum" Grid.Column="2" Text="{x:Bind Album, Mode=OneWay}" Margin="8,0,0,0" Style="{StaticResource MenuTextStyle}" FontSize="12" Foreground="{ThemeResource PrimaryColorBrush5}"/>
+            <TextBlock Name="textBlockArtist" Grid.Column="3" Text="{x:Bind Artist, Mode=OneWay}" Margin="8,0,0,0" Style="{StaticResource MenuTextStyle}" FontSize="12" Foreground="{ThemeResource PrimaryColorBrush5}"/>
+            <TextBlock Name="textBlockGenre" Grid.Column="4" Text="{x:Bind Genre, Mode=OneWay}" Margin="8,0,0,0" Style="{StaticResource MenuTextStyle}" FontSize="12" Foreground="{ThemeResource PrimaryColorBrush5}"/>
+            <TextBlock Name="textBlockDuration" Grid.Column="5" Text="{x:Bind Duration, Mode=OneWay}" TextAlignment="Right" Margin="8,0,16,0" Style="{StaticResource MenuTextStyle}" FontSize="12" Foreground="{ThemeResource PrimaryColorBrush5}"/>
+            <StackPanel Name="breakLineStackPanel" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed">
+                <TextBlock Text="{x:Bind Album, Mode=OneWay}" Margin="8,0,0,0" Style="{StaticResource MenuTextStyle}" FontSize="10" Foreground="{ThemeResource PrimaryColorBrush5}"/>
+                <TextBlock Text=" ▪ " />
+                <TextBlock Text="{x:Bind Artist, Mode=OneWay}" Margin="8,0,0,0" Style="{StaticResource MenuTextStyle}" FontSize="10" Foreground="{ThemeResource PrimaryColorBrush5}"/>
+                <TextBlock Text=" ▪ " />
+                <TextBlock Text="{x:Bind Genre, Mode=OneWay}" Margin="8,0,0,0" Style="{StaticResource MenuTextStyle}" FontSize="10" Foreground="{ThemeResource PrimaryColorBrush5}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

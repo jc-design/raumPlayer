@@ -1,0 +1,48 @@
+﻿<ContentDialog
+    x:Class="raumPlayer.UserControls.HowTo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Uid="HowToDialog"
+    Title="TITLE"
+    PrimaryButtonText="OK"
+    Background="{ThemeResource PrimaryColorBrush2}"
+    FullSizeDesired="True"
+    >
+    <ContentDialog.TitleTemplate>
+        <DataTemplate>
+            <StackPanel Orientation="Horizontal">
+                <Grid Width="40" Height="40" Background="{ThemeResource PrimaryColorBrush3}">
+                    <Image Source="ms-appx:///Assets/StoreLogo.png" Margin="0"/>
+                </Grid>
+                <TextBlock x:Uid="FirstRunTitle" Text="WELCOME" Margin="8,0,0,0" Style="{StaticResource AppHeaderTextStyle}"/>
+            </StackPanel>
+        </DataTemplate>
+    </ContentDialog.TitleTemplate>
+    <!--<ScrollViewer>-->
+        <StackPanel VerticalAlignment="Top">
+            <FlipView VerticalAlignment="Top" MaxHeight="300" MaxWidth="400">
+                <FlipViewItem>
+                    <Image x:Uid="HowTo1" Source="ms-appx:///Assets/1_rp_DE.png" />
+                </FlipViewItem>
+                <FlipViewItem>
+                    <Image x:Uid="HowTo2"/>
+                </FlipViewItem>
+                <FlipViewItem>
+                    <Image x:Uid="HowTo3"/>
+                </FlipViewItem>
+                <FlipViewItem>
+                    <Image x:Uid="HowTo4"/>
+                </FlipViewItem>
+                <FlipViewItem>
+                    <Image x:Uid="HowTo5"/>
+                </FlipViewItem>
+                <FlipViewItem>
+                    <Image x:Uid="HowTo6"/>
+                </FlipViewItem>
+            </FlipView>
+        </StackPanel>
+    <!--</ScrollViewer>-->
+</ContentDialog>

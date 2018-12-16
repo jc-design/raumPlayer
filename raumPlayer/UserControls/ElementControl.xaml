@@ -1,0 +1,228 @@
+﻿<UserControl
+    x:Class="raumPlayer.UserControls.ElementControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="using:raumPlayer.UserControls"
+    mc:Ignorable="d"
+    >
+
+    <RelativePanel x:Name="rootPanel" RenderTransformOrigin="0.5,0.5">
+        <!--<RelativePanel.Transform3D>
+            <CompositeTransform3D />
+        </RelativePanel.Transform3D>-->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for narrow view  -->
+                        <!--<Setter Target="rootPanel.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,0</Thickness>
+                            </Setter.Value>
+                        </Setter>-->
+                        <!--<Setter Target="shadowBorder.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,0</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="panelData.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,0</Thickness>
+                            </Setter.Value>
+                        </Setter>-->
+                        <Setter Target="imageAlbumArt.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,0</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="rootPanel.(FrameworkElement.Height)" Value="80"/>
+                        <Setter Target="imageAlbumArt.(FrameworkElement.Width)" Value="80"/>
+                        <Setter Target="imageAlbumArt.(RelativePanel.AlignRightWithPanel)" Value="False"/>
+                        <Setter Target="imageAlbumArt.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
+                        <Setter Target="imageAlbumArt.(RelativePanel.Above)" Value=""/>
+                        <Setter Target="stackPanelText.(RelativePanel.AlignLeftWithPanel)" Value="False"/>
+                        <Setter Target="stackPanelText.(RelativePanel.AlignRightWithPanel)" Value="False"/>
+                        <Setter Target="stackPanelText.(RelativePanel.AlignTopWithPanel)" Value="False"/>
+                        <Setter Target="stackPanelText.(RelativePanel.AlignBottomWithPanel)" Value="False"/>
+                        <Setter Target="stackPanelText.(RelativePanel.LeftOf)" Value="borderNumber"/>
+                        <Setter Target="stackPanelText.(RelativePanel.RightOf)" Value="imageAlbumArt"/>
+                        <Setter Target="stackPanelText.(RelativePanel.AlignVerticalCenterWith)" Value="imageAlbumArt"/>
+                        <Setter Target="borderNumber.(RelativePanel.AlignTopWithPanel)" Value="True"/>
+                        <Setter Target="borderNumber.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                        <Setter Target="borderNumber.(RelativePanel.AlignLeftWith)" Value=""/>
+                        <Setter Target="borderNumber.(RelativePanel.AlignRightWith)" Value=""/>
+                        <Setter Target="borderNumber.(RelativePanel.AlignBottomWith)" Value=""/>
+                        <Setter Target="buttonMore.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                        <Setter Target="buttonMore.(RelativePanel.AlignRightWith)" Value=""/>
+                        <Setter Target="buttonPlay.(RelativePanel.AlignRightWith)" Value=""/>
+                        <Setter Target="buttonPlay.(RelativePanel.AlignLeftWith)" Value=""/>
+                        <Setter Target="buttonPlay.(RelativePanel.LeftOf)" Value="buttonMore"/>
+                        <Setter Target="stackPanelText.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>8,4,4,4</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for normal view  -->
+                        <Setter Target="rootPanel.Width" Value="120"/>
+                        <Setter Target="imageAlbumArt.(FrameworkElement.Width)" Value="112"/>
+                        <Setter Target="imageAlbumArt.(FrameworkElement.Height)" Value="112"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for wide view  -->
+                        <Setter Target="rootPanel.Width" Value="160"/>
+                        <Setter Target="imageAlbumArt.(FrameworkElement.Width)" Value="152"/>
+                        <Setter Target="imageAlbumArt.(FrameworkElement.Height)" Value="152"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Border x:Name="shadowBorder"
+                RelativePanel.AlignTopWithPanel="True"
+                RelativePanel.AlignBottomWithPanel="True"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                />
+        <Grid Background="{ThemeResource AppBackgroundColorBrush}"
+              RelativePanel.AlignTopWithPanel="True"
+              RelativePanel.AlignBottomWithPanel="True"
+              RelativePanel.AlignLeftWithPanel="True"
+              RelativePanel.AlignRightWithPanel="True"/>
+        <RelativePanel x:Name="panelData"
+                       RelativePanel.AlignTopWithPanel="True"
+                       RelativePanel.AlignBottomWithPanel="True"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignRightWithPanel="True"
+                       Background="{x:Bind Element.AverageColorImageArt,Mode=OneWay}"
+                       >
+            <Border x:Name="imageAlbumArt"
+                    Margin="4,4,4,4"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True"
+                    RelativePanel.AlignTopWithPanel="True"
+                    Padding="4">
+                <Ellipse>
+                    <Ellipse.Fill>
+                        <ImageBrush Stretch="UniformToFill"
+                                    ImageSource="{x:Bind Element.ImageArt, Mode=OneWay}" >
+                        </ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Border>
+            <StackPanel x:Name="stackPanelText" Margin="4,0,4,4"
+                        RelativePanel.AlignLeftWithPanel="True"
+                        RelativePanel.AlignRightWithPanel="True"
+                        RelativePanel.AlignTopWithPanel="False"
+                        RelativePanel.Below="imageAlbumArt">
+                <uc:MarqueeUserControl x:Name="textBlockTitle" Foreground="{ThemeResource AppForegroundColorBrush}" MarqueeText="{x:Bind Title, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10" FontWeight="Bold" />
+                <uc:MarqueeUserControl x:Name="textBlockLine1" Foreground="{ThemeResource AppForegroundColorBrush}" MarqueeText="{x:Bind Line1, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10"/>
+                <uc:MarqueeUserControl x:Name="textBlockLine2" Foreground="{ThemeResource AppForegroundColorBrush}" MarqueeText="{x:Bind Line2, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10"/>
+            </StackPanel>
+
+            <Button x:Name="buttonPlay"
+                    Style="{StaticResource TransactionButtonStyle}"
+                    Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}"
+                    Margin="4,4,4,4"
+                    RelativePanel.AlignBottomWith="imageAlbumArt"
+                    RelativePanel.AlignLeftWith="imageAlbumArt"
+                    Click="buttonNew_Click" >
+                <SymbolIcon Symbol="Play" />
+            </Button>
+
+            <Button x:Name="buttonMore"
+                    Style="{StaticResource TransactionButtonStyle}"
+                    Margin="4,4,4,4"
+                    RelativePanel.AlignBottomWith="imageAlbumArt"
+                    RelativePanel.AlignRightWith="imageAlbumArt" >
+                <Button.Flyout>
+                    <Flyout>
+                        <Flyout.FlyoutPresenterStyle>
+                            <Style TargetType="FlyoutPresenter">
+                                <Setter Property="Margin" Value="0"/>
+                                <Setter Property="Padding" Value="0"/>
+                                <Setter Property="BorderThickness" Value="2"/>
+                                <Setter Property="MinHeight" Value="0"/>
+                                <Setter Property="MinWidth" Value="0"/>
+                                <Setter Property="Background" Value="{ThemeResource AppBackgroundColorBrush}"/>
+                                <Setter Property="BorderBrush" Value="{ThemeResource AppForegroundColorBrush}"/>
+                            </Style>
+                        </Flyout.FlyoutPresenterStyle>
+                        <StackPanel Orientation="Vertical" Margin="0">
+                            <Button x:Name="buttonNew" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonNew_Click" Foreground="{ThemeResource AppForegroundColorBrush}" Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}" >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="24"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="&#xE768;" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets"  />
+                                    <TextBlock Grid.Column="1" x:Uid="textBlockNewQueue" Text="NEW QUEUE" VerticalAlignment="Center" FontSize="10" />
+                                </Grid>
+                            </Button>
+                            <Button x:Name="buttonAdd" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonAdd_Click" Foreground="{ThemeResource AppForegroundColorBrush}" Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}" >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="24"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="&#xE710;" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" />
+                                    <TextBlock Grid.Column="1" x:Uid="textBlockAddQueue" Text="ADD TO QUEUE" VerticalAlignment="Center" FontSize="10" />
+                                </Grid>
+                            </Button>
+                            <Button x:Name="buttonRem" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonRem_Click" Foreground="{ThemeResource AppForegroundColorBrush}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="24"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="&#xE949;" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" />
+                                    <TextBlock Grid.Column="1" x:Uid="textBlockRemQueue" Text="REMOVE FROM QUEUE" VerticalAlignment="Center" FontSize="10" />
+                                </Grid>
+                            </Button>
+                            <Button x:Name="buttonFav" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonFav_Click" Foreground="{ThemeResource AppForegroundColorBrush}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="24"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="&#xEB51;" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" />
+                                    <TextBlock Grid.Column="1" x:Uid="textBlockFav" Text="ADD TO FAVOURITES" VerticalAlignment="Center" FontSize="10" />
+                                </Grid>
+                            </Button>
+                            <Button x:Name="buttonFavRem" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonFavRem_Click" >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="24"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="&#xEA92;" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" Foreground="{ThemeResource AppForegroundColorBrush}" />
+                                    <TextBlock Grid.Column="1" x:Uid="textBlockFavRem" Text="REMOVE FROM FAVOURITES" VerticalAlignment="Center" Foreground="{ThemeResource AppForegroundColorBrush}" FontSize="10" />
+                                </Grid>
+                            </Button>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+                <SymbolIcon Symbol="More" />
+            </Button>
+            <Border x:Name="borderNumber" BorderThickness="2" BorderBrush="{ThemeResource AppForegroundColorBrush}" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}" Margin="4,4,4,4" RelativePanel.AlignTopWith="imageAlbumArt" RelativePanel.AlignRightWith="imageAlbumArt" CornerRadius="16" MinWidth="32" Height="32" 
+                    Visibility="{x:Bind VisibleCountVisibility, Mode=OneWay}">
+                <TextBlock x:Name="textBlockNumber" Margin="4" VerticalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource AppForegroundColorBrush}" Text="{x:Bind VisibleCount, Mode=OneWay}"/>
+            </Border>
+        </RelativePanel>
+    </RelativePanel>
+</UserControl>
