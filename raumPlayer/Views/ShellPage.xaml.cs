@@ -22,7 +22,7 @@ namespace raumPlayer.Views
         public async void SetRootFrame(Frame frame)
         {
             shellFrame.Content = frame;
-            await ViewModel.InitializeAsync(frame, navigationView);
+            ViewModel.Initialize(frame, navigationView);
         }
 
         private void OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)

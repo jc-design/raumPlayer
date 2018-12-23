@@ -109,8 +109,6 @@ namespace raumPlayer
             Container.Resolve<INetWorkDeviceWatcher>().StartDeviceWatcher();
             await Container.Resolve<IRaumFeldService>().InitializeAsync();
 
-            await Container.Resolve<ISettingsViewModel>().InitializeAsync();
-
             await Task.CompletedTask;
         }
 

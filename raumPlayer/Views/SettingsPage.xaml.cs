@@ -3,6 +3,7 @@
 using raumPlayer.ViewModels;
 
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace raumPlayer.Views
 {
@@ -14,6 +15,7 @@ namespace raumPlayer.Views
         public SettingsPage()
         {
             InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
     }
 }

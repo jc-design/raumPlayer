@@ -103,14 +103,6 @@ namespace raumPlayer.ViewModels
             set { SetProperty(ref busyVisibility, value); }
         }
 
-
-        private ObservableCollection<IShellNavigationItem> navigationItems = new ObservableCollection<IShellNavigationItem>();
-        public ObservableCollection<IShellNavigationItem> NavigationItems
-        {
-            get { return navigationItems; }
-            set { SetProperty(ref navigationItems, value); }
-        }
-
         private bool isTuneInAvailable = false;
         public bool IsTuneInAvailable
         {
@@ -132,19 +124,11 @@ namespace raumPlayer.ViewModels
             set { SetProperty(ref zoneViewModels, value); }
         }
 
-        public async Task InitializeAsync(Frame frame, NavigationView navigationView)
+        public void Initialize(Frame frame, NavigationView navigationView)
         {
             this.navigationView = navigationView;
             frame.Navigated += frame_Navigated;
             this.navigationView.BackRequested += OnBackRequested;
-
-            //raumFeldService = PrismUnityApplication.Current.Container.Resolve<IRaumFeldService>();
-            IsTuneInAvailable = await raumFeldService.GetTuneInState();
-            //setIsTuneInAvailableCommand = new DelegateCommand<object>(async (param) =>
-            //{
-            //    IsTuneInAvailable = await raumFeldService.GetTuneInState();
-            //});
-            //setIsTuneInAvailableCommand.Execute(null);
         }
 
         private void OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
@@ -223,109 +207,34 @@ namespace raumPlayer.ViewModels
             }
         }
 
-        public async Task SetActiveZoneViewModel(string zoneUdn)
-        {
-            if (string.IsNullOrEmpty(zoneUdn))
-            {
-                zoneUdn = await ApplicationData.Current.LocalSettings.ReadAsync<string>("ACTIVEZONE");
-                zoneUdn = ZoneViewModels.Select(z => z).Where(z => z.Udn == zoneUdn).FirstOrDefault()?.Udn;
-                if (string.IsNullOrEmpty(zoneUdn))
-                {
-                    zoneUdn = ZoneViewModels.First().Udn;
-                    await ApplicationData.Current.LocalSettings.SaveAsync("ACTIVEZONE", zoneUdn);
-                }
-            }
-
-            foreach (var zone in ZoneViewModels)
-            {
-                if (zone.Udn == zoneUdn)
-                {
-                    zone.IsActive = true;
-                    if (navigationView.MenuItems[7] is NavigationViewItem item)
-                    {
-                        item.Content = zone.Name;
-                    }
-                    ActiveZoneViewModel = zone;
-
-                    await ApplicationData.Current.LocalSettings.SaveAsync("ACTIVEZONE", zone.Udn);
-                }
-                else { zone.IsActive = false; }
-            }
-        }
-
-        //private void populateNavItems()
+        //public async Task SetActiveZoneViewModel(string zoneUdn)
         //{
-        //    //primaryItems.Clear();
-        //    //secondaryItems.Clear();
-
-        //    //// TODO WTS: Change the symbols for each item as appropriate for your app
-        //    //// More on Segoe UI Symbol icons: https://docs.microsoft.com/windows/uwp/style/segoe-ui-symbol-font
-        //    //// Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/projectTypes/navigationpane.md
-        //    //// Edit String/en-US/Resources.resw: Add a menu item title for each page
-
-        //    //PrimaryItems.Add(PrismUnityApplication.Current.Container.Resolve<ShellNavigationViewModel>(new ResolverOverride[]
-        //    //    {
-        //    //        new ParameterOverride("label", "MyMusic".GetLocalized()), new ParameterOverride("symbol", "\uE189"), new ParameterOverride("pageIdentifier", "MyMusic")
-        //    //    }));
-        //    //PrimaryItems.Add(PrismUnityApplication.Current.Container.Resolve<ShellNavigationViewModel>(new ResolverOverride[]
-        //    //    {
-        //    //        new ParameterOverride("label", "Playlists".GetLocalized()), new ParameterOverride("symbol", "\uE90B"), new ParameterOverride("pageIdentifier", "Playlist")
-        //    //    }));
-        //    //PrimaryItems.Add(PrismUnityApplication.Current.Container.Resolve<ShellNavigationViewModel>(new ResolverOverride[]
-        //    //    {
-        //    //        new ParameterOverride("label", "Favorites".GetLocalized()), new ParameterOverride("symbol", "\uEB51"), new ParameterOverride("pageIdentifier", "Favorite")
-        //    //    }));
-        //    //PrimaryItems.Add(PrismUnityApplication.Current.Container.Resolve<TuneInNavigationViewModel>(new ResolverOverride[]
-        //    //    {
-        //    //        new ParameterOverride("label", "TuneIn".GetLocalized()), new ParameterOverride("symbol", "\uEC05"), new ParameterOverride("pageIdentifier", "Radio")
-        //    //    }));
-
-        //    //SecondaryItems.Add(PrismUnityApplication.Current.Container.Resolve<ManageZonesNavigationViewModel>(new ResolverOverride[]
-        //    //    {
-        //    //        new ParameterOverride("symbol", "\uE965"), new ParameterOverride("pageIdentifier", "Zone"), new ParameterOverride("secondPageIdentifier", "ManageZones")
-        //    //    }));
-
-        //    //OtherItems.Add(PrismUnityApplication.Current.Container.Resolve<ShellNavigationViewModel>(new ResolverOverride[]
-        //    //    {
-        //    //         new ParameterOverride("label", "Settings".GetLocalized()), new ParameterOverride("symbol", "\uE115"), new ParameterOverride("pageIdentifier", "Settings")
-        //    //    }));
-
-        //    // TODO WTS: Change the symbols for each item as appropriate for your app
-        //    // More on Segoe UI Symbol icons: https://docs.microsoft.com/windows/uwp/style/segoe-ui-symbol-font
-        //    // Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/projectTypes/navigationpane.md
-        //    // Edit String/en-US/Resources.resw: Add a menu item title for each page
-
-        //    NavigationItems.Add(PrismUnityApplication.Current.Container.Resolve<ShellNavigationViewModel>(new ResolverOverride[]
+        //    if (string.IsNullOrEmpty(zoneUdn))
+        //    {
+        //        zoneUdn = await ApplicationData.Current.LocalSettings.ReadAsync<string>("ACTIVEZONE");
+        //        zoneUdn = ZoneViewModels.Select(z => z).Where(z => z.Udn == zoneUdn).FirstOrDefault()?.Udn;
+        //        if (string.IsNullOrEmpty(zoneUdn))
         //        {
-        //            new ParameterOverride("label", "MyMusic".GetLocalized()), new ParameterOverride("symbol", "\uE189"), new ParameterOverride("pageIdentifier", "MyMusic")
-        //        }));
-        //    NavigationItems.Add(PrismUnityApplication.Current.Container.Resolve<ShellNavigationViewModel>(new ResolverOverride[]
-        //        {
-        //            new ParameterOverride("label", "Playlists".GetLocalized()), new ParameterOverride("symbol", "\uE90B"), new ParameterOverride("pageIdentifier", "Playlist")
-        //        }));
-        //    NavigationItems.Add(PrismUnityApplication.Current.Container.Resolve<ShellNavigationViewModel>(new ResolverOverride[]
-        //        {
-        //            new ParameterOverride("label", "Favorites".GetLocalized()), new ParameterOverride("symbol", "\uEB51"), new ParameterOverride("pageIdentifier", "Favorite")
-        //        }));
-        //    NavigationItems.Add(PrismUnityApplication.Current.Container.Resolve<TuneInNavigationViewModel>(new ResolverOverride[]
-        //        {
-        //            new ParameterOverride("label", "TuneIn".GetLocalized()), new ParameterOverride("symbol", "\uEC05"), new ParameterOverride("pageIdentifier", "Radio")
-        //        }));
+        //            zoneUdn = ZoneViewModels.First().Udn;
+        //            await ApplicationData.Current.LocalSettings.SaveAsync("ACTIVEZONE", zoneUdn);
+        //        }
+        //    }
 
-        //    NavigationItems.Add(PrismUnityApplication.Current.Container.Resolve<ManageZonesNavigationViewModel>(new ResolverOverride[]
+        //    foreach (var zone in ZoneViewModels)
+        //    {
+        //        if (zone.Udn == zoneUdn)
         //        {
-        //            new ParameterOverride("symbol", "\uE965"), new ParameterOverride("pageIdentifier", "Zone"), new ParameterOverride("secondPageIdentifier", "Zone")
-        //        }));
-        //    NavigationItems.Add(PrismUnityApplication.Current.Container.Resolve<ManageZonesNavigationViewModel>(new ResolverOverride[]
-        //        {
-        //            new ParameterOverride("symbol", "\uE835;"), new ParameterOverride("pageIdentifier", "ManageZones"), new ParameterOverride("secondPageIdentifier", "ManageZones")
-        //        }));
+        //            zone.IsActive = true;
+        //            if (navigationView.MenuItems[7] is NavigationViewItem item)
+        //            {
+        //                item.Content = zone.Name;
+        //            }
+        //            ActiveZoneViewModel = zone;
 
-        //    NavigationItems.Add(PrismUnityApplication.Current.Container.Resolve<ShellNavigationViewModel>(new ResolverOverride[]
-        //        {
-        //             new ParameterOverride("label", "Settings".GetLocalized()), new ParameterOverride("symbol", "\uE115"), new ParameterOverride("pageIdentifier", "Settings")
-        //        }));
-
+        //            await ApplicationData.Current.LocalSettings.SaveAsync("ACTIVEZONE", zone.Udn);
+        //        }
+        //        else { zone.IsActive = false; }
+        //    }
         //}
     }
 }

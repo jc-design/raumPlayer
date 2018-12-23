@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -43,21 +44,21 @@ namespace raumPlayer.ViewModels
             set { SetProperty(ref versionDescription, value); }
         }
 
-        private bool isTuneInAvailable = false;
+        private bool isTuneInAvailable;
         public bool IsTuneInAvailable
         {
             get { return isTuneInAvailable; }
             set { SetProperty(ref isTuneInAvailable, value); }
         }
 
-        private bool isCheckedMyMusic = false;
+        private bool isCheckedMyMusic;
         public bool IsCheckedMyMusic
         {
             get { return isCheckedMyMusic; }
             set { SetProperty(ref isCheckedMyMusic, value); }
         }
 
-        private bool isCheckedFavorites = false;
+        private bool isCheckedFavorites;
         public bool IsCheckedFavorites
         {
             get { return isCheckedFavorites; }
@@ -65,6 +66,7 @@ namespace raumPlayer.ViewModels
         }
 
         #region ICommands
+
         private ICommand switchThemeCommand;
         public ICommand SwitchThemeCommand
         {
@@ -122,10 +124,21 @@ namespace raumPlayer.ViewModels
         {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
             localSettings.Values["NAVIGATION"] = e.Name;
+
+            switch (e.Name)
+            {
+                case "radioButtonMyMusic":
+                    IsCheckedMyMusic = true;
+                    break;
+                case "radioButtonFavorites":
+                    IsCheckedFavorites = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
         #endregion
-
 
         public SettingsViewModel(INavigationService navigationServiceInstance, IEventAggregator eventAggregatorInstance, IMessagingService messagingServiceInstance, IRaumFeldService raumFeldServiceInstance)
         {
@@ -138,30 +151,17 @@ namespace raumPlayer.ViewModels
             eventAggregator.GetEvent<SystemUpdateIDChangedEvent>().Subscribe(onSystemUpdateIDChanged, ThreadOption.UIThread);
         }
 
+        public override void OnNavigatingFrom(NavigatingFromEventArgs e, Dictionary<string, object> viewModelState, bool suspending)
+        {
+            base.OnNavigatingFrom(e, viewModelState, suspending);
+        }
 
         public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
         {
             base.OnNavigatedTo(e, viewModelState);
 
             VersionDescription = GetVersionDescription();
-        }
 
-        private string GetVersionDescription()
-        {
-            var package = Package.Current;
-            var packageId = package.Id;
-            var version = packageId.Version;
-
-            return $"{package.DisplayName} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
-        }
-
-        private async void onSystemUpdateIDChanged(RaumFeldEvent args)
-        {
-            IsTuneInAvailable = await raumFeldService.GetTuneInState();
-        }
-
-        public async Task InitializeAsync()
-        {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
             if (localSettings.Values.TryGetValue("NAVIGATION", out object obj))
             {
@@ -177,7 +177,19 @@ namespace raumPlayer.ViewModels
                         break;
                 }
             }
+        }
 
+        private string GetVersionDescription()
+        {
+            var package = Package.Current;
+            var packageId = package.Id;
+            var version = packageId.Version;
+
+            return $"{package.DisplayName} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+        }
+
+        private async void onSystemUpdateIDChanged(RaumFeldEvent args)
+        {
             IsTuneInAvailable = await raumFeldService.GetTuneInState();
         }
     }

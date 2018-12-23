@@ -14,18 +14,16 @@ namespace raumPlayer.Interfaces
         NavigationViewItem Selected { get; set; }
         string Header { get; set; }
 
+        bool IsBackEnabled { get; set; }
+        bool IsTuneInAvailable { get; set; }
         bool IsBusy { get; set; }
         Visibility BusyVisibility { get; set; }
 
-        Task InitializeAsync(Frame frame, NavigationView navigationView);
+        void Initialize(Frame frame, NavigationView navigationView);
 
         ZoneViewModel ActiveZoneViewModel { get; set; }
         ObservableCollection<ZoneViewModel> ZoneViewModels { get;}
 
-        Task SetActiveZoneViewModel(string zoneUdn);
-
-        //ICommand GetAlbumArtCommand { get; }
-        //SolidColorBrush BackgroundColor { get; set; }
-        //BitmapImage AlbumArtImage { get; set; }
+        ICommand ItemInvokedCommand { get; }
     }
 }
