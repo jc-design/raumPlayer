@@ -20,7 +20,7 @@ namespace raumPlayer.ViewModels
         private void onCacheElementsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             IsGoBackInCacheEnabled = ((ICollection)sender).Count > 1;
-            shellViewModel.SetBackbuttonVisibility(IsGoBackInCacheEnabled);
+            //shellViewModel.SetBackbuttonVisibility(IsGoBackInCacheEnabled);
         }
 
         private readonly IEventAggregator eventAggregator;

@@ -149,35 +149,34 @@
     <value>Light</value>
     <comment>Light theme text for Settings</comment>
   </data>
-  <data name="Settings_About.Text" xml:space="preserve">    
+  <data name="Settings_About.Text" xml:space="preserve">
     <value>About this application</value>
     <comment>About this application title for Settings</comment>
   </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">    
+  <data name="Settings_AboutDescription.Text" xml:space="preserve">
     <value>Settings page placeholder text.  Your app description goes here.</value>
     <comment>About this application description for Settings</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">    
+  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
     <value>Privacy Statement</value>
     <comment>Privacy Statement link content for Settings</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">  
+  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://YourPrivacyUrlGoesHere/</value>
     <comment>Here is your Privacy Statement url for Settings</comment>
   </data>
-  <data name="Settings_Personalization.Text" xml:space="preserve">   
+  <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
     <comment>Personalization text for Settings</comment>
   </data>
-  <data name="ExceptionEnumToBooleanConverterValueMustBeAnEnum" xml:space="preserve">   
+  <data name="ExceptionEnumToBooleanConverterValueMustBeAnEnum" xml:space="preserve">
     <value>value must be an Enum!</value>
     <comment>Value must be an Enum in enum to boolean converter</comment>
   </data>
-  <data name="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" xml:space="preserve">   
+  <data name="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" xml:space="preserve">
     <value>parameter must be an Enum name!</value>
     <comment>Parameter must be an Enum name in enum to boolean converter</comment>
   </data>
-  NavigateUri
   <data name="Shell_Settings" xml:space="preserve">
     <value>Settings</value>
     <comment>Navigation view item name for Settings</comment>
@@ -195,7 +194,7 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
 
 Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.</value>
     <comment>First use prompt message body</comment>
-  </data>  
+  </data>
   <data name="FirstRun_Title.Text" xml:space="preserve">
     <value>Welcome</value>
     <comment>First use prompt message title</comment>
@@ -214,5 +213,337 @@ Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Ma
   <data name="AfterUpdate_Title.Text" xml:space="preserve">
     <value>What's new in this version</value>
     <comment>What's new prompt message title</comment>
+  </data>
+  <data name="aboutHub.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Album" xml:space="preserve">
+    <value>Album</value>
+  </data>
+  <data name="Artist" xml:space="preserve">
+    <value>Artist</value>
+  </data>
+  <data name="autoSuggestBoxFilter.PlaceholderText" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="autoSuggestBoxSearch.PlaceholderText" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="buttonHowTo.Content" xml:space="preserve">
+    <value>How To</value>
+  </data>
+  <data name="buttonRate.Content" xml:space="preserve">
+    <value>Rate app</value>
+  </data>
+  <data name="buttonSkypeGroup.Content" xml:space="preserve">
+    <value>Join Skype-group</value>
+  </data>
+  <data name="CancelMessage" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="checkboxMute.Content" xml:space="preserve">
+    <value>Mute</value>
+  </data>
+  <data name="Composer" xml:space="preserve">
+    <value>Composer</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorLoadMediaServer" xml:space="preserve">
+    <value>Could not load Mediaserver</value>
+  </data>
+  <data name="ErrorNoData" xml:space="preserve">
+    <value>No data available</value>
+  </data>
+  <data name="Favorites" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="Folder" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="Genre" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="greetingsCD.Text" xml:space="preserve">
+    <value>Danke für die hilfreichen Tips im Forum und das Zusenden von Beispielcode</value>
+  </data>
+  <data name="greetingsFO.Text" xml:space="preserve">
+    <value>Danke für die tolle Unterstütung
+http://www.hifi-forum.de/index.php?action=browseT&amp;forum_id=212&amp;thread=420</value>
+  </data>
+  <data name="greetingsHub.Text" xml:space="preserve">
+    <value>Danksagung</value>
+  </data>
+  <data name="greetingsMP.Text" xml:space="preserve">
+    <value>Danke für das unermüdliche Testen und die guten Anregungen zur Appentwicklung</value>
+  </data>
+  <data name="historyHeaderHub.Text" xml:space="preserve">
+    <value>Historie / Ideen</value>
+  </data>
+  <data name="historyHub.Text" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="HowTo1.Source" xml:space="preserve">
+    <value>ms-appx:///Assets/1_rp_DE.png</value>
+  </data>
+  <data name="HowTo2.Source" xml:space="preserve">
+    <value>ms-appx:///Assets/2_rp_DE.png</value>
+  </data>
+  <data name="HowTo3.Source" xml:space="preserve">
+    <value>ms-appx:///Assets/3_rp_DE.png</value>
+  </data>
+  <data name="HowTo4.Source" xml:space="preserve">
+    <value>ms-appx:///Assets/4_rp_DE.png</value>
+  </data>
+  <data name="HowTo5.Source" xml:space="preserve">
+    <value>ms-appx:///Assets/5_rp_DE.png</value>
+  </data>
+  <data name="HowTo6.Source" xml:space="preserve">
+    <value>ms-appx:///Assets/6_rp_DE.png</value>
+  </data>
+  <data name="HowToDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="HowToDialog.Title" xml:space="preserve">
+    <value>How To</value>
+  </data>
+  <data name="HowTp6.Source" xml:space="preserve">
+    <value>ms-appx:///Assets/6_rp_DE.png</value>
+  </data>
+  <data name="ideasHub.Text" xml:space="preserve">
+    <value>Ideas</value>
+  </data>
+  <data name="Imported" xml:space="preserve">
+    <value>Imported playlists</value>
+  </data>
+  <data name="listViewZones.Text" xml:space="preserve">
+    <value>Zoneconfiguration</value>
+  </data>
+  <data name="MostPlayed" xml:space="preserve">
+    <value>Most played</value>
+  </data>
+  <data name="Move" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="MyFavorites" xml:space="preserve">
+    <value>My favorites</value>
+  </data>
+  <data name="MyMusic" xml:space="preserve">
+    <value>Music</value>
+  </data>
+  <data name="MyPlaylists" xml:space="preserve">
+    <value>My playlists</value>
+  </data>
+  <data name="navItems_Groups.Content" xml:space="preserve">
+    <value>Music...</value>
+  </data>
+  <data name="navItems_ManageZones" xml:space="preserve">
+    <value>Zones...</value>
+  </data>
+  <data name="NavItem_ActiveZone.Content" xml:space="preserve">
+    <value>Active zone</value>
+  </data>
+  <data name="NavItem_Favorites.Content" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="NavItem_MyMusic.Content" xml:space="preserve">
+    <value>My Music</value>
+  </data>
+  <data name="NavItem_Playlists.Content" xml:space="preserve">
+    <value>Playlists</value>
+  </data>
+  <data name="NavItem_TuneIn.Content" xml:space="preserve">
+    <value>TuneIn</value>
+  </data>
+  <data name="NavItem_ZoneConfig.Content" xml:space="preserve">
+    <value>Zoneconfig</value>
+  </data>
+  <data name="NewZone" xml:space="preserve">
+    <value>Neue Zone</value>
+  </data>
+  <data name="NoZones" xml:space="preserve">
+    <value>Keine Zonen vorhanden</value>
+  </data>
+  <data name="OkMessage" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="pivotItemBrowse.Header" xml:space="preserve">
+    <value>Musik</value>
+  </data>
+  <data name="Playlists" xml:space="preserve">
+    <value>Wiedergabelisten</value>
+  </data>
+  <data name="Radio" xml:space="preserve">
+    <value>Radio</value>
+  </data>
+  <data name="radioButtonDirektOne.Content" xml:space="preserve">
+    <value>Direkt 1</value>
+  </data>
+  <data name="radioButtonFavorites.Content" xml:space="preserve">
+    <value>Favoriten</value>
+  </data>
+  <data name="radioButtonIntro.Content" xml:space="preserve">
+    <value>Intro</value>
+  </data>
+  <data name="radioButtonMyMusic.Content" xml:space="preserve">
+    <value>Musik</value>
+  </data>
+  <data name="radioButtonNormal.Content" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="radioButtonRandom.Content" xml:space="preserve">
+    <value>Zufall</value>
+  </data>
+  <data name="radioButtonRepeatAll.Content" xml:space="preserve">
+    <value>Alles wiederholen</value>
+  </data>
+  <data name="radioButtonRepeatOne.Content" xml:space="preserve">
+    <value>1 wiederholen</value>
+  </data>
+  <data name="radioButtonShuffle.Content" xml:space="preserve">
+    <value>Mischen</value>
+  </data>
+  <data name="RadioLocal" xml:space="preserve">
+    <value>Lokal</value>
+  </data>
+  <data name="RadioMusic" xml:space="preserve">
+    <value>Musik</value>
+  </data>
+  <data name="RadioSport" xml:space="preserve">
+    <value>Sport</value>
+  </data>
+  <data name="RadioTalk" xml:space="preserve">
+    <value>Talk</value>
+  </data>
+  <data name="RateAppMessage" xml:space="preserve">
+    <value>App bewerten</value>
+  </data>
+  <data name="RecentlyPlayed" xml:space="preserve">
+    <value>Kürzlich gespielt</value>
+  </data>
+  <data name="Settings_ThemeToggle.OffContent" xml:space="preserve">
+    <value>Dunkler Modus</value>
+  </data>
+  <data name="Settings_ThemeToggle.OnContent" xml:space="preserve">
+    <value>Heller Modus</value>
+  </data>
+  <data name="Settings_ThemeToggleHeader.Text" xml:space="preserve">
+    <value>App Modus</value>
+  </data>
+  <data name="Shuffles" xml:space="preserve">
+    <value>Shuffle playlist</value>
+  </data>
+  <data name="textBlockAddQueue.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="textBlockBack.Text" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="textBlockFav.Text" xml:space="preserve">
+    <value>To favorites</value>
+  </data>
+  <data name="textBlockFavRem.Text" xml:space="preserve">
+    <value>Aus Favoriten entfernen</value>
+  </data>
+  <data name="textblockI001.Text" xml:space="preserve">
+    <value>Integration von Cortanasprachbefehlen</value>
+  </data>
+  <data name="textblockI002.Text" xml:space="preserve">
+    <value>Einführen von Wiedergabenlisten</value>
+  </data>
+  <data name="textblockI003.Text" xml:space="preserve">
+    <value>Backgroundnotification bei Liedwechsel, wenn die App im Hintergrund ist</value>
+  </data>
+  <data name="textblockI004.Text" xml:space="preserve">
+    <value>Einschlaffunktion</value>
+  </data>
+  <data name="textBlockNewQueue.Text" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="textBlockNewZone.Text" xml:space="preserve">
+    <value>New zone</value>
+  </data>
+  <data name="textBlockRem.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="textBlockRooms.Text" xml:space="preserve">
+    <value>Rooms</value>
+  </data>
+  <data name="textblockScanning.Text" xml:space="preserve">
+    <value>Netzwerk wird nach Raumfeldgeräten durchsucht...</value>
+  </data>
+  <data name="textblockSkypeGroup.Text" xml:space="preserve">
+    <value>Wenn ihr aktiv mitwirken wollt, tretet doch der Skypegruppe bei.
+Wir werden versuchen auf eure Komentare und Wünsche direkt einzugehen.</value>
+  </data>
+  <data name="textblockV090.Text" xml:space="preserve">
+    <value>v.0.9.0: Erste Version</value>
+  </data>
+  <data name="textblockV092.Text" xml:space="preserve">
+    <value>v.0.9.2: Neue Farbgestaltung eingeführt.</value>
+  </data>
+  <data name="textblockV093.Text" xml:space="preserve">
+    <value>v.0.9.3: Abspielbuttons der aktuellen Zone werden nun überall angezeigt
+Einzeltitel werden nun nicht mehr nach Alphabet sortiert und gruppiert, sondern bleiben in der vorgegebenen Reihenfolge</value>
+  </data>
+  <data name="textblockV094.Text" xml:space="preserve">
+    <value>v.0.9.4: Farbanpassung in diversen Kontextmenüs
+Fehler in Lautstärkeregulierung behoben</value>
+  </data>
+  <data name="textblockV096.Text" xml:space="preserve">
+    <value>v.0.9.6: Fehler in Lautstärkeregulierung behoben
+Fehler behoben, daß nach Fortsetzung der App manche Elemente nicht mehr aktualisiert wurden</value>
+  </data>
+  <data name="textBoxNavigation.Text" xml:space="preserve">
+    <value>Start with...</value>
+  </data>
+  <data name="textBoxPlayModes.Text" xml:space="preserve">
+    <value>Playarts</value>
+  </data>
+  <data name="textBoxRoomHeader.Text" xml:space="preserve">
+    <value>Rooms</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="toggleActiv.OffContent" xml:space="preserve">
+    <value>Inactiv</value>
+  </data>
+  <data name="toggleActiv.OnContent" xml:space="preserve">
+    <value>Activ</value>
+  </data>
+  <data name="toggleSwitchShowRooms.OffContent" xml:space="preserve">
+    <value>Hide rooms</value>
+  </data>
+  <data name="toggleSwitchShowRooms.OnContent" xml:space="preserve">
+    <value>Show rooms</value>
+  </data>
+  <data name="toggleSwitchTuneIn.OffContent" xml:space="preserve">
+    <value>Inactiv</value>
+  </data>
+  <data name="toggleSwitchTuneIn.OnContent" xml:space="preserve">
+    <value>Activ</value>
+  </data>
+  <data name="toggleSwitchTuneInHeader.Text" xml:space="preserve">
+    <value>Radioservice TuneIn status</value>
+  </data>
+  <data name="TuneIn" xml:space="preserve">
+    <value>TuneIn</value>
+  </data>
+  <data name="zoneDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Okay</value>
+  </data>
+  <data name="zoneDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="zoneDialog.Title" xml:space="preserve">
+    <value>Zonendefinition</value>
+  </data>
+  <data name="_Settings_appSettings.Text" xml:space="preserve">
+    <value>App Settings</value>
+  </data>
+  <data name="_Settings_ColorSettings.Text" xml:space="preserve">
+    <value>Color Settings</value>
   </data>
 </root>

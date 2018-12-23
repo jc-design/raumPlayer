@@ -21,6 +21,7 @@ using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation.Metadata;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -49,12 +50,12 @@ namespace raumPlayer
             Container.RegisterType<INetWorkSocketListener, NetWorkSocketListener>(new ContainerControlledLifetimeManager());
             Container.RegisterType<INetWorkSubscriber, NetWorkSubscriber>(new ContainerControlledLifetimeManager());
 
-            Container.RegisterType<IShellViewModel, ShellViewModel>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IRaumFeldService, RaumFeldService>(new ContainerControlledLifetimeManager());
 
-            Container.RegisterType<IShellNavigationItem, ShellNavigationViewModel>();
-            Container.RegisterType<IShellNavigationItem, TuneInNavigationViewModel>();
-            Container.RegisterType<IShellNavigationItem, ManageZonesNavigationViewModel>();
+            Container.RegisterType<IShellViewModel, ShellViewModel>(new ContainerControlledLifetimeManager());
+            //Container.RegisterType<IShellNavigationItem, ShellNavigationViewModel>();
+            //Container.RegisterType<IShellNavigationItem, TuneInNavigationViewModel>();
+            //Container.RegisterType<IShellNavigationItem, ManageZonesNavigationViewModel>();
 
             Container.RegisterType<IMediaDevice, MediaServer>();
             Container.RegisterType<IMediaDevice, MediaRenderer>();
@@ -63,12 +64,13 @@ namespace raumPlayer
             Container.RegisterType<IPivotItemViewModel, PivotItemViewModel>();
             Container.RegisterType<IZoneViewModel, ZoneViewModel>();
             Container.RegisterType<IRoomViewModel, RoomViewModel>();
+            Container.RegisterType<ISettingsViewModel, SettingsViewModel>();
 
             Container.RegisterType<DIDLContainer>();
             Container.RegisterType<DIDLItem>();
             Container.RegisterType<ElementBase, ElementBase>();
-            Container.RegisterType<ViewModels.ElementBase, ElementItem>();
-            Container.RegisterType<ViewModels.ElementBase, ElementContainer>();
+            Container.RegisterType<ElementBase, ElementItem>();
+            Container.RegisterType<ElementBase, ElementContainer>();
         }
 
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
@@ -78,6 +80,25 @@ namespace raumPlayer
 
         private async Task launchApplicationAsync(string page, object launchParam)
         {
+            // For Desktop
+            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
+            {
+                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                if (titleBar != null)
+                {
+                    {
+                        titleBar.ButtonBackgroundColor = Colors.Transparent;
+                        titleBar.ButtonForegroundColor = (Color)this.Resources["SystemAccentColor"];
+                        titleBar.ForegroundColor = (Color)this.Resources["SystemAccentColor"];
+                        titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+                        titleBar.ButtonInactiveForegroundColor = (Color)this.Resources["SystemAccentColor"];
+                    }
+                }
+
+                CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+                coreTitleBar.ExtendViewIntoTitleBar = true;
+            }
+
             Interfaces.ThemeSelectorService.SetRequestedTheme();
             NavigationService.Navigate(page, launchParam);
             Window.Current.Activate();
@@ -88,48 +109,7 @@ namespace raumPlayer
             Container.Resolve<INetWorkDeviceWatcher>().StartDeviceWatcher();
             await Container.Resolve<IRaumFeldService>().InitializeAsync();
 
-            // For WindowsPhone
-            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
-            {
-                StatusBar statusBar = StatusBar.GetForCurrentView();
-
-                statusBar.BackgroundColor = (Color)this.Resources["AppDarkShadeColor"];
-                statusBar.ForegroundColor = Colors.White;
-                statusBar.BackgroundOpacity = 1;
-
-                await statusBar.ShowAsync();
-            }
-
-            // For Desktop
-            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
-            {
-                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-                if (titleBar != null)
-                {
-                    if (ApiInformation.IsMethodPresent("Windows.UI.Composition.Compositor", "CreateHostBackdropBrush"))
-                    {
-                        titleBar.ButtonBackgroundColor = Colors.Transparent;
-                        titleBar.ButtonForegroundColor = (Color)this.Resources["AppDarkShadeColor"];
-                        titleBar.BackgroundColor = Colors.Transparent;
-                        titleBar.ForegroundColor = (Color)this.Resources["AppDarkShadeColor"];
-                        titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-                        //titleBar.ButtonInactiveForegroundColor = (Color)this.Resources["SecondaryColor3"];
-                    }
-                    else
-                    {
-                        titleBar.ButtonBackgroundColor = Colors.Transparent;
-                        titleBar.ButtonForegroundColor = (Color)this.Resources["AppBackgroundColor"];
-                        titleBar.BackgroundColor = (Color)this.Resources["AppDarkShadeColor"];
-                        titleBar.ForegroundColor = (Color)this.Resources["AppBackgroundColor"];
-                        titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-                        //titleBar.ButtonInactiveForegroundColor = (Color)this.Resources["SecondaryColor3"];
-                    }
-                }
-
-                CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-                coreTitleBar.ExtendViewIntoTitleBar = true;
-
-            }
+            await Container.Resolve<ISettingsViewModel>().InitializeAsync();
 
             await Task.CompletedTask;
         }
@@ -195,6 +175,13 @@ namespace raumPlayer
             var shell = Container.Resolve<ShellPage>();
             shell.SetRootFrame(rootFrame);
             return shell;
+        }
+
+        protected override IDeviceGestureService OnCreateDeviceGestureService()
+        {
+            var service = base.OnCreateDeviceGestureService();
+            service.UseTitleBarBackButton = false;
+            return service;
         }
     }
 }

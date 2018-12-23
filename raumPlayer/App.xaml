@@ -10,6 +10,7 @@
     <prismUnity:PrismUnityApplication.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+
                 <ResourceDictionary Source="/Styles/_Colors.xaml"/>
                 <ResourceDictionary Source="/Styles/_FontSizes.xaml"/>
                 <ResourceDictionary Source="/Styles/_Thickness.xaml"/>

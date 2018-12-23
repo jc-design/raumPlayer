@@ -12,4 +12,186 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Main_Title.Text" xml:space="preserve">
+    <value>Haupt</value>
+    <comment>Page title for Main</comment>
+  </data>
+  <data name="Shell_Main" xml:space="preserve">
+    <value>Haupt</value>
+    <comment>Navigation view item name for Main</comment>
+  </data>
+  <data name="Settings_Title.Text" xml:space="preserve">
+    <value>Einstellungen</value>
+    <comment>Page title for Settings</comment>
+  </data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve">
+    <value>Dunkel</value>
+    <comment>Dark theme text for Settings</comment>
+  </data>
+  <data name="Settings_Theme_Default.Content" xml:space="preserve">
+    <value>Windows (Standard)</value>
+    <comment>Windows default theme text for Settings</comment>
+  </data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve">
+    <value>Hell</value>
+    <comment>Light theme text for Settings</comment>
+  </data>
+  <data name="Settings_About.Text" xml:space="preserve">
+    <value>Info zu dieser Anwendung</value>
+    <comment>About this application title for Settings</comment>
+  </data>
+  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
+    <value>Datenschutzbestimmungen</value>
+    <comment>Privacy Statement link content for Settings</comment>
+  </data>
+  <data name="Settings_Personalization.Text" xml:space="preserve">
+    <value>Personalisierung</value>
+    <comment>Personalization text for Settings</comment>
+  </data>
+  <data name="Shell_Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+    <comment>Navigation view item name for Settings</comment>
+  </data>
+  <data name="FirstRun_Title.Text" xml:space="preserve">
+    <value>Willkommen</value>
+    <comment>First use prompt message title</comment>
+  </data>
+  <data name="aboutHub.Text" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="Album" xml:space="preserve">
+    <value>Album</value>
+  </data>
+  <data name="Artist" xml:space="preserve">
+    <value>Künstler</value>
+  </data>
+  <data name="autoSuggestBoxSearch.PlaceholderText" xml:space="preserve">
+    <value>Suchen</value>
+  </data>
+  <data name="buttonHowTo.Content" xml:space="preserve">
+    <value>Gewusst wie</value>
+  </data>
+  <data name="buttonRate.Content" xml:space="preserve">
+    <value>App bewerten</value>
+  </data>
+  <data name="buttonSkypeGroup.Content" xml:space="preserve">
+    <value>Skypegruppe beitreten</value>
+  </data>
+  <data name="CancelMessage" xml:space="preserve">
+    <value>Abbruch</value>
+  </data>
+  <data name="checkboxMute.Content" xml:space="preserve">
+    <value>Stumm</value>
+  </data>
+  <data name="Composer" xml:space="preserve">
+    <value>Komponist</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="ErrorLoadMediaServer" xml:space="preserve">
+    <value>Mediaserver konnte nicht geladen werden</value>
+  </data>
+  <data name="ErrorNoData" xml:space="preserve">
+    <value>Keine Daten vorhanden</value>
+  </data>
+  <data name="Favorites" xml:space="preserve">
+    <value>Favoriten</value>
+  </data>
+  <data name="Folder" xml:space="preserve">
+    <value>Ordner</value>
+  </data>
+  <data name="Genre" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="historyHub.Text" xml:space="preserve">
+    <value>Historie</value>
+  </data>
+  <data name="HowToDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="HowToDialog.Title" xml:space="preserve">
+    <value>Gewusst wie</value>
+  </data>
+  <data name="ideasHub.Text" xml:space="preserve">
+    <value>Ideen</value>
+  </data>
+  <data name="Imported" xml:space="preserve">
+    <value>Importierte Wiedergabelisten</value>
+  </data>
+  <data name="listViewZones.Text" xml:space="preserve">
+    <value>Zonenkonfiguration</value>
+  </data>
+  <data name="MostPlayed" xml:space="preserve">
+    <value>Meist gespielt</value>
+  </data>
+  <data name="Move" xml:space="preserve">
+    <value>Verschieben</value>
+  </data>
+  <data name="MyFavorites" xml:space="preserve">
+    <value>Meine Favoriten</value>
+  </data>
+  <data name="MyMusic" xml:space="preserve">
+    <value>Musik</value>
+  </data>
+  <data name="MyPlaylists" xml:space="preserve">
+    <value>Meine Playlisten</value>
+  </data>
+  <data name="OkMessage" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="pivotItemBrowse.Header" xml:space="preserve">
+    <value>Musik</value>
+  </data>
+  <data name="Radio" xml:space="preserve">
+    <value>Radio</value>
+  </data>
+  <data name="radioButtonIntro.Content" xml:space="preserve">
+    <value>Einführung</value>
+  </data>
+  <data name="radioButtonNormal.Content" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="RadioSport" xml:space="preserve">
+    <value>Sport</value>
+  </data>
+  <data name="RadioTalk" xml:space="preserve">
+    <value>Sprechen</value>
+  </data>
+  <data name="textBlockAddQueue.Text" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="textBlockBack.Text" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="textBlockFav.Text" xml:space="preserve">
+    <value>Zu Favoriten</value>
+  </data>
+  <data name="textBlockNewQueue.Text" xml:space="preserve">
+    <value>Abspielen</value>
+  </data>
+  <data name="textBlockNewZone.Text" xml:space="preserve">
+    <value>Neue Zone</value>
+  </data>
+  <data name="navItems_Groups.Content" xml:space="preserve">
+    <value>Musik...</value>
+  </data>
+  <data name="navItems_ManageZones" xml:space="preserve">
+    <value>Zonen...</value>
+  </data>
+  <data name="NavItem_ActiveZone.Content" xml:space="preserve">
+    <value>Aktive Zone</value>
+  </data>
+  <data name="NavItem_Favorites.Content" xml:space="preserve">
+    <value>Favoriten</value>
+  </data>
+  <data name="NavItem_MyMusic.Content" xml:space="preserve">
+    <value>Meine Musik</value>
+  </data>
+  <data name="NavItem_Playlists.Content" xml:space="preserve">
+    <value>Wiedergabelisten</value>
+  </data>
+  <data name="NavItem_ZoneConfig.Content" xml:space="preserve">
+    <value>Zonenkonfiguration</value>
+  </data>
 </root>

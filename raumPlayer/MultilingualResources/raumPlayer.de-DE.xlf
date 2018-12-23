@@ -8,12 +8,12 @@
       <group id="RAUMPLAYER/STRINGS/EN-US/RESOURCES.RESW" datatype="resx">
         <trans-unit id="Main_Title.Text" translate="yes" xml:space="preserve">
           <source>Main</source>
-          <target state="new">Main</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Haupt</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Page title for Main</note>
         </trans-unit>
         <trans-unit id="Shell_Main" translate="yes" xml:space="preserve">
           <source>Main</source>
-          <target state="new">Main</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Haupt</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Navigation view item name for Main</note>
         </trans-unit>
         <trans-unit id="ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty" translate="yes" xml:space="preserve">
@@ -23,7 +23,7 @@
         </trans-unit>
         <trans-unit id="Settings_Title.Text" translate="yes" xml:space="preserve">
           <source>Settings</source>
-          <target state="new">Settings</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Einstellungen</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Page title for Settings</note>
         </trans-unit>
         <trans-unit id="Settings_Theme.Text" translate="yes" xml:space="preserve">
@@ -33,22 +33,22 @@
         </trans-unit>
         <trans-unit id="Settings_Theme_Dark.Content" translate="yes" xml:space="preserve">
           <source>Dark</source>
-          <target state="new">Dark</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Dunkel</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Dark theme text for Settings</note>
         </trans-unit>
         <trans-unit id="Settings_Theme_Default.Content" translate="yes" xml:space="preserve">
           <source>Windows default</source>
-          <target state="new">Windows default</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Windows (Standard)</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Windows default theme text for Settings</note>
         </trans-unit>
         <trans-unit id="Settings_Theme_Light.Content" translate="yes" xml:space="preserve">
           <source>Light</source>
-          <target state="new">Light</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Hell</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Light theme text for Settings</note>
         </trans-unit>
         <trans-unit id="Settings_About.Text" translate="yes" xml:space="preserve">
           <source>About this application</source>
-          <target state="new">About this application</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Info zu dieser Anwendung</target>
           <note from="MultilingualBuild" annotates="source" priority="2">About this application title for Settings</note>
         </trans-unit>
         <trans-unit id="Settings_AboutDescription.Text" translate="yes" xml:space="preserve">
@@ -58,7 +58,7 @@
         </trans-unit>
         <trans-unit id="Settings_PrivacyTermsLink.Content" translate="yes" xml:space="preserve">
           <source>Privacy Statement</source>
-          <target state="new">Privacy Statement</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Datenschutzbestimmungen</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Privacy Statement link content for Settings</note>
         </trans-unit>
         <trans-unit id="Settings_PrivacyTermsLink.NavigateUri" translate="yes" xml:space="preserve">
@@ -68,7 +68,7 @@
         </trans-unit>
         <trans-unit id="Settings_Personalization.Text" translate="yes" xml:space="preserve">
           <source>Personalization</source>
-          <target state="new">Personalization</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Personalisierung</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Personalization text for Settings</note>
         </trans-unit>
         <trans-unit id="ExceptionEnumToBooleanConverterValueMustBeAnEnum" translate="yes" xml:space="preserve">
@@ -83,7 +83,7 @@
         </trans-unit>
         <trans-unit id="Shell_Settings" translate="yes" xml:space="preserve">
           <source>Settings</source>
-          <target state="new">Settings</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Einstellungen</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Navigation view item name for Settings</note>
         </trans-unit>
         <trans-unit id="FirstRun_Body.Text" translate="yes" xml:space="preserve">
@@ -113,7 +113,7 @@ Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Ma
         </trans-unit>
         <trans-unit id="FirstRun_Title.Text" translate="yes" xml:space="preserve">
           <source>Welcome</source>
-          <target state="new">Welcome</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Willkommen</target>
           <note from="MultilingualBuild" annotates="source" priority="2">First use prompt message title</note>
         </trans-unit>
         <trans-unit id="AfterUpdate_Body.Text" translate="yes" xml:space="preserve">
@@ -139,6 +139,452 @@ Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Ma
           <source>What's new in this version</source>
           <target state="new">What's new in this version</target>
           <note from="MultilingualBuild" annotates="source" priority="2">What's new prompt message title</note>
+        </trans-unit>
+        <trans-unit id="aboutHub.Text" translate="yes" xml:space="preserve">
+          <source>About</source>
+          <target state="translated">Über</target>
+        </trans-unit>
+        <trans-unit id="Album" translate="yes" xml:space="preserve">
+          <source>Album</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Album</target>
+        </trans-unit>
+        <trans-unit id="Artist" translate="yes" xml:space="preserve">
+          <source>Artist</source>
+          <target state="translated">Künstler</target>
+        </trans-unit>
+        <trans-unit id="autoSuggestBoxFilter.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Filter</source>
+          <target state="new">Filter</target>
+        </trans-unit>
+        <trans-unit id="autoSuggestBoxSearch.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Search</source>
+          <target state="translated">Suchen</target>
+        </trans-unit>
+        <trans-unit id="buttonHowTo.Content" translate="yes" xml:space="preserve">
+          <source>How To</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Gewusst wie</target>
+        </trans-unit>
+        <trans-unit id="buttonRate.Content" translate="yes" xml:space="preserve">
+          <source>Rate app</source>
+          <target state="translated">App bewerten</target>
+        </trans-unit>
+        <trans-unit id="buttonSkypeGroup.Content" translate="yes" xml:space="preserve">
+          <source>Join Skype-group</source>
+          <target state="translated">Skypegruppe beitreten</target>
+        </trans-unit>
+        <trans-unit id="CancelMessage" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="translated">Abbruch</target>
+        </trans-unit>
+        <trans-unit id="checkboxMute.Content" translate="yes" xml:space="preserve">
+          <source>Mute</source>
+          <target state="translated">Stumm</target>
+        </trans-unit>
+        <trans-unit id="Composer" translate="yes" xml:space="preserve">
+          <source>Composer</source>
+          <target state="translated">Komponist</target>
+        </trans-unit>
+        <trans-unit id="Error" translate="yes" xml:space="preserve">
+          <source>Error</source>
+          <target state="translated">Fehler</target>
+        </trans-unit>
+        <trans-unit id="ErrorLoadMediaServer" translate="yes" xml:space="preserve">
+          <source>Could not load Mediaserver</source>
+          <target state="translated">Mediaserver konnte nicht geladen werden</target>
+        </trans-unit>
+        <trans-unit id="ErrorNoData" translate="yes" xml:space="preserve">
+          <source>No data available</source>
+          <target state="translated">Keine Daten vorhanden</target>
+        </trans-unit>
+        <trans-unit id="Favorites" translate="yes" xml:space="preserve">
+          <source>Favorites</source>
+          <target state="translated">Favoriten</target>
+        </trans-unit>
+        <trans-unit id="Folder" translate="yes" xml:space="preserve">
+          <source>Folder</source>
+          <target state="translated">Ordner</target>
+        </trans-unit>
+        <trans-unit id="Genre" translate="yes" xml:space="preserve">
+          <source>Genre</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Genre</target>
+        </trans-unit>
+        <trans-unit id="greetingsCD.Text" translate="yes" xml:space="preserve">
+          <source>Danke für die hilfreichen Tips im Forum und das Zusenden von Beispielcode</source>
+          <target state="new">Danke für die hilfreichen Tips im Forum und das Zusenden von Beispielcode</target>
+        </trans-unit>
+        <trans-unit id="greetingsFO.Text" translate="yes" xml:space="preserve">
+          <source>Danke für die tolle Unterstütung
+http://www.hifi-forum.de/index.php?action=browseT&amp;forum_id=212&amp;thread=420</source>
+          <target state="new">Danke für die tolle Unterstütung
+http://www.hifi-forum.de/index.php?action=browseT&amp;forum_id=212&amp;thread=420</target>
+        </trans-unit>
+        <trans-unit id="greetingsHub.Text" translate="yes" xml:space="preserve">
+          <source>Danksagung</source>
+          <target state="new">Danksagung</target>
+        </trans-unit>
+        <trans-unit id="greetingsMP.Text" translate="yes" xml:space="preserve">
+          <source>Danke für das unermüdliche Testen und die guten Anregungen zur Appentwicklung</source>
+          <target state="new">Danke für das unermüdliche Testen und die guten Anregungen zur Appentwicklung</target>
+        </trans-unit>
+        <trans-unit id="historyHeaderHub.Text" translate="yes" xml:space="preserve">
+          <source>Historie / Ideen</source>
+          <target state="new">Historie / Ideen</target>
+        </trans-unit>
+        <trans-unit id="historyHub.Text" translate="yes" xml:space="preserve">
+          <source>History</source>
+          <target state="translated">Historie</target>
+        </trans-unit>
+        <trans-unit id="HowTo1.Source" translate="yes" xml:space="preserve">
+          <source>ms-appx:///Assets/1_rp_DE.png</source>
+          <target state="new">ms-appx:///Assets/1_rp_DE.png</target>
+        </trans-unit>
+        <trans-unit id="HowTo2.Source" translate="yes" xml:space="preserve">
+          <source>ms-appx:///Assets/2_rp_DE.png</source>
+          <target state="new">ms-appx:///Assets/2_rp_DE.png</target>
+        </trans-unit>
+        <trans-unit id="HowTo3.Source" translate="yes" xml:space="preserve">
+          <source>ms-appx:///Assets/3_rp_DE.png</source>
+          <target state="new">ms-appx:///Assets/3_rp_DE.png</target>
+        </trans-unit>
+        <trans-unit id="HowTo4.Source" translate="yes" xml:space="preserve">
+          <source>ms-appx:///Assets/4_rp_DE.png</source>
+          <target state="new">ms-appx:///Assets/4_rp_DE.png</target>
+        </trans-unit>
+        <trans-unit id="HowTo5.Source" translate="yes" xml:space="preserve">
+          <source>ms-appx:///Assets/5_rp_DE.png</source>
+          <target state="new">ms-appx:///Assets/5_rp_DE.png</target>
+        </trans-unit>
+        <trans-unit id="HowTo6.Source" translate="yes" xml:space="preserve">
+          <source>ms-appx:///Assets/6_rp_DE.png</source>
+          <target state="new">ms-appx:///Assets/6_rp_DE.png</target>
+        </trans-unit>
+        <trans-unit id="HowToDialog.PrimaryButtonText" translate="yes" xml:space="preserve">
+          <source>Continue</source>
+          <target state="translated">Weiter</target>
+        </trans-unit>
+        <trans-unit id="HowToDialog.Title" translate="yes" xml:space="preserve">
+          <source>How To</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Gewusst wie</target>
+        </trans-unit>
+        <trans-unit id="HowTp6.Source" translate="yes" xml:space="preserve">
+          <source>ms-appx:///Assets/6_rp_DE.png</source>
+          <target state="new">ms-appx:///Assets/6_rp_DE.png</target>
+        </trans-unit>
+        <trans-unit id="ideasHub.Text" translate="yes" xml:space="preserve">
+          <source>Ideas</source>
+          <target state="translated">Ideen</target>
+        </trans-unit>
+        <trans-unit id="Imported" translate="yes" xml:space="preserve">
+          <source>Imported playlists</source>
+          <target state="translated">Importierte Wiedergabelisten</target>
+        </trans-unit>
+        <trans-unit id="listViewZones.Text" translate="yes" xml:space="preserve">
+          <source>Zoneconfiguration</source>
+          <target state="translated">Zonenkonfiguration</target>
+        </trans-unit>
+        <trans-unit id="MostPlayed" translate="yes" xml:space="preserve">
+          <source>Most played</source>
+          <target state="translated">Meist gespielt</target>
+        </trans-unit>
+        <trans-unit id="Move" translate="yes" xml:space="preserve">
+          <source>Move</source>
+          <target state="translated">Verschieben</target>
+        </trans-unit>
+        <trans-unit id="MyFavorites" translate="yes" xml:space="preserve">
+          <source>My favorites</source>
+          <target state="translated">Meine Favoriten</target>
+        </trans-unit>
+        <trans-unit id="MyMusic" translate="yes" xml:space="preserve">
+          <source>Music</source>
+          <target state="translated">Musik</target>
+        </trans-unit>
+        <trans-unit id="MyPlaylists" translate="yes" xml:space="preserve">
+          <source>My playlists</source>
+          <target state="translated">Meine Playlisten</target>
+        </trans-unit>
+        <trans-unit id="NewZone" translate="yes" xml:space="preserve">
+          <source>Neue Zone</source>
+          <target state="new">Neue Zone</target>
+        </trans-unit>
+        <trans-unit id="NoZones" translate="yes" xml:space="preserve">
+          <source>Keine Zonen vorhanden</source>
+          <target state="new">Keine Zonen vorhanden</target>
+        </trans-unit>
+        <trans-unit id="OkMessage" translate="yes" xml:space="preserve">
+          <source>OK</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">OK</target>
+        </trans-unit>
+        <trans-unit id="pivotItemBrowse.Header" translate="yes" xml:space="preserve">
+          <source>Musik</source>
+          <target state="translated">Musik</target>
+        </trans-unit>
+        <trans-unit id="Playlists" translate="yes" xml:space="preserve">
+          <source>Wiedergabelisten</source>
+          <target state="new">Wiedergabelisten</target>
+        </trans-unit>
+        <trans-unit id="Radio" translate="yes" xml:space="preserve">
+          <source>Radio</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Radio</target>
+        </trans-unit>
+        <trans-unit id="radioButtonDirektOne.Content" translate="yes" xml:space="preserve">
+          <source>Direkt 1</source>
+          <target state="new">Direkt 1</target>
+        </trans-unit>
+        <trans-unit id="radioButtonFavorites.Content" translate="yes" xml:space="preserve">
+          <source>Favoriten</source>
+          <target state="new">Favoriten</target>
+        </trans-unit>
+        <trans-unit id="radioButtonIntro.Content" translate="yes" xml:space="preserve">
+          <source>Intro</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Einführung</target>
+        </trans-unit>
+        <trans-unit id="radioButtonMyMusic.Content" translate="yes" xml:space="preserve">
+          <source>Musik</source>
+          <target state="new">Musik</target>
+        </trans-unit>
+        <trans-unit id="radioButtonNormal.Content" translate="yes" xml:space="preserve">
+          <source>Normal</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Normal</target>
+        </trans-unit>
+        <trans-unit id="radioButtonRandom.Content" translate="yes" xml:space="preserve">
+          <source>Zufall</source>
+          <target state="new">Zufall</target>
+        </trans-unit>
+        <trans-unit id="radioButtonRepeatAll.Content" translate="yes" xml:space="preserve">
+          <source>Alles wiederholen</source>
+          <target state="new">Alles wiederholen</target>
+        </trans-unit>
+        <trans-unit id="radioButtonRepeatOne.Content" translate="yes" xml:space="preserve">
+          <source>1 wiederholen</source>
+          <target state="new">1 wiederholen</target>
+        </trans-unit>
+        <trans-unit id="radioButtonShuffle.Content" translate="yes" xml:space="preserve">
+          <source>Mischen</source>
+          <target state="new">Mischen</target>
+        </trans-unit>
+        <trans-unit id="RadioLocal" translate="yes" xml:space="preserve">
+          <source>Lokal</source>
+          <target state="new">Lokal</target>
+        </trans-unit>
+        <trans-unit id="RadioMusic" translate="yes" xml:space="preserve">
+          <source>Musik</source>
+          <target state="new">Musik</target>
+        </trans-unit>
+        <trans-unit id="RadioSport" translate="yes" xml:space="preserve">
+          <source>Sport</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Sport</target>
+        </trans-unit>
+        <trans-unit id="RadioTalk" translate="yes" xml:space="preserve">
+          <source>Talk</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Sprechen</target>
+        </trans-unit>
+        <trans-unit id="RateAppMessage" translate="yes" xml:space="preserve">
+          <source>App bewerten</source>
+          <target state="new">App bewerten</target>
+        </trans-unit>
+        <trans-unit id="RecentlyPlayed" translate="yes" xml:space="preserve">
+          <source>Kürzlich gespielt</source>
+          <target state="new">Kürzlich gespielt</target>
+        </trans-unit>
+        <trans-unit id="Settings_ThemeToggle.OffContent" translate="yes" xml:space="preserve">
+          <source>Dunkler Modus</source>
+          <target state="new">Dunkler Modus</target>
+        </trans-unit>
+        <trans-unit id="Settings_ThemeToggle.OnContent" translate="yes" xml:space="preserve">
+          <source>Heller Modus</source>
+          <target state="new">Heller Modus</target>
+        </trans-unit>
+        <trans-unit id="Settings_ThemeToggleHeader.Text" translate="yes" xml:space="preserve">
+          <source>App Modus</source>
+          <target state="new">App Modus</target>
+        </trans-unit>
+        <trans-unit id="Shuffles" translate="yes" xml:space="preserve">
+          <source>Shuffle playlist</source>
+          <target state="new">Shuffle playlist</target>
+        </trans-unit>
+        <trans-unit id="textBlockAddQueue.Text" translate="yes" xml:space="preserve">
+          <source>Add</source>
+          <target state="translated">Hinzufügen</target>
+        </trans-unit>
+        <trans-unit id="textBlockBack.Text" translate="yes" xml:space="preserve">
+          <source>Back</source>
+          <target state="translated">Zurück</target>
+        </trans-unit>
+        <trans-unit id="textBlockFav.Text" translate="yes" xml:space="preserve">
+          <source>To favorites</source>
+          <target state="translated">Zu Favoriten</target>
+        </trans-unit>
+        <trans-unit id="textBlockFavRem.Text" translate="yes" xml:space="preserve">
+          <source>Aus Favoriten entfernen</source>
+          <target state="new">Aus Favoriten entfernen</target>
+        </trans-unit>
+        <trans-unit id="textblockI001.Text" translate="yes" xml:space="preserve">
+          <source>Integration von Cortanasprachbefehlen</source>
+          <target state="new">Integration von Cortanasprachbefehlen</target>
+        </trans-unit>
+        <trans-unit id="textblockI002.Text" translate="yes" xml:space="preserve">
+          <source>Einführen von Wiedergabenlisten</source>
+          <target state="new">Einführen von Wiedergabenlisten</target>
+        </trans-unit>
+        <trans-unit id="textblockI003.Text" translate="yes" xml:space="preserve">
+          <source>Backgroundnotification bei Liedwechsel, wenn die App im Hintergrund ist</source>
+          <target state="new">Backgroundnotification bei Liedwechsel, wenn die App im Hintergrund ist</target>
+        </trans-unit>
+        <trans-unit id="textblockI004.Text" translate="yes" xml:space="preserve">
+          <source>Einschlaffunktion</source>
+          <target state="new">Einschlaffunktion</target>
+        </trans-unit>
+        <trans-unit id="textBlockNewQueue.Text" translate="yes" xml:space="preserve">
+          <source>Play</source>
+          <target state="translated">Abspielen</target>
+        </trans-unit>
+        <trans-unit id="textBlockNewZone.Text" translate="yes" xml:space="preserve">
+          <source>New zone</source>
+          <target state="translated">Neue Zone</target>
+        </trans-unit>
+        <trans-unit id="textBlockRem.Text" translate="yes" xml:space="preserve">
+          <source>Remove</source>
+          <target state="new">Remove</target>
+        </trans-unit>
+        <trans-unit id="textBlockRooms.Text" translate="yes" xml:space="preserve">
+          <source>Rooms</source>
+          <target state="new">Rooms</target>
+        </trans-unit>
+        <trans-unit id="textblockScanning.Text" translate="yes" xml:space="preserve">
+          <source>Netzwerk wird nach Raumfeldgeräten durchsucht...</source>
+          <target state="new">Netzwerk wird nach Raumfeldgeräten durchsucht...</target>
+        </trans-unit>
+        <trans-unit id="textblockSkypeGroup.Text" translate="yes" xml:space="preserve">
+          <source>Wenn ihr aktiv mitwirken wollt, tretet doch der Skypegruppe bei.
+Wir werden versuchen auf eure Komentare und Wünsche direkt einzugehen.</source>
+          <target state="new">Wenn ihr aktiv mitwirken wollt, tretet doch der Skypegruppe bei.
+Wir werden versuchen auf eure Komentare und Wünsche direkt einzugehen.</target>
+        </trans-unit>
+        <trans-unit id="textblockV090.Text" translate="yes" xml:space="preserve">
+          <source>v.0.9.0: Erste Version</source>
+          <target state="new">v.0.9.0: Erste Version</target>
+        </trans-unit>
+        <trans-unit id="textblockV092.Text" translate="yes" xml:space="preserve">
+          <source>v.0.9.2: Neue Farbgestaltung eingeführt.</source>
+          <target state="new">v.0.9.2: Neue Farbgestaltung eingeführt.</target>
+        </trans-unit>
+        <trans-unit id="textblockV093.Text" translate="yes" xml:space="preserve">
+          <source>v.0.9.3: Abspielbuttons der aktuellen Zone werden nun überall angezeigt
+Einzeltitel werden nun nicht mehr nach Alphabet sortiert und gruppiert, sondern bleiben in der vorgegebenen Reihenfolge</source>
+          <target state="new">v.0.9.3: Abspielbuttons der aktuellen Zone werden nun überall angezeigt
+Einzeltitel werden nun nicht mehr nach Alphabet sortiert und gruppiert, sondern bleiben in der vorgegebenen Reihenfolge</target>
+        </trans-unit>
+        <trans-unit id="textblockV094.Text" translate="yes" xml:space="preserve">
+          <source>v.0.9.4: Farbanpassung in diversen Kontextmenüs
+Fehler in Lautstärkeregulierung behoben</source>
+          <target state="new">v.0.9.4: Farbanpassung in diversen Kontextmenüs
+Fehler in Lautstärkeregulierung behoben</target>
+        </trans-unit>
+        <trans-unit id="textblockV096.Text" translate="yes" xml:space="preserve">
+          <source>v.0.9.6: Fehler in Lautstärkeregulierung behoben
+Fehler behoben, daß nach Fortsetzung der App manche Elemente nicht mehr aktualisiert wurden</source>
+          <target state="new">v.0.9.6: Fehler in Lautstärkeregulierung behoben
+Fehler behoben, daß nach Fortsetzung der App manche Elemente nicht mehr aktualisiert wurden</target>
+        </trans-unit>
+        <trans-unit id="textBoxNavigation.Text" translate="yes" xml:space="preserve">
+          <source>Start with...</source>
+          <target state="new">Start with...</target>
+        </trans-unit>
+        <trans-unit id="textBoxPlayModes.Text" translate="yes" xml:space="preserve">
+          <source>Playarts</source>
+          <target state="new">Playarts</target>
+        </trans-unit>
+        <trans-unit id="textBoxRoomHeader.Text" translate="yes" xml:space="preserve">
+          <source>Rooms</source>
+          <target state="new">Rooms</target>
+        </trans-unit>
+        <trans-unit id="Title" translate="yes" xml:space="preserve">
+          <source>Title</source>
+          <target state="new">Title</target>
+        </trans-unit>
+        <trans-unit id="toggleActiv.OffContent" translate="yes" xml:space="preserve">
+          <source>Inactiv</source>
+          <target state="new">Inactiv</target>
+        </trans-unit>
+        <trans-unit id="toggleActiv.OnContent" translate="yes" xml:space="preserve">
+          <source>Activ</source>
+          <target state="new">Activ</target>
+        </trans-unit>
+        <trans-unit id="toggleSwitchShowRooms.OffContent" translate="yes" xml:space="preserve">
+          <source>Hide rooms</source>
+          <target state="new">Hide rooms</target>
+        </trans-unit>
+        <trans-unit id="toggleSwitchShowRooms.OnContent" translate="yes" xml:space="preserve">
+          <source>Show rooms</source>
+          <target state="new">Show rooms</target>
+        </trans-unit>
+        <trans-unit id="toggleSwitchTuneIn.OffContent" translate="yes" xml:space="preserve">
+          <source>Inactiv</source>
+          <target state="new">Inactiv</target>
+        </trans-unit>
+        <trans-unit id="toggleSwitchTuneIn.OnContent" translate="yes" xml:space="preserve">
+          <source>Activ</source>
+          <target state="new">Activ</target>
+        </trans-unit>
+        <trans-unit id="toggleSwitchTuneInHeader.Text" translate="yes" xml:space="preserve">
+          <source>Radioservice TuneIn status</source>
+          <target state="new">Radioservice TuneIn status</target>
+        </trans-unit>
+        <trans-unit id="TuneIn" translate="yes" xml:space="preserve">
+          <source>TuneIn</source>
+          <target state="new">TuneIn</target>
+        </trans-unit>
+        <trans-unit id="zoneDialog.PrimaryButtonText" translate="yes" xml:space="preserve">
+          <source>Okay</source>
+          <target state="new">Okay</target>
+        </trans-unit>
+        <trans-unit id="zoneDialog.SecondaryButtonText" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="new">Cancel</target>
+        </trans-unit>
+        <trans-unit id="zoneDialog.Title" translate="yes" xml:space="preserve">
+          <source>Zonendefinition</source>
+          <target state="new">Zonendefinition</target>
+        </trans-unit>
+        <trans-unit id="navItems_Groups.Content" translate="yes" xml:space="preserve">
+          <source>Music...</source>
+          <target state="translated">Musik...</target>
+        </trans-unit>
+        <trans-unit id="navItems_ManageZones" translate="yes" xml:space="preserve">
+          <source>Zones...</source>
+          <target state="translated">Zonen...</target>
+        </trans-unit>
+        <trans-unit id="NavItem_ActiveZone.Content" translate="yes" xml:space="preserve">
+          <source>Active zone</source>
+          <target state="translated">Aktive Zone</target>
+        </trans-unit>
+        <trans-unit id="NavItem_Favorites.Content" translate="yes" xml:space="preserve">
+          <source>Favorites</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Favoriten</target>
+        </trans-unit>
+        <trans-unit id="NavItem_MyMusic.Content" translate="yes" xml:space="preserve">
+          <source>My Music</source>
+          <target state="translated">Meine Musik</target>
+        </trans-unit>
+        <trans-unit id="NavItem_Playlists.Content" translate="yes" xml:space="preserve">
+          <source>Playlists</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Wiedergabelisten</target>
+        </trans-unit>
+        <trans-unit id="NavItem_TuneIn.Content" translate="yes" xml:space="preserve">
+          <source>TuneIn</source>
+          <target state="new">TuneIn</target>
+        </trans-unit>
+        <trans-unit id="NavItem_ZoneConfig.Content" translate="yes" xml:space="preserve">
+          <source>Zoneconfig</source>
+          <target state="translated">Zonenkonfiguration</target>
+        </trans-unit>
+        <trans-unit id="_Settings_appSettings.Text" translate="yes" xml:space="preserve">
+          <source>App Settings</source>
+          <target state="new">App Settings</target>
+        </trans-unit>
+        <trans-unit id="_Settings_ColorSettings.Text" translate="yes" xml:space="preserve">
+          <source>Color Settings</source>
+          <target state="new">Color Settings</target>
         </trans-unit>
       </group>
     </body>

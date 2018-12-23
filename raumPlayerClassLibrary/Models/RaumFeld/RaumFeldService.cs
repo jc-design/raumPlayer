@@ -23,7 +23,7 @@ namespace raumPlayer.Models
     {
         private readonly IEventAggregator eventAggregator;
         private readonly IMessagingService messagingService;
-        private readonly IShellViewModel shellViewModel;
+        //private readonly IShellViewModel shellViewModel;
 
         private readonly SemaphoreSlim semaphoreLock;
 
@@ -39,11 +39,11 @@ namespace raumPlayer.Models
         private RaumFeldZoneConfig raumFeldZoneConfig = null;
         private string raumfeldGetZonesUpdateId = string.Empty;
 
-        public RaumFeldService(IEventAggregator eventAggregatorInstance, IMessagingService messagingServiceInstance, IShellViewModel shellViewModelInstance)
+        public RaumFeldService(IEventAggregator eventAggregatorInstance, IMessagingService messagingServiceInstance)
         {
             eventAggregator = eventAggregatorInstance;
             messagingService = messagingServiceInstance;
-            shellViewModel = shellViewModelInstance;
+            //shellViewModel = shellViewModelInstance;
 
             semaphoreLock = new SemaphoreSlim(1);
 
@@ -88,7 +88,7 @@ namespace raumPlayer.Models
                 }
             }
 
-            //Check if Deive is a server or a renderer
+            //Check if Device is a server or a renderer
             if ((CompatibleIds?.Count() ?? 0) > 0 && !string.IsNullOrEmpty(DeviceLocationInfo))
             {
                 MediaDeviceType mediaDeviceType;
@@ -263,10 +263,11 @@ namespace raumPlayer.Models
             try
             {
                 bool notLoaded = false;
+                var zonesList = new List<ZoneViewModel>();
 
                 do
                 {
-                    shellViewModel.ZoneViewModels.Clear();
+                    //shellViewModel.ZoneViewModels.Clear();
                     notLoaded = false;
 
                     if (mediaServer == null) { notLoaded = true; }
@@ -317,7 +318,8 @@ namespace raumPlayer.Models
 
                             if (zoneViewModel != null)
                             {
-                                shellViewModel.ZoneViewModels.Add(zoneViewModel);
+                                //shellViewModel.ZoneViewModels.Add(zoneViewModel);
+                                zonesList.Add(zoneViewModel);
                             }
                         }
 
@@ -351,7 +353,8 @@ namespace raumPlayer.Models
                                     notLoaded = true;
                                     break;
                                 }
-                                shellViewModel.ZoneViewModels.Add(zoneViewModel);
+                                //shellViewModel.ZoneViewModels.Add(zoneViewModel);
+                                zonesList.Add(zoneViewModel);
                             }
                         }
                     }
@@ -360,7 +363,8 @@ namespace raumPlayer.Models
 
                 } while (notLoaded);
 
-                await shellViewModel.SetActiveZoneViewModel(string.Empty);
+                eventAggregator.GetEvent<RaumFerldZonesLoadedEvent>().Publish(zonesList);
+                //await shellViewModel.SetActiveZoneViewModel(string.Empty);
             }
             catch (Exception exception)
             {

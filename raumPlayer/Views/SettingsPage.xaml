@@ -6,6 +6,9 @@
     xmlns:prismMvvm="using:Prism.Windows.Mvvm" 
     xmlns:helper="using:raumPlayer.Helpers"
     xmlns:xaml="using:Windows.UI.Xaml"
+    xmlns:vm="using:raumPlayer.ViewModels"
+    xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:fcu ="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:cu ="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     x:Class="raumPlayer.Views.SettingsPage"
@@ -15,35 +18,12 @@
         <helper:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="ElementTheme" />
     </Page.Resources>
 
-    <Grid>
-        <!--  Adaptive triggers  -->
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="WindowStates">
-                <VisualState x:Name="WideState">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="640"/>
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="NarrowState">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="TitlePage.Margin" Value="48,0,12,7"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+    <!--<Grid>
         <Grid Margin="{StaticResource MediumLeftRightMargin}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="48"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock
-                Grid.Row="0"
-                x:Uid="Settings_Title"
-                x:Name="TitlePage"
-                Style="{StaticResource PageTitleStyle}" />
 
             <StackPanel Grid.Row="1">
                 <TextBlock
@@ -84,8 +64,7 @@
                             </RadioButton.CommandParameter>
                         </RadioButton>
                     </StackPanel>
-                    <Button Grid.Column="2" IsEnabled="False"
-                                Style="{StaticResource TransactionButtonStyle}" >
+                    <Button Grid.Column="2" IsEnabled="False" >
                         <SymbolIcon Symbol="Pause" />
                     </Button>
                 </StackPanel>
@@ -107,5 +86,194 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
+    </Grid>-->
+
+    <Grid Background="{ThemeResource RegionBrush}">
+        <Hub>
+            <HubSection VerticalContentAlignment="Stretch" Width="240">
+                <HubSection.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock x:Uid="_Settings_appSettings" Text="APP_SETTINGS" Style="{StaticResource SettingsTextStyle}"/>
+                    </DataTemplate>
+                </HubSection.HeaderTemplate>
+                <DataTemplate x:DataType="vm:SettingsViewModel">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Vertical" Grid.Row="0" >
+                            <ToggleSwitch x:Uid="toggleSwitchTuneIn"
+                                          Name="toggleSwitchTuneIn"
+                                          Header="TUNEIN ACTIVATION"
+                                          IsOn="{x:Bind IsTuneInAvailable, Mode=OneWay}"
+                                          Style="{StaticResource appToggleSwitchStyle}">
+                                <i:Interaction.Behaviors>
+                                    <ic:EventTriggerBehavior EventName="Toggled">
+                                        <ic:InvokeCommandAction Command="{x:Bind SwitchTuneInStateCommand}" CommandParameter="{Binding ElementName=toggleSwitchTuneIn}"/>
+                                    </ic:EventTriggerBehavior>
+                                </i:Interaction.Behaviors>
+                                <ToggleSwitch.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock x:Uid="toggleSwitchTuneInHeader" Text="TUNEIN" Style="{StaticResource MenuTextStyle}"/>
+                                    </DataTemplate>
+                                </ToggleSwitch.HeaderTemplate>
+                            </ToggleSwitch>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Row="1" >
+                            <TextBlock x:Uid="textBoxNavigation" Text="START NAVIGATION" Style="{StaticResource MenuTextStyle}"/>
+                            <RadioButton x:Name="radioButtonMyMusic"
+                                         x:Uid="radioButtonMyMusic"
+                                         GroupName="Navigation"
+                                         Content="MyMusic"
+                                         IsChecked="{x:Bind IsCheckedMyMusic, Mode=OneWay}"
+                                         Style="{StaticResource appRadioButtonStyle}">
+                                <i:Interaction.Behaviors>
+                                    <ic:EventTriggerBehavior EventName="Checked">
+                                        <ic:InvokeCommandAction Command="{x:Bind SaveNavSettingsCommand}" CommandParameter="{Binding ElementName=radioButtonMyMusic}"/>
+                                    </ic:EventTriggerBehavior>
+                                </i:Interaction.Behaviors>
+                            </RadioButton>
+                            <RadioButton x:Name="radioButtonFavorites"
+                                         x:Uid="radioButtonFavorites"
+                                         GroupName="Navigation"
+                                         Content="Favorites"
+                                         IsChecked="{x:Bind IsCheckedFavorites, Mode=OneWay}"
+                                         Style="{StaticResource appRadioButtonStyle}">
+                                <i:Interaction.Behaviors>
+                                    <ic:EventTriggerBehavior EventName="Checked">
+                                        <ic:InvokeCommandAction Command="{x:Bind SaveNavSettingsCommand}" CommandParameter="{Binding ElementName=radioButtonFavorites}"/>
+                                    </ic:EventTriggerBehavior>
+                                </i:Interaction.Behaviors>
+                            </RadioButton>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection VerticalContentAlignment="Stretch" Width="240">
+                <HubSection.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock x:Uid="_Settings_ColorSettings" Text="COLOR_SETTINGS" Style="{StaticResource SettingsTextStyle}"/>
+                    </DataTemplate>
+                </HubSection.HeaderTemplate>
+                <DataTemplate x:DataType="vm:SettingsViewModel">
+                    <Grid>
+                        <StackPanel Orientation="Vertical">
+                            <RadioButton x:Uid="Settings_Theme_Light" 
+                                         GroupName="AppTheme"
+                                         Style="{StaticResource appRadioButtonStyle}"
+                                         IsChecked="{Binding ElementTheme, ConverterParameter=Light, Converter={StaticResource EnumToBooleanConverter}, Mode=OneWay}"
+                                         Command="{Binding SwitchThemeCommand}">
+                                            <RadioButton.CommandParameter>
+                                                <ElementTheme>Light</ElementTheme>
+                                            </RadioButton.CommandParameter>
+                            </RadioButton>
+                            <RadioButton x:Uid="Settings_Theme_Dark" 
+                                         GroupName="AppTheme"
+                                         Style="{StaticResource appRadioButtonStyle}"
+                                         IsChecked="{Binding ElementTheme, ConverterParameter=Dark, Converter={StaticResource EnumToBooleanConverter}, Mode=OneWay}"
+                                         Command="{Binding SwitchThemeCommand}">
+                                            <RadioButton.CommandParameter>
+                                                <ElementTheme>Dark</ElementTheme>
+                                            </RadioButton.CommandParameter>
+                            </RadioButton>
+                            <RadioButton x:Uid="Settings_Theme_Default"
+                                         GroupName="AppTheme"
+                                         Style="{StaticResource appRadioButtonStyle}"
+                                         IsChecked="{Binding ElementTheme, ConverterParameter=Default, Converter={StaticResource EnumToBooleanConverter}, Mode=OneWay}"
+                                         Command="{Binding SwitchThemeCommand}">
+                                            <RadioButton.CommandParameter>
+                                                <ElementTheme>Default</ElementTheme>
+                                            </RadioButton.CommandParameter>
+                            </RadioButton>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Width="320">
+                <HubSection.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock x:Uid="aboutHub" Text="ABOUT" Style="{StaticResource SettingsTextStyle}"/>
+                    </DataTemplate>
+                </HubSection.HeaderTemplate>
+                <DataTemplate x:DataType="vm:SettingsViewModel">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!--<RelativePanel Grid.Row="0" HorizontalAlignment="Stretch">
+                            <TextBlock x:Name="textBoxAppName" Text="{x:Bind AppName}" Style="{StaticResource AppHeaderTextStyle}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" />
+                            <TextBlock x:Name="textBoxAppPublisher" Text="{x:Bind AppPublisher}" Style="{StaticResource MenuTextStyle}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="textBoxAppName" />
+                            <TextBlock x:Name="textBoxAppVersion" Text="{x:Bind AppVersion}" Style="{StaticResource MenuTextStyle}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="textBoxAppPublisher" />
+                            <Image Source="{Binding AppLogo}" Width="48" Height="48" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                        </RelativePanel>-->
+                        <!--<Button x:Uid="buttonRate" Grid.Row="1" Content="RATE" HorizontalAlignment="Stretch" Foreground="{ThemeResource PrimaryColorBrush1}" Background="{ThemeResource SystemControlForegroundAccentBrush}" Margin="0,8,0,8" Click="{x:Bind RateApp}"/>
+                        <StackPanel Orientation="Vertical" Grid.Row="2">
+                            <TextBlock x:Uid="textblockSkypeGroup" Text="SKYPEGROUP" Style="{StaticResource GreetingsTextStyle}" FontSize="12" FontStyle="Italic"/>
+                            <Button x:Uid="buttonSkypeGroup" Content="ADDGROUP" HorizontalAlignment="Stretch" Foreground="{ThemeResource PrimaryColorBrush1}" Background="{ThemeResource SystemControlForegroundAccentBrush}" Margin="0,8,0,8" Click="{x:Bind AddSkypeGroup}"/>
+                        </StackPanel>
+                        <Button x:Uid="buttonHowTo" Grid.Row="3" Content="HOWTO" HorizontalAlignment="Stretch" Foreground="{ThemeResource PrimaryColorBrush1}" Background="{ThemeResource SystemControlForegroundAccentBrush}" Margin="0,8,0,8" Click="{x:Bind HowTo}"/>-->
+                        <ScrollViewer Grid.Row="4">
+                            <StackPanel>
+                                <TextBlock x:Uid="greetingsHub" Text="GREETINGS" Style="{StaticResource SettingsTextStyle}" Margin="0,0,0,8"/>
+                                <Grid Margin="0,0,0,8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="140"/>
+                                        <ColumnDefinition Width="160"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Markus Pütter" Style="{StaticResource GreetingsTextStyle}" Grid.Column="0"/>
+                                    <TextBlock x:Uid="greetingsMP" Text="TEXT" Style="{StaticResource GreetingsTextStyle}" Grid.Column="1"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="140"/>
+                                        <ColumnDefinition Width="160"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="ChriD" Style="{StaticResource GreetingsTextStyle}" Grid.Column="0"/>
+                                    <TextBlock x:Uid="greetingsCD" Text="TEXT" Style="{StaticResource GreetingsTextStyle}" Grid.Column="1"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="140"/>
+                                        <ColumnDefinition Width="160"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Hifi-Forum.de" Style="{StaticResource GreetingsTextStyle}" Grid.Column="0"/>
+                                    <TextBlock x:Uid="greetingsFO" Text="TEXT" Style="{StaticResource GreetingsTextStyle}" Grid.Column="1"/>
+                                </Grid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Width="320">
+                <HubSection.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock x:Uid="historyHeaderHub" Text="HISTORY" Style="{StaticResource SettingsTextStyle}"/>
+                    </DataTemplate>
+                </HubSection.HeaderTemplate>
+                <DataTemplate>
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Uid="historyHub" Text="HISTROY" Style="{StaticResource SettingsTextStyle}" Margin="0,0,0,8"/>
+                            <TextBlock x:Uid="textblockV090" Text="V090" Style="{StaticResource GreetingsTextStyle}"/>
+                            <TextBlock x:Uid="textblockV092" Text="V092" Style="{StaticResource GreetingsTextStyle}"/>
+                            <TextBlock x:Uid="textblockV093" Text="V093" Style="{StaticResource GreetingsTextStyle}"/>
+                            <TextBlock x:Uid="textblockV094" Text="V094" Style="{StaticResource GreetingsTextStyle}"/>
+                            <TextBlock x:Uid="textblockV096" Text="V096" Style="{StaticResource GreetingsTextStyle}"/>
+                            <TextBlock x:Uid="ideasHub" Text="IDEAS" Style="{StaticResource SettingsTextStyle}" Margin="0,8,0,8"/>
+                            <TextBlock x:Uid="textblockI001" Text="I001" Style="{StaticResource GreetingsTextStyle}"/>
+                            <TextBlock x:Uid="textblockI002" Text="I002" Style="{StaticResource GreetingsTextStyle}"/>
+                            <TextBlock x:Uid="textblockI003" Text="I003" Style="{StaticResource GreetingsTextStyle}"/>
+                            <TextBlock x:Uid="textblockI004" Text="I004" Style="{StaticResource GreetingsTextStyle}"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
     </Grid>
 </Page>

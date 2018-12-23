@@ -15,7 +15,6 @@
     >
 
     <UserControl.Resources>
-
         <ItemsPanelTemplate x:Key="ListItemsPanelTemplate">
             <ItemsStackPanel />
         </ItemsPanelTemplate>
@@ -45,7 +44,7 @@
     </UserControl.Resources>
 
 
-    <Grid x:Name="Content" Background="{ThemeResource AppBackgroundColorBrush}">
+    <Grid x:Name="Content" >
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
                 <VisualState x:Name="VisualStateNarrow">

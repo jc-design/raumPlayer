@@ -43,7 +43,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <StackPanel Orientation="Vertical">
-            <FontIcon Glyph="{x:Bind SymbolAsString, Mode=OneWay}" Style="{StaticResource AppFontIcon}" Margin="0,6,0,0" FontSize="16"/>
+            <FontIcon Glyph="{x:Bind SymbolAsString, Mode=OneWay}" Style="{StaticResource AppFontIcon}" Margin="0,6,0,0" FontSize="16" />
             <TextBlock Text="{x:Bind Label, Mode=OneWay}"  Style="{StaticResource TabHeaderTextStyle}" />
         </StackPanel>
         <ToolTipService.ToolTip>

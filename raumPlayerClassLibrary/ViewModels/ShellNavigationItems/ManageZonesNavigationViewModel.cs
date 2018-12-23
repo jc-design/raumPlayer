@@ -50,7 +50,7 @@ namespace raumPlayer.ViewModels
 
         public IShellViewModel Parent { get; }
 
-        public ManageZonesNavigationViewModel(IEventAggregator eventAggregatorInstance, IRaumFeldService raumFeldServiceInstance, IShellViewModel shellViewModel, string symbol, string pageIdentifier, string secondPageIdentifier)
+        public ManageZonesNavigationViewModel(IEventAggregator eventAggregatorInstance, IRaumFeldService raumFeldServiceInstance, IShellViewModel shellViewModel, string symbol, string pageIdentifier, string secondPageIdentifier = "")
         {
             eventAggregator = eventAggregatorInstance;
             raumFeldService = raumFeldServiceInstance;

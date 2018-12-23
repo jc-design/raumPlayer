@@ -99,7 +99,7 @@
                 RelativePanel.AlignLeftWithPanel="True"
                 RelativePanel.AlignRightWithPanel="True"
                 />
-        <Grid Background="{ThemeResource AppBackgroundColorBrush}"
+        <Grid 
               RelativePanel.AlignTopWithPanel="True"
               RelativePanel.AlignBottomWithPanel="True"
               RelativePanel.AlignLeftWithPanel="True"
@@ -130,9 +130,9 @@
                         RelativePanel.AlignRightWithPanel="True"
                         RelativePanel.AlignTopWithPanel="False"
                         RelativePanel.Below="imageAlbumArt">
-                <uc:MarqueeUserControl x:Name="textBlockTitle" Foreground="{ThemeResource AppForegroundColorBrush}" MarqueeText="{x:Bind Title, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10" FontWeight="Bold" />
-                <uc:MarqueeUserControl x:Name="textBlockLine1" Foreground="{ThemeResource AppForegroundColorBrush}" MarqueeText="{x:Bind Line1, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10"/>
-                <uc:MarqueeUserControl x:Name="textBlockLine2" Foreground="{ThemeResource AppForegroundColorBrush}" MarqueeText="{x:Bind Line2, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10"/>
+                <uc:MarqueeUserControl x:Name="textBlockTitle" MarqueeText="{x:Bind Title, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10" FontWeight="Bold" />
+                <uc:MarqueeUserControl x:Name="textBlockLine1" MarqueeText="{x:Bind Line1, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10"/>
+                <uc:MarqueeUserControl x:Name="textBlockLine2" MarqueeText="{x:Bind Line2, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10"/>
             </StackPanel>
 
             <Button x:Name="buttonPlay"
@@ -159,12 +159,10 @@
                                 <Setter Property="BorderThickness" Value="2"/>
                                 <Setter Property="MinHeight" Value="0"/>
                                 <Setter Property="MinWidth" Value="0"/>
-                                <Setter Property="Background" Value="{ThemeResource AppBackgroundColorBrush}"/>
-                                <Setter Property="BorderBrush" Value="{ThemeResource AppForegroundColorBrush}"/>
                             </Style>
                         </Flyout.FlyoutPresenterStyle>
                         <StackPanel Orientation="Vertical" Margin="0">
-                            <Button x:Name="buttonNew" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonNew_Click" Foreground="{ThemeResource AppForegroundColorBrush}" Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}" >
+                            <Button x:Name="buttonNew" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonNew_Click" Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}" >
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="24"/>
@@ -174,7 +172,7 @@
                                     <TextBlock Grid.Column="1" x:Uid="textBlockNewQueue" Text="NEW QUEUE" VerticalAlignment="Center" FontSize="10" />
                                 </Grid>
                             </Button>
-                            <Button x:Name="buttonAdd" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonAdd_Click" Foreground="{ThemeResource AppForegroundColorBrush}" Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}" >
+                            <Button x:Name="buttonAdd" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonAdd_Click" Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}" >
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="24"/>
@@ -184,7 +182,7 @@
                                     <TextBlock Grid.Column="1" x:Uid="textBlockAddQueue" Text="ADD TO QUEUE" VerticalAlignment="Center" FontSize="10" />
                                 </Grid>
                             </Button>
-                            <Button x:Name="buttonRem" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonRem_Click" Foreground="{ThemeResource AppForegroundColorBrush}">
+                            <Button x:Name="buttonRem" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonRem_Click" >
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="24"/>
@@ -194,7 +192,7 @@
                                     <TextBlock Grid.Column="1" x:Uid="textBlockRemQueue" Text="REMOVE FROM QUEUE" VerticalAlignment="Center" FontSize="10" />
                                 </Grid>
                             </Button>
-                            <Button x:Name="buttonFav" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonFav_Click" Foreground="{ThemeResource AppForegroundColorBrush}">
+                            <Button x:Name="buttonFav" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonFav_Click" >
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="24"/>
@@ -210,8 +208,8 @@
                                         <ColumnDefinition Width="24"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="&#xEA92;" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" Foreground="{ThemeResource AppForegroundColorBrush}" />
-                                    <TextBlock Grid.Column="1" x:Uid="textBlockFavRem" Text="REMOVE FROM FAVOURITES" VerticalAlignment="Center" Foreground="{ThemeResource AppForegroundColorBrush}" FontSize="10" />
+                                    <TextBlock Grid.Column="0" Text="&#xEA92;" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" />
+                                    <TextBlock Grid.Column="1" x:Uid="textBlockFavRem" Text="REMOVE FROM FAVOURITES" VerticalAlignment="Center" FontSize="10" />
                                 </Grid>
                             </Button>
                         </StackPanel>
@@ -219,9 +217,9 @@
                 </Button.Flyout>
                 <SymbolIcon Symbol="More" />
             </Button>
-            <Border x:Name="borderNumber" BorderThickness="2" BorderBrush="{ThemeResource AppForegroundColorBrush}" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}" Margin="4,4,4,4" RelativePanel.AlignTopWith="imageAlbumArt" RelativePanel.AlignRightWith="imageAlbumArt" CornerRadius="16" MinWidth="32" Height="32" 
+            <Border x:Name="borderNumber" BorderThickness="2" Margin="4,4,4,4" RelativePanel.AlignTopWith="imageAlbumArt" RelativePanel.AlignRightWith="imageAlbumArt" CornerRadius="16" MinWidth="32" Height="32" 
                     Visibility="{x:Bind VisibleCountVisibility, Mode=OneWay}">
-                <TextBlock x:Name="textBlockNumber" Margin="4" VerticalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource AppForegroundColorBrush}" Text="{x:Bind VisibleCount, Mode=OneWay}"/>
+                <TextBlock x:Name="textBlockNumber" Margin="4" VerticalAlignment="Center" TextAlignment="Center" Text="{x:Bind VisibleCount, Mode=OneWay}"/>
             </Border>
         </RelativePanel>
     </RelativePanel>

@@ -29,8 +29,7 @@ namespace raumPlayer.ViewModels
                 var bitmap = sender as BitmapImage;
                 if (bitmap.UriSource == new Uri("ms-appx:///Assets/disc_gray.png", UriKind.Absolute))
                 {
-                    //ImageArt = bitmap;
-                    AverageColorImageArt = (SolidColorBrush)PrismUnityApplication.Current.Resources["AppBackgroundColorBrush"];
+                    AverageColorImageArt = (SolidColorBrush)PrismUnityApplication.Current.Resources["SystemAccentColor"];
                 }
                 else
                 {

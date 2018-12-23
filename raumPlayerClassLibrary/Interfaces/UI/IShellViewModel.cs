@@ -11,31 +11,18 @@ namespace raumPlayer.Interfaces
 {
     public interface IShellViewModel
     {
-        bool IsPaneOpen { get; set; }
-        SplitViewDisplayMode DisplayMode { get; set; }
-
-        object Selected { get; set; }
+        NavigationViewItem Selected { get; set; }
         string Header { get; set; }
 
         bool IsBusy { get; set; }
         Visibility BusyVisibility { get; set; }
 
-        ObservableCollection<IShellNavigationItem> PrimaryItems { get; set; }
-        ObservableCollection<IShellNavigationItem> SecondaryItems { get; set; }
-        ObservableCollection<IShellNavigationItem> OtherItems { get; set; }
-
-        ICommand ItemSelectedCommand { get; }
-        ICommand SecondaryItemSelectedCommand { get; }
-        ICommand OpenPaneCommand { get; }
-        ICommand StateChangedCommand { get; }
-
-        void Initialize(Frame frame);
+        Task InitializeAsync(Frame frame, NavigationView navigationView);
 
         ZoneViewModel ActiveZoneViewModel { get; set; }
         ObservableCollection<ZoneViewModel> ZoneViewModels { get;}
 
         Task SetActiveZoneViewModel(string zoneUdn);
-        void SetBackbuttonVisibility(bool state);
 
         //ICommand GetAlbumArtCommand { get; }
         //SolidColorBrush BackgroundColor { get; set; }

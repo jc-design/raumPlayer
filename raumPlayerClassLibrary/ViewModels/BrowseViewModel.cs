@@ -41,7 +41,7 @@ namespace raumPlayer.ViewModels
             {
                 SetProperty(ref selectedPivotItem, value, () =>
                 {
-                    shellViewModel.SetBackbuttonVisibility(value.IsGoBackInCacheEnabled);
+                    //shellViewModel.SetBackbuttonVisibility(value.IsGoBackInCacheEnabled);
                     if ((SelectedPivotItem.Elements?.Count() ?? 0) == 0)
                     {
                         SelectedPivotItem.RefreshElementsCommand.Execute(null);
@@ -80,8 +80,6 @@ namespace raumPlayer.ViewModels
                             {
                                 if (item.CacheElements.Count() == 0)
                                 {
-                                    Debug.WriteLine(item.PivotLabel);
-                                    Debug.WriteLine(item.CacheElements.Count());
                                     initialized = false;
                                     break;
                                 }
@@ -90,8 +88,6 @@ namespace raumPlayer.ViewModels
 
                             await Task.Delay(100);
                         } while (!initialized);
-
-                        Debug.WriteLine("FINISH");
 
                         SelectedPivotItem = PivotItems.First();
                     });
@@ -103,13 +99,13 @@ namespace raumPlayer.ViewModels
 
         public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
         {
-            SystemNavigationManager.GetForCurrentView().BackRequested += goBackRequested;
+            //SystemNavigationManager.GetForCurrentView().BackRequested += goBackRequested;
             base.OnNavigatedTo(e, viewModelState);
         }
 
         public override void OnNavigatingFrom(NavigatingFromEventArgs e, Dictionary<string, object> viewModelState, bool suspending)
         {
-            SystemNavigationManager.GetForCurrentView().BackRequested -= goBackRequested;
+            //SystemNavigationManager.GetForCurrentView().BackRequested -= goBackRequested;
             base.OnNavigatingFrom(e, viewModelState, suspending);
         }
 

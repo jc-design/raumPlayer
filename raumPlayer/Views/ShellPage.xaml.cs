@@ -19,10 +19,17 @@ namespace raumPlayer.Views
             InitializeComponent();
         }
 
-        public void SetRootFrame(Frame frame)
+        public async void SetRootFrame(Frame frame)
         {
             shellFrame.Content = frame;
-            ViewModel.Initialize(frame);
+            await ViewModel.InitializeAsync(frame, navigationView);
+        }
+
+        private void OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            // Workaround for Issue https://github.com/Microsoft/WindowsTemplateStudio/issues/2774
+            // Using EventTriggerBehavior does not work on WinUI NavigationView ItemInvoked event in Release mode.
+            ViewModel.ItemInvokedCommand.Execute(args);
         }
     }
 }
