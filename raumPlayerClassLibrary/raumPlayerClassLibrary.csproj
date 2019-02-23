@@ -153,6 +153,7 @@
     <Compile Include="Models\Network\NetWorkSocketListener.cs" />
     <Compile Include="Models\Network\NetWorkSubscriber.cs" />
     <Compile Include="Models\Network\NetWorkSubscriberPayload.cs" />
+    <Compile Include="Models\UI\Preset.cs" />
     <Compile Include="Models\RaumFeld\Events\RaumFeldEvent.cs" />
     <Compile Include="Models\RaumFeld\Events\RaumFeldEventProperty.cs" />
     <Compile Include="Models\RaumFeld\Events\RaumFeldEventPropertySet.cs" />

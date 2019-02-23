@@ -171,7 +171,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Styles\_Colors.xaml">
+    <Page Include="Styles\_ColorsDefault.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\_ColorsLavender.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\_ColorsAutumn.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -341,6 +349,14 @@
     <Content Include="Assets\Fonts\LCD2N___.TTF" />
     <Content Include="Assets\Fonts\lcddot_tr.ttf" />
     <None Include="raumPlayer_TemporaryKey.pfx" />
+    <Content Include="Strings\en-us\Presets.json" />
+    <Content Include="Strings\de-DE\Presets.json" />
+    <Content Include="Strings\de-DE\history.rtf" />
+    <Content Include="Strings\en-us\history.rtf" />
+    <Content Include="Strings\de-DE\ideas.rtf" />
+    <Content Include="Strings\en-us\ideas.rtf" />
+    <Content Include="Strings\de-DE\greetings.rtf" />
+    <Content Include="Strings\en-us\greetings.rtf" />
     <PRIResource Include="Strings\de-DE\Resources.resw" />
   </ItemGroup>
   <ItemGroup>

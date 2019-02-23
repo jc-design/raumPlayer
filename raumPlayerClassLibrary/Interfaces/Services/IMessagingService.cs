@@ -14,5 +14,11 @@ namespace raumPlayer.Interfaces
         Task ShowErrorDialogAsync(Exception content);
         Task ShowErrorDialogAsync(string content);
         Task ShowActionDialogAsync(string content, ICommand okCallback, string title = null, string okButtonText = "OK", string cancelButtonText = "Cancel");
+
+        string AppName { get; }
+        Uri AppLogo { get; }
+        string AppVersion { get; }
+        string AppDisplayName { get; }
+        string AppPublisher { get; }
     }
 }

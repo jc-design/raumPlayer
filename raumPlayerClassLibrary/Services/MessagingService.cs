@@ -128,5 +128,28 @@ namespace raumPlayer.Services
             };
             await dialog.ShowAsync();
         }
+
+        public string AppName
+        {
+            get { return Package.Current.Id.Name; }
+        }
+
+        public Uri AppLogo
+        {
+            get { return Package.Current.Logo; }
+        }
+
+        public string AppVersion
+        {
+            get
+            {
+                PackageVersion version = Package.Current.Id.Version;
+                return $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+            }
+        }
+
+        public string AppDisplayName => Package.Current.DisplayName;
+
+        public string AppPublisher => Package.Current.PublisherDisplayName;
     }
 }

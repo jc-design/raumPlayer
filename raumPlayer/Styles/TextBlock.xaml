@@ -17,7 +17,17 @@
         <Setter Property="TextTrimming" Value="CharacterEllipsis" />
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
-    
+    <Style x:Key="UINotificationTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="8"/>
+        <Setter Property="TextLineBounds" Value="TrimToBaseline"/>
+        <Setter Property="LineStackingStrategy" Value="BaselineToBaseline"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+        <Setter Property="Foreground" Value="{ThemeResource RegionBrush}"/>
+    </Style>
+
     <!--TextStyles-->
     <Style x:Key="AppHeaderTextStyle" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="ms-appx:///Assets/Fonts/berkshireswash-regular.ttf#Berkshire Swash"/>

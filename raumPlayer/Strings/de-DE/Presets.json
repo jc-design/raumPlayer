@@ -1,0 +1,17 @@
+﻿[
+  {
+    "Colorcode": 1,
+    "Id": "Default",
+    "Presetname": "Standard"
+  },
+  {
+    "Colorcode": 2,
+    "Id": "Autumn",
+    "Presetname": "Herbst"
+  },
+  {
+    "Colorcode": 3,
+    "Id": "Lavender",
+    "Presetname": "Lavendel"
+  }
+ ]

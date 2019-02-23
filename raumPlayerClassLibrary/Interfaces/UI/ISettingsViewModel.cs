@@ -1,4 +1,5 @@
 ﻿using raumPlayer.ViewModels;
+using raumPlayer.Models;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -19,7 +20,11 @@ namespace raumPlayer.Interfaces
         bool IsCheckedMyMusic { get; set; }
         bool IsCheckedFavorites { get; set; }
 
+        ObservableCollection<Preset> Presets { get; set; }
+
         ICommand SwitchThemeCommand { get; }
         ICommand SwitchTuneInStateCommand { get; }
+
+        Task InitializeAsync();
     }
 }

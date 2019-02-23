@@ -446,18 +446,6 @@ http://www.hifi-forum.de/index.php?action=browseT&amp;forum_id=212&amp;thread=42
   <data name="textBlockFavRem.Text" xml:space="preserve">
     <value>Aus Favoriten entfernen</value>
   </data>
-  <data name="textblockI001.Text" xml:space="preserve">
-    <value>Integration von Cortanasprachbefehlen</value>
-  </data>
-  <data name="textblockI002.Text" xml:space="preserve">
-    <value>Einführen von Wiedergabenlisten</value>
-  </data>
-  <data name="textblockI003.Text" xml:space="preserve">
-    <value>Backgroundnotification bei Liedwechsel, wenn die App im Hintergrund ist</value>
-  </data>
-  <data name="textblockI004.Text" xml:space="preserve">
-    <value>Einschlaffunktion</value>
-  </data>
   <data name="textBlockNewQueue.Text" xml:space="preserve">
     <value>Play</value>
   </data>
@@ -476,24 +464,6 @@ http://www.hifi-forum.de/index.php?action=browseT&amp;forum_id=212&amp;thread=42
   <data name="textblockSkypeGroup.Text" xml:space="preserve">
     <value>Wenn ihr aktiv mitwirken wollt, tretet doch der Skypegruppe bei.
 Wir werden versuchen auf eure Komentare und Wünsche direkt einzugehen.</value>
-  </data>
-  <data name="textblockV090.Text" xml:space="preserve">
-    <value>v.0.9.0: Erste Version</value>
-  </data>
-  <data name="textblockV092.Text" xml:space="preserve">
-    <value>v.0.9.2: Neue Farbgestaltung eingeführt.</value>
-  </data>
-  <data name="textblockV093.Text" xml:space="preserve">
-    <value>v.0.9.3: Abspielbuttons der aktuellen Zone werden nun überall angezeigt
-Einzeltitel werden nun nicht mehr nach Alphabet sortiert und gruppiert, sondern bleiben in der vorgegebenen Reihenfolge</value>
-  </data>
-  <data name="textblockV094.Text" xml:space="preserve">
-    <value>v.0.9.4: Farbanpassung in diversen Kontextmenüs
-Fehler in Lautstärkeregulierung behoben</value>
-  </data>
-  <data name="textblockV096.Text" xml:space="preserve">
-    <value>v.0.9.6: Fehler in Lautstärkeregulierung behoben
-Fehler behoben, daß nach Fortsetzung der App manche Elemente nicht mehr aktualisiert wurden</value>
   </data>
   <data name="textBoxNavigation.Text" xml:space="preserve">
     <value>Start with...</value>
@@ -545,5 +515,23 @@ Fehler behoben, daß nach Fortsetzung der App manche Elemente nicht mehr aktuali
   </data>
   <data name="_Settings_ColorSettings.Text" xml:space="preserve">
     <value>Color Settings</value>
+  </data>
+  <data name="_Settings_LoadPresets" xml:space="preserve">
+    <value>ms-appx:///Strings/en-us/Presets.json</value>
+  </data>
+  <data name="_Settings_LoadHistoryRTF" xml:space="preserve">
+    <value>ms-appx:///Strings/en-us/history.rtf</value>
+  </data>
+  <data name="_Settings_LoadIdeasRTF" xml:space="preserve">
+    <value>ms-appx:///Strings/en-us/ideas.rtf</value>
+  </data>
+  <data name="ControlPalettePresetCombo.Header" xml:space="preserve">
+    <value>Colorschema</value>
+  </data>
+  <data name="ControlPalettePresetComboMessage.Text" xml:space="preserve">
+    <value>Changes will take affect after app restart</value>
+  </data>
+  <data name="_Settings_LoadGreetingsRTF" xml:space="preserve">
+    <value>ms-appx:///Strings/en-us/greetings.rtf</value>
   </data>
 </root>

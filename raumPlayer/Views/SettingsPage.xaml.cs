@@ -17,5 +17,7 @@ namespace raumPlayer.Views
             InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
+
+
     }
 }

@@ -28,7 +28,7 @@
         </trans-unit>
         <trans-unit id="Settings_Theme.Text" translate="yes" xml:space="preserve">
           <source>Choose Theme</source>
-          <target state="new">Choose Theme</target>
+          <target state="translated">Schema auswählen</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Choose theme text for Settings</note>
         </trans-unit>
         <trans-unit id="Settings_Theme_Dark.Content" translate="yes" xml:space="preserve">
@@ -418,22 +418,6 @@ http://www.hifi-forum.de/index.php?action=browseT&amp;forum_id=212&amp;thread=42
           <source>Aus Favoriten entfernen</source>
           <target state="new">Aus Favoriten entfernen</target>
         </trans-unit>
-        <trans-unit id="textblockI001.Text" translate="yes" xml:space="preserve">
-          <source>Integration von Cortanasprachbefehlen</source>
-          <target state="new">Integration von Cortanasprachbefehlen</target>
-        </trans-unit>
-        <trans-unit id="textblockI002.Text" translate="yes" xml:space="preserve">
-          <source>Einführen von Wiedergabenlisten</source>
-          <target state="new">Einführen von Wiedergabenlisten</target>
-        </trans-unit>
-        <trans-unit id="textblockI003.Text" translate="yes" xml:space="preserve">
-          <source>Backgroundnotification bei Liedwechsel, wenn die App im Hintergrund ist</source>
-          <target state="new">Backgroundnotification bei Liedwechsel, wenn die App im Hintergrund ist</target>
-        </trans-unit>
-        <trans-unit id="textblockI004.Text" translate="yes" xml:space="preserve">
-          <source>Einschlaffunktion</source>
-          <target state="new">Einschlaffunktion</target>
-        </trans-unit>
         <trans-unit id="textBlockNewQueue.Text" translate="yes" xml:space="preserve">
           <source>Play</source>
           <target state="translated">Abspielen</target>
@@ -459,32 +443,6 @@ http://www.hifi-forum.de/index.php?action=browseT&amp;forum_id=212&amp;thread=42
 Wir werden versuchen auf eure Komentare und Wünsche direkt einzugehen.</source>
           <target state="new">Wenn ihr aktiv mitwirken wollt, tretet doch der Skypegruppe bei.
 Wir werden versuchen auf eure Komentare und Wünsche direkt einzugehen.</target>
-        </trans-unit>
-        <trans-unit id="textblockV090.Text" translate="yes" xml:space="preserve">
-          <source>v.0.9.0: Erste Version</source>
-          <target state="new">v.0.9.0: Erste Version</target>
-        </trans-unit>
-        <trans-unit id="textblockV092.Text" translate="yes" xml:space="preserve">
-          <source>v.0.9.2: Neue Farbgestaltung eingeführt.</source>
-          <target state="new">v.0.9.2: Neue Farbgestaltung eingeführt.</target>
-        </trans-unit>
-        <trans-unit id="textblockV093.Text" translate="yes" xml:space="preserve">
-          <source>v.0.9.3: Abspielbuttons der aktuellen Zone werden nun überall angezeigt
-Einzeltitel werden nun nicht mehr nach Alphabet sortiert und gruppiert, sondern bleiben in der vorgegebenen Reihenfolge</source>
-          <target state="new">v.0.9.3: Abspielbuttons der aktuellen Zone werden nun überall angezeigt
-Einzeltitel werden nun nicht mehr nach Alphabet sortiert und gruppiert, sondern bleiben in der vorgegebenen Reihenfolge</target>
-        </trans-unit>
-        <trans-unit id="textblockV094.Text" translate="yes" xml:space="preserve">
-          <source>v.0.9.4: Farbanpassung in diversen Kontextmenüs
-Fehler in Lautstärkeregulierung behoben</source>
-          <target state="new">v.0.9.4: Farbanpassung in diversen Kontextmenüs
-Fehler in Lautstärkeregulierung behoben</target>
-        </trans-unit>
-        <trans-unit id="textblockV096.Text" translate="yes" xml:space="preserve">
-          <source>v.0.9.6: Fehler in Lautstärkeregulierung behoben
-Fehler behoben, daß nach Fortsetzung der App manche Elemente nicht mehr aktualisiert wurden</source>
-          <target state="new">v.0.9.6: Fehler in Lautstärkeregulierung behoben
-Fehler behoben, daß nach Fortsetzung der App manche Elemente nicht mehr aktualisiert wurden</target>
         </trans-unit>
         <trans-unit id="textBoxNavigation.Text" translate="yes" xml:space="preserve">
           <source>Start with...</source>
@@ -540,7 +498,7 @@ Fehler behoben, daß nach Fortsetzung der App manche Elemente nicht mehr aktuali
         </trans-unit>
         <trans-unit id="zoneDialog.SecondaryButtonText" translate="yes" xml:space="preserve">
           <source>Cancel</source>
-          <target state="new">Cancel</target>
+          <target state="translated">Abbruch</target>
         </trans-unit>
         <trans-unit id="zoneDialog.Title" translate="yes" xml:space="preserve">
           <source>Zonendefinition</source>
@@ -568,11 +526,11 @@ Fehler behoben, daß nach Fortsetzung der App manche Elemente nicht mehr aktuali
         </trans-unit>
         <trans-unit id="NavItem_Playlists.Content" translate="yes" xml:space="preserve">
           <source>Playlists</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">Wiedergabelisten</target>
+          <target state="translated" state-qualifier="tm-suggestion">Wiedergabelisten</target>
         </trans-unit>
         <trans-unit id="NavItem_TuneIn.Content" translate="yes" xml:space="preserve">
           <source>TuneIn</source>
-          <target state="new">TuneIn</target>
+          <target state="translated">TuneIn</target>
         </trans-unit>
         <trans-unit id="NavItem_ZoneConfig.Content" translate="yes" xml:space="preserve">
           <source>Zoneconfig</source>
@@ -580,11 +538,35 @@ Fehler behoben, daß nach Fortsetzung der App manche Elemente nicht mehr aktuali
         </trans-unit>
         <trans-unit id="_Settings_appSettings.Text" translate="yes" xml:space="preserve">
           <source>App Settings</source>
-          <target state="new">App Settings</target>
+          <target state="translated">Appeinstellungen</target>
         </trans-unit>
         <trans-unit id="_Settings_ColorSettings.Text" translate="yes" xml:space="preserve">
           <source>Color Settings</source>
-          <target state="new">Color Settings</target>
+          <target state="translated">Farbeinstellungen</target>
+        </trans-unit>
+        <trans-unit id="_Settings_LoadPresets" translate="yes" xml:space="preserve">
+          <source>ms-appx:///Strings/en-us/Presets.json</source>
+          <target state="translated">ms-appx:///Strings/de-de/Presets.json</target>
+        </trans-unit>
+        <trans-unit id="_Settings_LoadHistoryRTF" translate="yes" xml:space="preserve">
+          <source>ms-appx:///Strings/en-us/history.rtf</source>
+          <target state="translated">ms-appx:///Strings/de-de/history.rtf</target>
+        </trans-unit>
+        <trans-unit id="_Settings_LoadIdeasRTF" translate="yes" xml:space="preserve">
+          <source>ms-appx:///Strings/en-us/ideas.rtf</source>
+          <target state="translated">ms-appx:///Strings/de-de/ideas.rtf</target>
+        </trans-unit>
+        <trans-unit id="ControlPalettePresetCombo.Header" translate="yes" xml:space="preserve">
+          <source>Colorschema</source>
+          <target state="translated">Farbschema</target>
+        </trans-unit>
+        <trans-unit id="ControlPalettePresetComboMessage.Text" translate="yes" xml:space="preserve">
+          <source>Changes will take affect after app restart</source>
+          <target state="translated">Änderungen werden nach Appneustart wirksam</target>
+        </trans-unit>
+        <trans-unit id="_Settings_LoadGreetingsRTF" translate="yes" xml:space="preserve">
+          <source>ms-appx:///Strings/en-us/greetings.rtf</source>
+          <target state="new">ms-appx:///Strings/en-us/greetings.rtf</target>
         </trans-unit>
       </group>
     </body>

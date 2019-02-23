@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
-
+using raumPlayer.Helpers;
 using raumPlayer.Interfaces;
 using raumPlayer.Models;
 using raumPlayer.PrismEvents;
@@ -16,6 +17,11 @@ using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using System.Linq;
+using Windows.UI.Text;
+using Windows.UI;
+using Windows.UI.Xaml.Media;
+using Windows.System;
 
 namespace raumPlayer.ViewModels
 {
@@ -27,8 +33,18 @@ namespace raumPlayer.ViewModels
         private readonly INavigationService navigationService;
         private readonly IRaumFeldService raumFeldService;
 
-        private ElementTheme elementTheme = ThemeSelectorService.Theme;
+        private Preset selectedPreset;
+        public Preset SelectedPreset
+        {
+            get { return selectedPreset; }
 
+            set { SetProperty(ref selectedPreset, value, () => {
+                ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+                localSettings.Values["SELECTED_PRESET"] = value.Id;
+            }); }
+        }
+
+        private ElementTheme elementTheme = ThemeSelectorService.Theme;
         public ElementTheme ElementTheme
         {
             get { return elementTheme; }
@@ -64,6 +80,18 @@ namespace raumPlayer.ViewModels
             get { return isCheckedFavorites; }
             set { SetProperty(ref isCheckedFavorites, value); }
         }
+
+        private ObservableCollection<Preset> presets;
+        public ObservableCollection<Preset> Presets
+        {
+            get { return presets; }
+            set { SetProperty(ref presets, value); }
+        }
+
+        public string AppName => messagingService.AppDisplayName;
+        public string AppPublisher => messagingService.AppPublisher;
+        public string AppVersion => messagingService.AppVersion;
+        public Uri AppLogo => messagingService.AppLogo;
 
         #region ICommands
 
@@ -149,6 +177,8 @@ namespace raumPlayer.ViewModels
             raumFeldService = raumFeldServiceInstance;
 
             eventAggregator.GetEvent<SystemUpdateIDChangedEvent>().Subscribe(onSystemUpdateIDChanged, ThreadOption.UIThread);
+
+            Presets = new ObservableCollection<Preset>();
         }
 
         public override void OnNavigatingFrom(NavigatingFromEventArgs e, Dictionary<string, object> viewModelState, bool suspending)
@@ -177,6 +207,86 @@ namespace raumPlayer.ViewModels
                         break;
                 }
             }
+        }
+
+        public async Task InitializeAsync()
+        {
+            try
+            {
+                StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("_Settings_LoadPresets".GetLocalized()));
+                string dataString = await FileIO.ReadTextAsync(file);
+
+                Presets.Clear();
+
+                foreach (Preset p in JsonConvert.DeserializeObject<List<Preset>>(dataString))
+                {
+                    Presets.Add(p);
+                }
+
+                ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+                if (localSettings.Values.TryGetValue("SELECTED_PRESET", out object obj))
+                {
+                    SelectedPreset = Presets.Where(p => p.Id == (string)(obj)).FirstOrDefault();
+                }
+                else
+                {
+                    SelectedPreset = Presets.Where(p => p.Id == "Default").FirstOrDefault();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public async void rtb_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (sender is RichEditBox textbox)
+                {
+                    StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(new Uri(((string)textbox.Tag).GetLocalized()));
+                    if (file != null)
+                    {
+
+                        Windows.Storage.Streams.IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.Read);
+
+                        // Load the file into the Document property of the RichEditBox.
+                        textbox.Document.LoadFromStream(Windows.UI.Text.TextSetOptions.FormatRtf, randAccStream);
+
+                        textbox.Document.Selection.SetRange(0, int.MaxValue);
+                        ITextSelection selectedText = textbox.Document.Selection;
+                        if (selectedText != null && textbox.Foreground is SolidColorBrush color)
+                        {
+                            selectedText.CharacterFormat.ForegroundColor = color.Color;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        /// <summary>
+        /// Rate app; launches MS-Store to rate app
+        /// </summary>
+        public async void RateApp()
+        {
+            await Launcher.LaunchUriAsync(new Uri($"ms-windows-store:REVIEW?PFN={Package.Current.Id.FamilyName}"));
+        }
+
+        /// <summary>
+        /// Join Skype group; launches skype to join group
+        /// </summary>
+        public async void AddSkypeGroup()
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://join.skype.com/l4wfW2nS2Vh6"));
+        }
+
+        public async void HowTo()
+        {
+            //var dialog = new HowTo();
+            //await dialog.ShowAsync();
         }
 
         private string GetVersionDescription()

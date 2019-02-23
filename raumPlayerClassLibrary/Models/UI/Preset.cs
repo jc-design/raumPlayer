@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace raumPlayer.Models
+{
+    public class Preset
+    {
+        public int Colorcode { get; set; }
+        public string Id { get; set; }
+        public string Presetname { get; set; }
+    }
+}

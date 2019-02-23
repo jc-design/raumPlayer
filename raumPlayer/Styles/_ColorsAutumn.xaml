@@ -12,6 +12,7 @@
                     <Color x:Key="SystemRevealListMediumColor">#FFA64D00</Color>
                     <Color x:Key="RegionColor">#FF1A0505</Color>
                     <SolidColorBrush x:Key="RegionBrush" Color="{StaticResource RegionColor}" />
+                    <SolidColorBrush x:Key="AccentColorBrush" Color="{ThemeResource SystemAccentColor}" />
 
                     <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemRevealListMediumColor}" TintOpacity="0.6" FallbackColor="{ThemeResource SystemRevealListMediumColor}" />
                     <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemRevealListMediumColor}" TintOpacity="0.6" FallbackColor="{ThemeResource SystemRevealListMediumColor}" />
@@ -29,6 +30,7 @@
                     <RevealBackgroundBrush x:Key="SystemControlHighlightListLowRevealBackgroundBrush" TargetTheme="Light" Color="{ThemeResource SystemRevealListMediumColor}" FallbackColor="{ StaticResource SystemListMediumColor}" />
                     <Color x:Key="RegionColor">#FFFFFCFA</Color>
                     <SolidColorBrush x:Key="RegionBrush" Color="{StaticResource RegionColor}" />
+                    <SolidColorBrush x:Key="AccentColorBrush" Color="{ThemeResource SystemAccentColor}" />
 
                     <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemRevealListMediumColor}" TintOpacity="0.6" FallbackColor="{ThemeResource SystemRevealListMediumColor}" />
                     <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemRevealListMediumColor}" TintOpacity="0.6" FallbackColor="{ThemeResource SystemRevealListMediumColor}" />
@@ -38,6 +40,7 @@
         <ResourceDictionary x:Key="HighContrast">
             <StaticResource x:Key="RegionColor" ResourceKey="SystemColorWindowColor" />
             <SolidColorBrush x:Key="RegionBrush" Color="{StaticResource RegionColor}" />
+            <SolidColorBrush x:Key="AccentColorBrush" Color="{ThemeResource SystemAccentColor}" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 

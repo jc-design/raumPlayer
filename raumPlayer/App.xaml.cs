@@ -20,6 +20,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation.Metadata;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
@@ -53,9 +54,7 @@ namespace raumPlayer
             Container.RegisterType<IRaumFeldService, RaumFeldService>(new ContainerControlledLifetimeManager());
 
             Container.RegisterType<IShellViewModel, ShellViewModel>(new ContainerControlledLifetimeManager());
-            //Container.RegisterType<IShellNavigationItem, ShellNavigationViewModel>();
-            //Container.RegisterType<IShellNavigationItem, TuneInNavigationViewModel>();
-            //Container.RegisterType<IShellNavigationItem, ManageZonesNavigationViewModel>();
+            Container.RegisterType<ISettingsViewModel, SettingsViewModel>(new ContainerControlledLifetimeManager());
 
             Container.RegisterType<IMediaDevice, MediaServer>();
             Container.RegisterType<IMediaDevice, MediaRenderer>();
@@ -64,7 +63,6 @@ namespace raumPlayer
             Container.RegisterType<IPivotItemViewModel, PivotItemViewModel>();
             Container.RegisterType<IZoneViewModel, ZoneViewModel>();
             Container.RegisterType<IRoomViewModel, RoomViewModel>();
-            Container.RegisterType<ISettingsViewModel, SettingsViewModel>();
 
             Container.RegisterType<DIDLContainer>();
             Container.RegisterType<DIDLItem>();
@@ -99,9 +97,12 @@ namespace raumPlayer
                 coreTitleBar.ExtendViewIntoTitleBar = true;
             }
 
+            await Container.Resolve<ISettingsViewModel>().InitializeAsync();
+
             Interfaces.ThemeSelectorService.SetRequestedTheme();
             NavigationService.Navigate(page, launchParam);
             Window.Current.Activate();
+
             await Container.Resolve<IWhatsNewDisplayService>().ShowIfAppropriateAsync();
             await Container.Resolve<IFirstRunDisplayService>().ShowIfAppropriateAsync();
 
@@ -170,6 +171,24 @@ namespace raumPlayer
 
         protected override UIElement CreateShell(Frame rootFrame)
         {
+            //Load colorpreset
+            string baseUrl = string.Empty;
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            if (localSettings.Values.TryGetValue("SELECTED_PRESET", out object obj))
+            {
+                baseUrl = string.Format("ms-appx:///Styles/_Colors{0}.xaml", (string)(obj));
+            }
+            else
+            {
+                baseUrl = string.Format("ms-appx:///Styles/_Colors{0}.xaml","Default") ;
+            }
+
+            ResourceDictionary resourceDictionary = new ResourceDictionary
+            {
+                Source = new Uri(baseUrl, UriKind.Absolute)
+            };
+            Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
+
             var shell = Container.Resolve<ShellPage>();
             shell.SetRootFrame(rootFrame);
             return shell;

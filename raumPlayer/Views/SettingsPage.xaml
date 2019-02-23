@@ -8,6 +8,7 @@
     xmlns:prismMvvm="using:Prism.Windows.Mvvm"
     xmlns:helper="using:raumPlayer.Helpers"
     xmlns:vm="using:raumPlayer.ViewModels"
+    xmlns:model="using:raumPlayer.Models"
     x:Class="raumPlayer.Views.SettingsPage"
     prismMvvm:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
@@ -87,6 +88,23 @@
                 <DataTemplate x:DataType="vm:SettingsViewModel">
                     <Grid>
                         <StackPanel Orientation="Vertical">
+                            <ComboBox x:Uid="ControlPalettePresetCombo"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Top"
+                                      ItemsSource="{x:Bind Presets, Mode=OneWay}"
+                                      SelectedItem="{x:Bind SelectedPreset, Mode=TwoWay}"
+                                      Header="COLOR_SCHEMA"
+                                      Width="200"
+                                      Margin="-12,0,0,0">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate x:DataType="model:Preset">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{x:Bind Presetname, Mode=OneWay}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <TextBlock x:Uid="ControlPalettePresetComboMessage" Foreground="{ThemeResource AccentColorBrush}" FontSize="10" Text="CHANGES WILL AFFECT AFTER APP RESTART" />
                             <RadioButton x:Uid="Settings_Theme_Light" 
                                          GroupName="AppTheme"
                                          Style="{StaticResource appRadioButtonStyle}"
@@ -133,45 +151,22 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <!--<RelativePanel Grid.Row="0" HorizontalAlignment="Stretch">
+                        <RelativePanel Grid.Row="0" HorizontalAlignment="Stretch">
                             <TextBlock x:Name="textBoxAppName" Text="{x:Bind AppName}" Style="{StaticResource AppHeaderTextStyle}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" />
                             <TextBlock x:Name="textBoxAppPublisher" Text="{x:Bind AppPublisher}" Style="{StaticResource MenuTextStyle}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="textBoxAppName" />
                             <TextBlock x:Name="textBoxAppVersion" Text="{x:Bind AppVersion}" Style="{StaticResource MenuTextStyle}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="textBoxAppPublisher" />
                             <Image Source="{Binding AppLogo}" Width="48" Height="48" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
-                        </RelativePanel>-->
-                        <!--<Button x:Uid="buttonRate" Grid.Row="1" Content="RATE" HorizontalAlignment="Stretch" Foreground="{ThemeResource PrimaryColorBrush1}" Background="{ThemeResource SystemControlForegroundAccentBrush}" Margin="0,8,0,8" Click="{x:Bind RateApp}"/>
+                        </RelativePanel>
+                        <Button x:Uid="buttonRate" Grid.Row="1" Content="RATE" HorizontalAlignment="Stretch" Margin="0,8,0,8" Click="{x:Bind RateApp}"/>
                         <StackPanel Orientation="Vertical" Grid.Row="2">
                             <TextBlock x:Uid="textblockSkypeGroup" Text="SKYPEGROUP" Style="{StaticResource GreetingsTextStyle}" FontSize="12" FontStyle="Italic"/>
-                            <Button x:Uid="buttonSkypeGroup" Content="ADDGROUP" HorizontalAlignment="Stretch" Foreground="{ThemeResource PrimaryColorBrush1}" Background="{ThemeResource SystemControlForegroundAccentBrush}" Margin="0,8,0,8" Click="{x:Bind AddSkypeGroup}"/>
+                            <Button x:Uid="buttonSkypeGroup" Content="ADDGROUP" HorizontalAlignment="Stretch" Margin="0,8,0,8" Click="{x:Bind AddSkypeGroup}"/>
                         </StackPanel>
-                        <Button x:Uid="buttonHowTo" Grid.Row="3" Content="HOWTO" HorizontalAlignment="Stretch" Foreground="{ThemeResource PrimaryColorBrush1}" Background="{ThemeResource SystemControlForegroundAccentBrush}" Margin="0,8,0,8" Click="{x:Bind HowTo}"/>-->
+                        <Button x:Uid="buttonHowTo" Grid.Row="3" Content="HOWTO" HorizontalAlignment="Stretch" Margin="0,8,0,8" Click="{x:Bind HowTo}"/>
                         <ScrollViewer Grid.Row="4">
                             <StackPanel>
                                 <TextBlock x:Uid="greetingsHub" Text="GREETINGS" Style="{StaticResource SettingsTextStyle}" Margin="0,0,0,8"/>
-                                <Grid Margin="0,0,0,8">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="140"/>
-                                        <ColumnDefinition Width="160"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Text="Markus Pütter" Style="{StaticResource GreetingsTextStyle}" Grid.Column="0"/>
-                                    <TextBlock x:Uid="greetingsMP" Text="TEXT" Style="{StaticResource GreetingsTextStyle}" Grid.Column="1"/>
-                                </Grid>
-                                <Grid Margin="0,0,0,8">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="140"/>
-                                        <ColumnDefinition Width="160"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Text="ChriD" Style="{StaticResource GreetingsTextStyle}" Grid.Column="0"/>
-                                    <TextBlock x:Uid="greetingsCD" Text="TEXT" Style="{StaticResource GreetingsTextStyle}" Grid.Column="1"/>
-                                </Grid>
-                                <Grid Margin="0,0,0,8">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="140"/>
-                                        <ColumnDefinition Width="160"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Text="Hifi-Forum.de" Style="{StaticResource GreetingsTextStyle}" Grid.Column="0"/>
-                                    <TextBlock x:Uid="greetingsFO" Text="TEXT" Style="{StaticResource GreetingsTextStyle}" Grid.Column="1"/>
-                                </Grid>
+                                <RichEditBox Loaded="{x:Bind rtb_Loaded}" IsHitTestVisible="False" Tag="_Settings_LoadGreetingsRTF"/>
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
@@ -183,20 +178,13 @@
                         <TextBlock x:Uid="historyHeaderHub" Text="HISTORY" Style="{StaticResource SettingsTextStyle}"/>
                     </DataTemplate>
                 </HubSection.HeaderTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="vm:SettingsViewModel">
                     <ScrollViewer>
                         <StackPanel Orientation="Vertical">
                             <TextBlock x:Uid="historyHub" Text="HISTROY" Style="{StaticResource SettingsTextStyle}" Margin="0,0,0,8"/>
-                            <TextBlock x:Uid="textblockV090" Text="V090" Style="{StaticResource GreetingsTextStyle}"/>
-                            <TextBlock x:Uid="textblockV092" Text="V092" Style="{StaticResource GreetingsTextStyle}"/>
-                            <TextBlock x:Uid="textblockV093" Text="V093" Style="{StaticResource GreetingsTextStyle}"/>
-                            <TextBlock x:Uid="textblockV094" Text="V094" Style="{StaticResource GreetingsTextStyle}"/>
-                            <TextBlock x:Uid="textblockV096" Text="V096" Style="{StaticResource GreetingsTextStyle}"/>
+                            <RichEditBox Loaded="{x:Bind rtb_Loaded}" IsHitTestVisible="False" Tag="_Settings_LoadHistoryRTF"/>
                             <TextBlock x:Uid="ideasHub" Text="IDEAS" Style="{StaticResource SettingsTextStyle}" Margin="0,8,0,8"/>
-                            <TextBlock x:Uid="textblockI001" Text="I001" Style="{StaticResource GreetingsTextStyle}"/>
-                            <TextBlock x:Uid="textblockI002" Text="I002" Style="{StaticResource GreetingsTextStyle}"/>
-                            <TextBlock x:Uid="textblockI003" Text="I003" Style="{StaticResource GreetingsTextStyle}"/>
-                            <TextBlock x:Uid="textblockI004" Text="I004" Style="{StaticResource GreetingsTextStyle}"/>
+                            <RichEditBox Loaded="{x:Bind rtb_Loaded}" IsHitTestVisible="False" Tag="_Settings_LoadIdeasRTF"/>
                         </StackPanel>
                     </ScrollViewer>
                 </DataTemplate>
