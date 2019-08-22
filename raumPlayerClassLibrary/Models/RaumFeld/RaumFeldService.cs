@@ -23,6 +23,7 @@ namespace raumPlayer.Models
     {
         private readonly IEventAggregator eventAggregator;
         private readonly IMessagingService messagingService;
+        private readonly ICachingService cachingService;
         //private readonly IShellViewModel shellViewModel;
 
         private readonly SemaphoreSlim semaphoreLock;
@@ -39,10 +40,11 @@ namespace raumPlayer.Models
         private RaumFeldZoneConfig raumFeldZoneConfig = null;
         private string raumfeldGetZonesUpdateId = string.Empty;
 
-        public RaumFeldService(IEventAggregator eventAggregatorInstance, IMessagingService messagingServiceInstance)
+        public RaumFeldService(IEventAggregator eventAggregatorInstance, IMessagingService messagingServiceInstance, ICachingService cachingServiceInstance)
         {
             eventAggregator = eventAggregatorInstance;
             messagingService = messagingServiceInstance;
+            cachingService = cachingServiceInstance;
             //shellViewModel = shellViewModelInstance;
 
             semaphoreLock = new SemaphoreSlim(1);
@@ -562,8 +564,29 @@ namespace raumPlayer.Models
                 bool continueLoop = true;
                 elements.Clear();
 
-                ServiceActionReturnMessage message;
                 int index = 1;
+                //List<ElementBase> cachedElements = await cachingService.GetElements(elementId);
+
+                //if ((cachedElements?.Count ?? 0) > 0)
+                //{
+                //    foreach (ElementBase item in cachedElements)
+                //    {
+                //        item.Index = index++;
+                //        if (addItemsOnly)
+                //        {
+                //            if (!item.IsFolder)
+                //            {
+                //                elements.Add(item);
+                //            }
+                //        }
+                //        else { elements.Add(item); }
+                //    }
+
+                //    start = cachedElements.Count;
+                //}            
+
+                ServiceActionReturnMessage message;
+                
                 do
                 {
                     message = await mediaServer.Browse(elementId, start, limit);

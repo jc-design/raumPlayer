@@ -8,7 +8,7 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:vm="using:raumPlayer.ViewModels"
     xmlns:uc="using:raumPlayer.UserControls"
-    xmlns:interface="using:raumPlayer.Interfaces"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
@@ -20,17 +20,19 @@
         </ItemsPanelTemplate>
 
         <DataTemplate x:Key="GridDataTemplate" x:DataType="vm:ElementBase">
-                <uc:ElementControl Element="{x:Bind Element, Mode=OneWay}"
-                                       ImageUri="{x:Bind AlbumArtUri, Mode=OneWay}"
-                                       Title="{x:Bind Title, Mode=OneWay}"
-                                       Line1="{x:Bind Line1, Mode=OneWay}"
-                                       Line2="{x:Bind Line2, Mode=OneWay}"
-                                       VisibleCount="{x:Bind VisibleCount, Mode=OneWay}"
-                                       VisibleCountVisibility="{x:Bind VisibleCountVisibility, Mode=OneWay}"
-                                       Margin="8"/>
+            <uc:ElementControl Element="{x:Bind Element, Mode=OneWay}"
+                               ImageUri="{x:Bind AlbumArtUri, Mode=OneWay}"
+                               Title="{x:Bind Title, Mode=OneWay}"
+                               Line1="{x:Bind Line1, Mode=OneWay}"
+                               Line2="{x:Bind Line2, Mode=OneWay}"
+                               VisibleCount="{x:Bind VisibleCount, Mode=OneWay}"
+                               VisibleCountVisibility="{x:Bind VisibleCountVisibility, Mode=OneWay}"
+                               Width="{Binding ElementName=ItemWidthSlider, Path=Value }"
+                               Margin="2">
+            </uc:ElementControl>
         </DataTemplate>
 
-        <DataTemplate x:Key="ListDataTemplate" x:DataType="vm:ElementBase">
+        <!--<DataTemplate x:Key="ListDataTemplate" x:DataType="vm:ElementBase">
             <uc:ElementControl Element="{x:Bind Element, Mode=OneWay}"
                                        ImageUri="{x:Bind AlbumArtUri, Mode=OneWay}"
                                        Title="{x:Bind Title, Mode=OneWay}"
@@ -39,20 +41,20 @@
                                        VisibleCount="{x:Bind VisibleCount, Mode=OneWay}"
                                        VisibleCountVisibility="{x:Bind VisibleCountVisibility, Mode=OneWay}"
                                        Margin="8,4,18,4"/>
-        </DataTemplate>
+        </DataTemplate>-->
 
     </UserControl.Resources>
 
 
     <Grid x:Name="Content" >
-        <VisualStateManager.VisualStateGroups>
+        <!--<VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
                 <VisualState x:Name="VisualStateNarrow">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!--  TODO: change properties for narrow view  -->
+                        --><!--  TODO: change properties for narrow view  --><!--
                         <Setter Target="gridViewBrowse.ItemsPanel" Value="{StaticResource ListItemsPanelTemplate}"/>
                         <Setter Target="gridViewBrowse.ItemTemplate" Value="{StaticResource ListDataTemplate}"/>
                     </VisualState.Setters>
@@ -62,7 +64,7 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!--  TODO: change properties for normal view  -->
+                        --><!--  TODO: change properties for normal view  --><!--
 
                     </VisualState.Setters>
                 </VisualState>
@@ -71,28 +73,32 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!--  TODO: change properties for wide view  -->
+                        --><!--  TODO: change properties for wide view  --><!--
 
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+        </VisualStateManager.VisualStateGroups>-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Background="{ThemeResource SystemRevealListMediumColor}" Margin="0,0,0,0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" MaxWidth="300" MinWidth="140"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
             <ComboBox x:Name="comboxboxPathElement" Grid.Column="0"
                       HorizontalAlignment="Stretch"
+                      VerticalAlignment="Center"
                       ItemsSource="{x:Bind ViewModel.CacheElements, Mode=OneWay}"
                       IsEnabled="{x:Bind ViewModel.IsGoBackInCacheEnabled, Mode=OneWay}"
-                      SelectedItem="{x:Bind ViewModel.LastCacheElement, Mode=TwoWay}">
+                      SelectedItem="{x:Bind ViewModel.LastCacheElement, Mode=TwoWay}"
+                      >
                 <!--<i:Interaction.Behaviors>
                     <ic:EventTriggerBehavior EventName="SelectionChanged">
                         <ic:InvokeCommandAction Command="{Binding PathElementSelectionChangedCommand}" CommandParameter="{Binding ElementName=comboxboxPathElement}"/>
@@ -111,10 +117,24 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Grid.Column="1" Command="{x:Bind ViewModel.RefreshElementsCommand}">
+            <Slider x:Name="ItemWidthSlider"
+                    Grid.Column="2"
+                    Width="140"
+                    Margin="16,0,16,0"
+                    Value="140"
+                    Minimum="120"
+                    Maximum="240"
+                    VerticalAlignment="Center"
+                    />
+            <Button Grid.Column="3"
+                    Command="{x:Bind ViewModel.RefreshElementsCommand}"
+                    Style="{StaticResource TransactionButtonStyle}"
+                    CornerRadius="16" Height="32" Width="32" Padding="8">
                 <SymbolIcon Symbol="Refresh" />
             </Button>
-            <Button Grid.Column="2" >
+            <Button Grid.Column="4" 
+                    Style="{StaticResource TransactionButtonStyle}"
+                    CornerRadius="16" Height="32" Width="32" Padding="8">
                 <Button.Flyout>
                     <Flyout Placement="Left">
                         <AutoSuggestBox x:Name="autoSuggestBoxFilter" x:Uid="autoSuggestBoxFilter" Width="200" QueryIcon="Filter" PlaceholderText="FILTER" >
@@ -128,7 +148,9 @@
                 </Button.Flyout>
                 <SymbolIcon Symbol="Filter" />
             </Button>
-            <Button Grid.Column="3" IsEnabled="{x:Bind ViewModel.IsSearchEnabled, Mode=OneWay}">
+            <Button Grid.Column="5" IsEnabled="{x:Bind ViewModel.IsSearchEnabled, Mode=OneWay}"
+                    Style="{StaticResource TransactionButtonStyle}"
+                    CornerRadius="16" Height="32" Width="32" Padding="8">
                 <Button.Flyout>
                     <Flyout Placement="Left">
                         <AutoSuggestBox x:Name="autoSuggestBoxSearch" x:Uid="autoSuggestBoxSearch" Width="200" QueryIcon="Find" PlaceholderText="SEARCH">
@@ -151,15 +173,16 @@
                                   RemQueueClicked="{x:Bind ViewModel.OnRemQueueClicked}"
                                   FavQueueClicked="{x:Bind ViewModel.OnFavQueueClicked}"
                                   FavRemQueueClicked="{x:Bind ViewModel.OnFavRemQueueClicked}"/>-->
-        <GridView Grid.Row="1"
+        <!--<GridView Grid.Row="1"
                   x:Name="gridViewBrowse"
                   ItemsSource="{x:Bind ViewModel.Elements, Mode=OneWay}"
                   ScrollViewer.IsHorizontalScrollChainingEnabled="False"
                   IsItemClickEnabled="True" SelectionMode="None"
-                  IsSwipeEnabled="True" AllowDrop="True" ItemContainerStyle="{StaticResource appGridViewItemStyle}"
+                  IsSwipeEnabled="True" AllowDrop="True"
+                  ItemContainerStyle="{StaticResource appGridViewItemStyle}"
                   ItemTemplate="{StaticResource GridDataTemplate}"
                   >
-            <!--<GridView.ItemContainerStyle>
+            --><!--<GridView.ItemContainerStyle>
                 <Style TargetType="GridViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
                 </Style>
@@ -175,8 +198,29 @@
                                        VisibleCountVisibility="{x:Bind VisibleCountVisibility, Mode=OneWay}"
                                        Margin="4,4,4,4"/>
                 </DataTemplate>
-            </GridView.ItemTemplate>-->
+            </GridView.ItemTemplate>--><!--
+        </GridView>-->
+        <GridView Grid.Row="1"
+                  Name="gridViewBrowse"
+                  IsItemClickEnabled="True"
+                  SelectionMode="None"
+                  ItemsSource="{x:Bind ViewModel.Elements, Mode=OneWay}"
+                  ItemTemplate="{StaticResource GridDataTemplate}"
+                  ItemClick="{x:Bind ViewModel.OnItemClick, Mode=OneWay}"
+                  Margin="0,4,0,4">
         </GridView>
+
+        <!--<controls:AdaptiveGridView Grid.Row="1"
+                                   Name="gridViewBrowse"
+                                   OneRowModeEnabled="False"
+                                   DesiredWidth="{Binding Value,ElementName=ItemWidthSlider}"
+                                   IsItemClickEnabled="True"
+                                   SelectionMode="None"
+                                   ItemsSource="{x:Bind ViewModel.Elements, Mode=OneWay}"
+                                   ItemTemplate="{StaticResource GridDataTemplate}"
+                                   ItemClickCommand="{x:Bind ViewModel.ItemClickedCommand}"
+                                   Margin="0,4,0,4"/>-->
+
         <ProgressBar x:Name="progressBar" VerticalContentAlignment="Center" Height="16" Grid.Row="1" Visibility="{x:Bind ViewModel.IsScanningVisibility, Mode=OneWay}" IsIndeterminate="{x:Bind ViewModel.IsScanning, Mode=OneWay}" Canvas.ZIndex="100" />
     </Grid>
 </UserControl>

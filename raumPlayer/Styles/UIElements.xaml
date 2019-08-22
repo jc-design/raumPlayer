@@ -79,14 +79,15 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}" HorizontalAlignment="Stretch" Height="{TemplateBinding MinHeight}" Margin="{TemplateBinding Padding}">
+                    <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}" HorizontalAlignment="Stretch" Height="{TemplateBinding MinHeight}" Margin="{TemplateBinding Padding}" >
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal"/>
                                 <VisualState x:Name="PointerOver">
                                     <VisualState.Setters>
-                                        <Setter Target="LayoutRoot.Background" Value="{ThemeResource ButtonBackgroundPointerOver}"/>
-                                        <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource ButtonForegroundPointerOver}"/>
+                                        <Setter Target="LayoutRoot.Background" Value="{ThemeResource NavigationViewPanetitleBackground}"/>
+                                        <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource TopNavigationViewItemForegroundPointerOver}"/>
+                                        
                                     </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
@@ -450,7 +451,7 @@
                             <Grid x:Name="TogglePaneTopPadding" Height="{Binding TemplateSettings.TopPadding, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
                             <Grid x:Name="ButtonHolderGrid" Grid.Row="1">
                                 <Button x:Name="NavigationViewBackButton" IsEnabled="{TemplateBinding IsBackEnabled}" Style="{StaticResource NavigationBackButtonNormalStyle}" VerticalAlignment="Top" Visibility="{Binding TemplateSettings.BackButtonVisibility, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
-                                <Button x:Name="TogglePaneButton" AutomationProperties.LandmarkType="Navigation" Style="{TemplateBinding PaneToggleButtonStyle}" VerticalAlignment="Top" Visibility="{Binding TemplateSettings.PaneToggleButtonVisibility, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
+                                <Button x:Name="TogglePaneButton" AutomationProperties.LandmarkType="Navigation" Style="{TemplateBinding PaneToggleButtonStyle}" VerticalAlignment="Top" Visibility="{Binding TemplateSettings.PaneToggleButtonVisibility, RelativeSource={RelativeSource Mode=TemplatedParent}}" Canvas.ZIndex="0"/>
                             </Grid>
                         </Grid>
                         <Grid>
@@ -531,7 +532,7 @@
                                                 <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock x:Name="PaneTitleTextBlock" Grid.Column="0" HorizontalAlignment="Left" Style="{StaticResource NavigationViewItemHeaderTextStyle}" Text="{TemplateBinding PaneTitle}" VerticalAlignment="Center"/>
+                                            <TextBlock x:Name="PaneTitleTextBlock" Grid.Column="0" HorizontalAlignment="Left" Style="{StaticResource NavigationViewItemHeaderTextStyle}" Text="{TemplateBinding PaneTitle}" VerticalAlignment="Center" Canvas.ZIndex="100"/>
                                             <ContentControl x:Name="PaneHeaderContentBorder" Grid.Column="1" HorizontalContentAlignment="Stretch" IsTabStop="False" VerticalContentAlignment="Stretch"/>
                                         </Grid>
                                         <Grid x:Name="AutoSuggestArea" Height="{ThemeResource NavigationViewTopPaneHeight}" Grid.Row="3" VerticalAlignment="Center">

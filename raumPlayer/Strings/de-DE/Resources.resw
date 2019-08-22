@@ -12,13 +12,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Main_Title.Text" xml:space="preserve">
-    <value>Haupt</value>
-    <comment>Page title for Main</comment>
-  </data>
-  <data name="Shell_Main" xml:space="preserve">
-    <value>Haupt</value>
-    <comment>Navigation view item name for Main</comment>
+  <data name="ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty" xml:space="preserve">
+    <value>Dateiname ist leer. Bitte gültigen Dateinamen definieren.</value>
+    <comment>File name is null or empty to save file in settings storage extensions</comment>
   </data>
   <data name="Settings_Title.Text" xml:space="preserve">
     <value>Einstellungen</value>
@@ -52,13 +48,21 @@
     <value>Personalisierung</value>
     <comment>Personalization text for Settings</comment>
   </data>
-  <data name="Shell_Settings" xml:space="preserve">
-    <value>Einstellungen</value>
-    <comment>Navigation view item name for Settings</comment>
+  <data name="ExceptionEnumToBooleanConverterValueMustBeAnEnum" xml:space="preserve">
+    <value>Wert muß eine Enum sein!</value>
+    <comment>Value must be an Enum in enum to boolean converter</comment>
+  </data>
+  <data name="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" xml:space="preserve">
+    <value>Parameter muß ein Enum sein!</value>
+    <comment>Parameter must be an Enum name in enum to boolean converter</comment>
   </data>
   <data name="FirstRun_Title.Text" xml:space="preserve">
     <value>Willkommen</value>
     <comment>First use prompt message title</comment>
+  </data>
+  <data name="AfterUpdate_Title.Text" xml:space="preserve">
+    <value>Was ist neu in dieser Version</value>
+    <comment>What's new prompt message title</comment>
   </data>
   <data name="aboutHub.Text" xml:space="preserve">
     <value>Über</value>
@@ -108,8 +112,32 @@
   <data name="Genre" xml:space="preserve">
     <value>Genre</value>
   </data>
+  <data name="greetingsHub.Text" xml:space="preserve">
+    <value>Grüße</value>
+  </data>
+  <data name="historyHeaderHub.Text" xml:space="preserve">
+    <value>Hisotire / Ideen</value>
+  </data>
   <data name="historyHub.Text" xml:space="preserve">
     <value>Historie</value>
+  </data>
+  <data name="HowTo1.Source" xml:space="preserve">
+    <value>ms-appx:///Assets/1_rp_DE.png</value>
+  </data>
+  <data name="HowTo2.Source" xml:space="preserve">
+    <value>ms-appx:///Assets/2_rp_DE.png</value>
+  </data>
+  <data name="HowTo3.Source" xml:space="preserve">
+    <value>ms-appx:///Assets/3_rp_DE.png</value>
+  </data>
+  <data name="HowTo4.Source" xml:space="preserve">
+    <value>ms-appx:///Assets/4_rp_DE.png</value>
+  </data>
+  <data name="HowTo5.Source" xml:space="preserve">
+    <value>ms-appx:///Assets/5_rp_DE.png</value>
+  </data>
+  <data name="HowTo6.Source" xml:space="preserve">
+    <value>ms-appx:///Assets/6_rp_DE.png</value>
   </data>
   <data name="HowToDialog.PrimaryButtonText" xml:space="preserve">
     <value>Weiter</value>
@@ -141,26 +169,71 @@
   <data name="MyPlaylists" xml:space="preserve">
     <value>Meine Playlisten</value>
   </data>
+  <data name="NewZone" xml:space="preserve">
+    <value>Neue Zone</value>
+  </data>
+  <data name="NoZones" xml:space="preserve">
+    <value>Keine Zonen verfügbar</value>
+  </data>
   <data name="OkMessage" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="pivotItemBrowse.Header" xml:space="preserve">
     <value>Musik</value>
   </data>
+  <data name="Playlists" xml:space="preserve">
+    <value>Playlisten</value>
+  </data>
   <data name="Radio" xml:space="preserve">
     <value>Radio</value>
+  </data>
+  <data name="radioButtonDirektOne.Content" xml:space="preserve">
+    <value>Direkt 1</value>
+  </data>
+  <data name="radioButtonFavorites.Content" xml:space="preserve">
+    <value>Favoriten</value>
   </data>
   <data name="radioButtonIntro.Content" xml:space="preserve">
     <value>Einführung</value>
   </data>
+  <data name="radioButtonMyMusic.Content" xml:space="preserve">
+    <value>Musik</value>
+  </data>
   <data name="radioButtonNormal.Content" xml:space="preserve">
     <value>Normal</value>
+  </data>
+  <data name="radioButtonRandom.Content" xml:space="preserve">
+    <value>Zufall</value>
+  </data>
+  <data name="radioButtonRepeatAll.Content" xml:space="preserve">
+    <value>Wiederholen alle</value>
+  </data>
+  <data name="radioButtonRepeatOne.Content" xml:space="preserve">
+    <value>Wiederholen eins</value>
+  </data>
+  <data name="radioButtonShuffle.Content" xml:space="preserve">
+    <value>Mixen</value>
+  </data>
+  <data name="RadioLocal" xml:space="preserve">
+    <value>Lokal</value>
+  </data>
+  <data name="RadioMusic" xml:space="preserve">
+    <value>Musik</value>
   </data>
   <data name="RadioSport" xml:space="preserve">
     <value>Sport</value>
   </data>
   <data name="RadioTalk" xml:space="preserve">
-    <value>Sprechen</value>
+    <value>Unterhaltung</value>
+  </data>
+  <data name="RateAppMessage" xml:space="preserve">
+    <value>App bewerten</value>
+  </data>
+  <data name="RecentlyPlayed" xml:space="preserve">
+    <value>Kürzlich gespielt</value>
+  </data>
+  <data name="Shuffles" xml:space="preserve">
+    <value>Mixed Playliste</value>
   </data>
   <data name="textBlockAddQueue.Text" xml:space="preserve">
     <value>Hinzufügen</value>
@@ -171,14 +244,72 @@
   <data name="textBlockFav.Text" xml:space="preserve">
     <value>Zu Favoriten</value>
   </data>
+  <data name="textBlockFavRem.Text" xml:space="preserve">
+    <value>Lösche aus Favoriten</value>
+  </data>
   <data name="textBlockNewQueue.Text" xml:space="preserve">
     <value>Abspielen</value>
   </data>
   <data name="textBlockNewZone.Text" xml:space="preserve">
     <value>Neue Zone</value>
   </data>
+  <data name="textBlockRem.Text" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
+  <data name="textBlockRooms.Text" xml:space="preserve">
+    <value>Räume</value>
+  </data>
+  <data name="textblockScanning.Text" xml:space="preserve">
+    <value>Netzwerk nach Raumfeldgeräten durchsuchen</value>
+  </data>
+  <data name="textblockSkypeGroup.Text" xml:space="preserve">
+    <value>Wenn du dabei sein willst, tritt der Skypegruppe bei.
+Wir hören auf dein Feedback.</value>
+  </data>
+  <data name="textBoxNavigation.Text" xml:space="preserve">
+    <value>Beginnen mit...</value>
+  </data>
+  <data name="textBoxPlayModes.Text" xml:space="preserve">
+    <value>Abspielarten</value>
+  </data>
+  <data name="textBoxRoomHeader.Text" xml:space="preserve">
+    <value>Räume</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="toggleActiv.OffContent" xml:space="preserve">
+    <value>Inaktiv</value>
+  </data>
+  <data name="toggleActiv.OnContent" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="toggleSwitchShowRooms.OffContent" xml:space="preserve">
+    <value>Raum ausblenden</value>
+  </data>
+  <data name="toggleSwitchShowRooms.OnContent" xml:space="preserve">
+    <value>Raum zeigen</value>
+  </data>
+  <data name="toggleSwitchTuneIn.OffContent" xml:space="preserve">
+    <value>Inaktiv</value>
+  </data>
+  <data name="toggleSwitchTuneIn.OnContent" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="toggleSwitchTuneInHeader.Text" xml:space="preserve">
+    <value>Radioservice TuneIn Status</value>
+  </data>
+  <data name="TuneIn" xml:space="preserve">
+    <value>TuneIn</value>
+  </data>
+  <data name="zoneDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Okay</value>
+  </data>
   <data name="zoneDialog.SecondaryButtonText" xml:space="preserve">
     <value>Abbruch</value>
+  </data>
+  <data name="zoneDialog.Title" xml:space="preserve">
+    <value>Zonendefinition</value>
   </data>
   <data name="navItems_Groups.Content" xml:space="preserve">
     <value>Musik...</value>
@@ -224,5 +355,20 @@
   </data>
   <data name="ControlPalettePresetComboMessage.Text" xml:space="preserve">
     <value>Änderungen werden nach Appneustart wirksam</value>
+  </data>
+  <data name="_Settings_LoadGreetingsRTF" xml:space="preserve">
+    <value>ms-appx:///Strings/de-de/greetings.rtf</value>
+  </data>
+  <data name="textBoxCache.Text" xml:space="preserve">
+    <value>Cachingdaten</value>
+  </data>
+  <data name="buttonClearCache.Content" xml:space="preserve">
+    <value>Lösche Cache</value>
+  </data>
+  <data name="Files" xml:space="preserve">
+    <value>Dateien</value>
+  </data>
+  <data name="navItem_ManageZones.Content" xml:space="preserve">
+    <value>Zoneneinstellungen</value>
   </data>
 </root>

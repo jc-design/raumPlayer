@@ -4,6 +4,7 @@ using Prism.Unity.Windows;
 using raumPlayer.Helpers;
 using raumPlayer.Interfaces;
 using raumPlayer.Models;
+using raumPlayer.PrismEvents;
 using raumPlayer.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Upnp
     {
         private readonly IEventAggregator eventAggregator;
         private readonly IMessagingService messagingService;
+        private readonly ICachingService cachingService;
         private readonly INetWorkSubscriber netWorkSubscriber;
 
         private readonly DeviceDescription deviceDescription;
@@ -41,10 +43,11 @@ namespace Upnp
 
         public Dictionary<string, ServiceAction> ServiceActions { get; set; }
 
-        public MediaServer(IEventAggregator eventAggregatorInstance, IMessagingService messagingServiceInstance, INetWorkSubscriber netWorkSubscriberInstance, DeviceDescription deviceDescription, string ipAddress, int port)
+        public MediaServer(IEventAggregator eventAggregatorInstance, IMessagingService messagingServiceInstance, ICachingService cachingServiceInstance, INetWorkSubscriber netWorkSubscriberInstance, DeviceDescription deviceDescription, string ipAddress, int port)
         {
             eventAggregator = eventAggregatorInstance;
             messagingService = messagingServiceInstance;
+            cachingService = cachingServiceInstance;
             netWorkSubscriber = netWorkSubscriberInstance;
 
             this.deviceDescription = deviceDescription;
@@ -217,7 +220,6 @@ namespace Upnp
         /// <returns></returns>
         public async Task<ServiceActionReturnMessage> Browse(string containerId, int start, int limit = 10)
         {
-
             try
             {
                 if (ServiceActions.TryGetValue("BROWSE", out ServiceAction action))
@@ -248,10 +250,12 @@ namespace Upnp
                                 case "Search":
                                     break;
                                 default:
-                                    ElementBase element = PrismUnityApplication.Current.Container.Resolve<ElementContainer>(new ResolverOverride[]
-                                        {
-                                           new ParameterOverride("didl", container)
-                                        });
+
+                                    ElementBase element = PrismUnityApplication.Current.Container.Resolve<ElementBase>("DIDLContainer",
+                                        new DependencyOverride(typeof(IEventAggregator), eventAggregator),
+                                        new DependencyOverride(typeof(ICachingService), cachingService),
+                                        new DependencyOverride(typeof(DIDLContainer), container));
+
                                     elements.Add(element);
 
                                     break;
@@ -260,10 +264,11 @@ namespace Upnp
                         }
                         foreach (DIDLItem item in didlliteResult.Items)
                         {
-                            ElementBase element = PrismUnityApplication.Current.Container.Resolve<ElementItem>(new ResolverOverride[]
-                                        {
-                                           new ParameterOverride("didl", item)
-                                        });
+                            ElementBase element = PrismUnityApplication.Current.Container.Resolve<ElementBase>("DIDLItem",
+                                new DependencyOverride(typeof(IEventAggregator), eventAggregator),
+                                new DependencyOverride(typeof(ICachingService), cachingService),
+                                new DependencyOverride(typeof(DIDLItem), item));
+
                             elements.Add(element);
                         }
 
@@ -325,10 +330,14 @@ namespace Upnp
                                 case "Search":
                                     break;
                                 default:
-                                    element = PrismUnityApplication.Current.Container.Resolve<ElementContainer>(new ResolverOverride[]
-                                        {
-                                           new ParameterOverride("didl", container)
-                                        });
+                                    //element = PrismUnityApplication.Current.Container.Resolve<ElementContainer>(new ResolverOverride[]
+                                    //    {
+                                    //       new ParameterOverride("didl", container)
+                                    //    });
+                                    element = PrismUnityApplication.Current.Container.Resolve<ElementBase>("DIDLContainer",
+                                        new DependencyOverride(typeof(IEventAggregator), eventAggregator),
+                                        new DependencyOverride(typeof(ICachingService), cachingService),
+                                        new DependencyOverride(typeof(DIDLContainer), container));
 
                                     break;
                             }
@@ -336,10 +345,14 @@ namespace Upnp
                         }
                         foreach (DIDLItem item in didlliteResult.Items)
                         {
-                            element = PrismUnityApplication.Current.Container.Resolve<ElementItem>(new ResolverOverride[]
-                                        {
-                                           new ParameterOverride("didl", item)
-                                        });
+                            //element = PrismUnityApplication.Current.Container.Resolve<ElementItem>(new ResolverOverride[]
+                            //            {
+                            //               new ParameterOverride("didl", item)
+                            //            });
+                            element = PrismUnityApplication.Current.Container.Resolve<ElementBase>("DIDLItem",
+                                new DependencyOverride(typeof(IEventAggregator), eventAggregator),
+                                new DependencyOverride(typeof(ICachingService), cachingService),
+                                new DependencyOverride(typeof(DIDLItem), item));
                         }
 
                         message.ReturnValue = element;
@@ -511,10 +524,14 @@ namespace Upnp
                                 case "Search":
                                     break;
                                 default:
-                                    ElementBase element = PrismUnityApplication.Current.Container.Resolve<ElementContainer>(new ResolverOverride[]
-                                        {
-                                           new ParameterOverride("didl", container)
-                                        });
+                                    //ElementBase element = PrismUnityApplication.Current.Container.Resolve<ElementContainer>(new ResolverOverride[]
+                                    //    {
+                                    //       new ParameterOverride("didl", container)
+                                    //    });
+                                    ElementBase element = PrismUnityApplication.Current.Container.Resolve<ElementBase>("DIDLContainer",
+                                        new DependencyOverride(typeof(IEventAggregator), eventAggregator),
+                                        new DependencyOverride(typeof(ICachingService), cachingService),
+                                        new DependencyOverride(typeof(DIDLContainer), container));
                                     elements.Add(element);
 
                                     break;
@@ -523,10 +540,14 @@ namespace Upnp
                         }
                         foreach (DIDLItem item in didlliteResult.Items)
                         {
-                            ElementBase element = PrismUnityApplication.Current.Container.Resolve<ElementItem>(new ResolverOverride[]
-                                        {
-                                           new ParameterOverride("didl", item)
-                                        });
+                            //ElementBase element = PrismUnityApplication.Current.Container.Resolve<ElementItem>(new ResolverOverride[]
+                            //            {
+                            //               new ParameterOverride("didl", item)
+                            //            });
+                            ElementBase element = PrismUnityApplication.Current.Container.Resolve<ElementBase>("DIDLItem",
+                                new DependencyOverride(typeof(IEventAggregator), eventAggregator),
+                                new DependencyOverride(typeof(ICachingService), cachingService),
+                                new DependencyOverride(typeof(DIDLItem), item));
                             elements.Add(element);
                         }
 

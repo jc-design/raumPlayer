@@ -157,6 +157,7 @@ namespace raumPlayer.ViewModels
             if (e.SourcePageType == typeof(SettingsPage))
             {
                 Selected = navigationView.SettingsItem as NavigationViewItem;
+                PrismUnityApplication.Current.Container.Resolve<ISettingsViewModel>().RefreshCacheValuesAsync();
                 return;
             }
 
@@ -206,35 +207,5 @@ namespace raumPlayer.ViewModels
                 ZoneViewModels.Add(zone);
             }
         }
-
-        //public async Task SetActiveZoneViewModel(string zoneUdn)
-        //{
-        //    if (string.IsNullOrEmpty(zoneUdn))
-        //    {
-        //        zoneUdn = await ApplicationData.Current.LocalSettings.ReadAsync<string>("ACTIVEZONE");
-        //        zoneUdn = ZoneViewModels.Select(z => z).Where(z => z.Udn == zoneUdn).FirstOrDefault()?.Udn;
-        //        if (string.IsNullOrEmpty(zoneUdn))
-        //        {
-        //            zoneUdn = ZoneViewModels.First().Udn;
-        //            await ApplicationData.Current.LocalSettings.SaveAsync("ACTIVEZONE", zoneUdn);
-        //        }
-        //    }
-
-        //    foreach (var zone in ZoneViewModels)
-        //    {
-        //        if (zone.Udn == zoneUdn)
-        //        {
-        //            zone.IsActive = true;
-        //            if (navigationView.MenuItems[7] is NavigationViewItem item)
-        //            {
-        //                item.Content = zone.Name;
-        //            }
-        //            ActiveZoneViewModel = zone;
-
-        //            await ApplicationData.Current.LocalSettings.SaveAsync("ACTIVEZONE", zone.Udn);
-        //        }
-        //        else { zone.IsActive = false; }
-        //    }
-        //}
     }
 }

@@ -22,6 +22,7 @@ using Windows.UI.Text;
 using Windows.UI;
 using Windows.UI.Xaml.Media;
 using Windows.System;
+using System.IO;
 
 namespace raumPlayer.ViewModels
 {
@@ -31,6 +32,7 @@ namespace raumPlayer.ViewModels
         private readonly IEventAggregator eventAggregator;
         private readonly IMessagingService messagingService;
         private readonly INavigationService navigationService;
+        private readonly ICachingService cachingService;
         private readonly IRaumFeldService raumFeldService;
 
         private Preset selectedPreset;
@@ -92,6 +94,19 @@ namespace raumPlayer.ViewModels
         public string AppPublisher => messagingService.AppPublisher;
         public string AppVersion => messagingService.AppVersion;
         public Uri AppLogo => messagingService.AppLogo;
+
+        private string countCachedFiles;
+        public string CountCachedFiles
+        {
+            get { return countCachedFiles; }
+            set { SetProperty(ref countCachedFiles, value); }
+        }
+        private string sizeCachedFiles;
+        public string SizeCachedFiles
+        {
+            get { return sizeCachedFiles; }
+            set { SetProperty(ref sizeCachedFiles, value); }
+        }
 
         #region ICommands
 
@@ -168,12 +183,13 @@ namespace raumPlayer.ViewModels
 
         #endregion
 
-        public SettingsViewModel(INavigationService navigationServiceInstance, IEventAggregator eventAggregatorInstance, IMessagingService messagingServiceInstance, IRaumFeldService raumFeldServiceInstance)
+        public SettingsViewModel(INavigationService navigationServiceInstance, IEventAggregator eventAggregatorInstance, IMessagingService messagingServiceInstance, ICachingService cachingServiceInstance, IRaumFeldService raumFeldServiceInstance)
         {
             navigationService = navigationServiceInstance;
 
             eventAggregator = eventAggregatorInstance;
             messagingService = messagingServiceInstance;
+            cachingService = cachingServiceInstance;
             raumFeldService = raumFeldServiceInstance;
 
             eventAggregator.GetEvent<SystemUpdateIDChangedEvent>().Subscribe(onSystemUpdateIDChanged, ThreadOption.UIThread);
@@ -238,6 +254,12 @@ namespace raumPlayer.ViewModels
             }
         }
 
+        /// <summary>
+        /// Load RTF-Files where Richeditbox LoadeEvent is fired
+        /// Tag-Value needs to be filled
+        /// </summary>
+        /// <param name="sender">UIElement Richeditbox</param>
+        /// <param name="e">RoutedEventArgs</param>
         public async void rtb_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -281,6 +303,27 @@ namespace raumPlayer.ViewModels
         public async void AddSkypeGroup()
         {
             await Launcher.LaunchUriAsync(new Uri("https://join.skype.com/l4wfW2nS2Vh6"));
+        }
+
+        public async Task RefreshCacheValuesAsync()
+        {
+            StorageFolder cacheFolder = null;
+            cacheFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("cachedImages", CreationCollisionOption.OpenIfExists);
+
+            var p = await cacheFolder.GetBasicPropertiesAsync();
+
+            float size = await cachingService.GetSizeOfCachedFilesAsync();
+            string unit = size > 1024 ? "GB" : "MB";
+            size = size > 1024 ? size / 1024f : size;
+
+            CountCachedFiles = string.Format("{0:N0} {1}", await cachingService.GetCountOfCachedFilesAsync(), "Files".GetLocalized());
+            SizeCachedFiles = string.Format("{0:N3} {1}", size, unit);
+        }
+
+        public async void ClearCache()
+        {
+            await cachingService.ClearCacheAsync();
+            await RefreshCacheValuesAsync();
         }
 
         public async void HowTo()

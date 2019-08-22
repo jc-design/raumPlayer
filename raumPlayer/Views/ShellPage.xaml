@@ -59,7 +59,7 @@
                 </NavigationViewItem>
 
                 <NavigationViewItemSeparator/>
-                <NavigationViewItemHeader x:Name="navItems_ManageZones" Content="MANAGE_ZONES"/>
+                <NavigationViewItemHeader x:Uid="navItem_ManageZones" Content="MANAGE_ZONES"/>
 
                 <NavigationViewItem x:Uid="NavItem_ActiveZone" Content="ACTIVE_ZONE" helpers:NavHelper.NavigateTo="MyMusic">
                     <NavigationViewItem.Icon>
@@ -95,9 +95,9 @@
             </Grid>
 
         </NavigationView>
-        <RelativePanel x:Name="relativePanelCurrentItem"  Height="80" Grid.ColumnSpan="2" Grid.Row="1" Background="{x:Bind ViewModel.ActiveZoneViewModel.CurrentTrackMetaData.AverageColorImageArt, Mode=OneWay}">
+        <RelativePanel x:Name="relativePanelCurrentItem"  Height="80" Grid.ColumnSpan="2" Grid.Row="1" Background="{x:Bind ViewModel.ActiveZoneViewModel.CurrentTrackMetaData.AverageColorBrushImageArt, Mode=OneWay}">
             <Image x:Name="imageCurrentItem" Width="80" Height="80" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf=""
-                           Source="{x:Bind ViewModel.ActiveZoneViewModel.CurrentTrackMetaData.ImageArt, Mode=OneWay}"/>
+                   Source="{x:Bind ViewModel.ActiveZoneViewModel.CurrentTrackMetaData.ImageArt, Mode=OneWay}"/>
             <StackPanel x:Name="descriptionCurrentItem" RelativePanel.AlignVerticalCenterWith="imageCurrentItem" RelativePanel.RightOf="currentTrackCurrentItem" Margin="8,0,0,0" RelativePanel.AlignTopWith="">
                 <TextBlock x:Name="textBlockTitle" Text="{x:Bind ViewModel.ActiveZoneViewModel.CurrentTrackMetaData.Title, Mode=OneWay}" />
                 <TextBlock x:Name="textBlockAlbum" Text="{x:Bind ViewModel.ActiveZoneViewModel.CurrentTrackMetaData.Line1, Mode=OneWay}" />

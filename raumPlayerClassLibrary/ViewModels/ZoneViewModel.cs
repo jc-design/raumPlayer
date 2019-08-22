@@ -25,6 +25,7 @@ namespace raumPlayer.ViewModels
     {
         private readonly IEventAggregator eventAggregator;
         private readonly IMessagingService messagingService;
+        private readonly ICachingService cachingService;
         private readonly IShellViewModel shellViewModel;
         private readonly IRaumFeldService raumFeldService;
         private readonly MediaRenderer zoneViewModelRenderer;
@@ -175,13 +176,16 @@ namespace raumPlayer.ViewModels
                                 DIDLLite didl = trackMetaData.Deserialize<DIDLLite>();
                                 if ((didl?.Items?.Count() ?? 0) != 0)
                                 {
-                                    //if (CurrentTrackMetaData != null) { CurrentTrackMetaData.ImageAndColorLoaded -= OnImageAndColorLoaded; }
-                                    CurrentTrackMetaData = PrismUnityApplication.Current.Container.Resolve<ElementItem>(new ResolverOverride[]
-                                        {
-                                           new ParameterOverride("didl", didl?.Items?.FirstOrDefault())
-                                        });
+                                    //CurrentTrackMetaData = PrismUnityApplication.Current.Container.Resolve<ElementItem>(new ResolverOverride[]
+                                    //    {
+                                    //       new ParameterOverride("didl", didl?.Items?.FirstOrDefault())
+                                    //    });
+                                    //await cachingService.AddElement(CurrentTrackMetaData);
+                                    CurrentTrackMetaData = PrismUnityApplication.Current.Container.Resolve<ElementBase>("DIDLItem",
+                                        new DependencyOverride(typeof(IEventAggregator), eventAggregator),
+                                        new DependencyOverride(typeof(ICachingService), cachingService),
+                                        new DependencyOverride(typeof(DIDLItem), didl?.Items?.FirstOrDefault()));
 
-                                    //CurrentTrackMetaData.ImageAndColorLoaded += OnImageAndColorLoaded;
                                     setSelection(CurrentTrackMetaData);
                                 }
                                 else { CurrentTrackMetaData = null; }
@@ -408,22 +412,12 @@ namespace raumPlayer.ViewModels
             set { SetProperty(ref currentTrackDuration, value); }
         }
 
-        private ElementItem currentTrackMetaData;
-        public ElementItem CurrentTrackMetaData
+        private ElementBase currentTrackMetaData;
+        public ElementBase CurrentTrackMetaData
         {
             get { return currentTrackMetaData; }
             set { SetProperty(ref currentTrackMetaData, value); }
         }
-
-        //private string albumArtUri;
-        //public string AlbumArtUri
-        //{
-        //    get { return albumArtUri; }
-        //    set { SetProperty(ref albumArtUri, value,  () =>
-        //    {
-        //        if (shellViewModel.GetAlbumArtCommand.CanExecute(this)) { shellViewModel.GetAlbumArtCommand.Execute(this); }
-        //    }); }
-        //}
 
         private ElementBase avTransportURIMetaData;
         public ElementBase AVTransportURIMetaData
@@ -629,10 +623,11 @@ namespace raumPlayer.ViewModels
 
         #endregion
 
-        public ZoneViewModel(IEventAggregator eventAggregatorInstance, IMessagingService messagingServiceInstance, IShellViewModel shellViewModelInstance, IRaumFeldService raumFeldServiceInstance, MediaRenderer zoneViewModelRendererInstance)
+        public ZoneViewModel(IEventAggregator eventAggregatorInstance, IMessagingService messagingServiceInstance, ICachingService cachingServiceInstance, IShellViewModel shellViewModelInstance, IRaumFeldService raumFeldServiceInstance, MediaRenderer zoneViewModelRendererInstance)
         {
             eventAggregator = eventAggregatorInstance;
             messagingService = messagingServiceInstance;
+            cachingService = cachingServiceInstance;
             shellViewModel = shellViewModelInstance;
             raumFeldService = raumFeldServiceInstance;
             zoneViewModelRenderer = zoneViewModelRendererInstance;
@@ -889,7 +884,7 @@ namespace raumPlayer.ViewModels
                 }
             }
         }
-        private void onCurrentTrackMetaDataChanged(RaumFeldEvent args)
+        private async void onCurrentTrackMetaDataChanged(RaumFeldEvent args)
         {
             // val = "&lt;DIDL-Lite xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot; xmlns:raumfeld=&quot;urn:schemas-raumfeld-com:meta-data/raumfeld&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot; xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:dlna=&quot;urn:schemas-dlna-org:metadata-1-0/&quot; lang=&quot;en&quot;&gt;&lt;item parentID=&quot;0/My Music/Albums/The%20Notwist+12&quot; id=&quot;0/My Music/Albums/The%20Notwist+12/75725c9134fd69b824706f8a3b3030c4&quot; restricted=&quot;1&quot;&gt;&lt;raumfeld:name&gt;Track&lt;/raumfeld:name&gt;&lt;upnp:class&gt;object.item.audioItem.musicTrack&lt;/upnp:class&gt;&lt;raumfeld:section&gt;My Music&lt;/raumfeld:section&gt;&lt;dc:title&gt;The String&lt;/dc:title&gt;&lt;upnp:album&gt;12&lt;/upnp:album&gt;&lt;upnp:artist&gt;The Notwist&lt;/upnp:artist&gt;&lt;upnp:genre&gt;Punk Rock&lt;/upnp:genre&gt;&lt;dc:creator&gt;The Notwist&lt;/dc:creator&gt;&lt;upnp:originalTrackNumber&gt;7&lt;/upnp:originalTrackNumber&gt;&lt;dc:date&gt;1995-01-01&lt;/dc:date&gt;&lt;upnp:albumArtURI dlna:profileID=&quot;JPEG_TN&quot;&gt;http://192.168.0.18:47366/?artist=The%20Notwist&amp;amp;albumArtist=The%20Notwist&amp;amp;album=12&amp;amp;track=The%20String&lt;/upnp:albumArtURI&gt;&lt;res protocolInfo=&quot;http-get:*:audio/mpeg:DLNA.ORG_PN=MP3&quot; size=&quot;5636735&quot; duration=&quot;0:04:31.000&quot; bitrate=&quot;163840&quot; sampleFrequency=&quot;44100&quot; nrAudioChannels=&quot;2&quot; sourceName=&quot;music on jc-station&quot; sourceType=&quot;smb&quot; sourceID=&quot;uuid:39cb689d-3804-43da-a14e-21102a1f50ec&quot;&gt;http://192.168.0.18:37665/redirect?uri=smb%3A%2F%2Fjc-station%2Fmusic%2F%2FMP3%2FThe%2520Notwist%2F12%2F07%2520The%2520String.mp3&lt;/res&gt;&lt;/item&gt;&lt;/DIDL-Lite&gt;" />
             if (args.ChangedValues.TryGetValue("val", out string currenttrackmetadata))
@@ -897,27 +892,30 @@ namespace raumPlayer.ViewModels
                 DIDLLite didl = currenttrackmetadata.Deserialize<DIDLLite>();
                 if ((didl?.Items?.Count() ?? 0) != 0)
                 {
-                    //if (CurrentTrackMetaData != null) { CurrentTrackMetaData.ImageAndColorLoaded -= OnImageAndColorLoaded; }
+                    //CurrentTrackMetaData = PrismUnityApplication.Current.Container.Resolve<ElementItem>(new ResolverOverride[]
+                    //                    {
+                    //                       new ParameterOverride("didl", didl?.Items?.FirstOrDefault())
+                    //                    });
 
-                    CurrentTrackMetaData = PrismUnityApplication.Current.Container.Resolve<ElementItem>(new ResolverOverride[]
-                                        {
-                                           new ParameterOverride("didl", didl?.Items?.FirstOrDefault())
-                                        });
+                    //CacheData cachedData = await cachingService.GetElement($"{CurrentTrackMetaData.AlbumArtUri.ComputeMD5()}.png");
+                    //if (cachedData != null && !string.IsNullOrWhiteSpace(cachedData.FileName))
+                    //{
+                    //    eventAggregator.GetEvent<DataCachedEvent>().Publish(cachedData);
+                    //}
+                    //else
+                    //{
+                    //    var t = Task<CacheData>.Run(() => cachingService.AddElement(CurrentTrackMetaData)).ContinueWith(data => eventAggregator.GetEvent<DataCachedEvent>().Publish(data.Result)).ConfigureAwait(false);
+                    //}
 
-                    //CurrentTrackMetaData.ImageAndColorLoaded += OnImageAndColorLoaded;
+                    CurrentTrackMetaData = PrismUnityApplication.Current.Container.Resolve<ElementBase>("DIDLItem",
+                                        new DependencyOverride(typeof(IEventAggregator), eventAggregator),
+                                        new DependencyOverride(typeof(ICachingService), cachingService),
+                                        new DependencyOverride(typeof(DIDLItem), didl?.Items?.FirstOrDefault()));
+
                     setSelection(CurrentTrackMetaData);
                 }
             }
         }
-
-        //private void OnImageAndColorLoaded(object sender, EventArgs e)
-        //{
-        //    if (sender is ElementItem element)
-        //    {
-        //        AlbumArtUri = CurrentTrackMetaData.AlbumArtUri;
-        //    }
-        //}
-
         private void onCurrentTransportActionsChanged(RaumFeldEvent args)
         {
             // val = "Next,Pause,Previous,Repeat,Seek,Shuffle,Stop" />

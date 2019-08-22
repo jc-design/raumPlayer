@@ -9,7 +9,7 @@ namespace raumPlayer.Interfaces
     public interface ILoggingService
     {
         Task Initialize();
-        Task Log(Exception exception);
-        Task Log(string message);
+        Task Log(Exception Exception);
+        Task Log(string Message);
     }
 }

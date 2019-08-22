@@ -14,11 +14,22 @@ using Windows.Storage.Streams;
 using Windows.Graphics.Imaging;
 using Windows.UI;
 using raumPlayer.Services;
+using System.Xml.Serialization;
+using raumPlayer.Helpers;
+using raumPlayer.Models;
+using Prism.Unity.Windows;
+using Prism.Events;
+using raumPlayer.PrismEvents;
 
 namespace raumPlayer.ViewModels
 {
     public class ElementBase : ViewModelBase, IElementBase
     {
+        private readonly IEventAggregator eventAggregator;
+        private readonly ICachingService cachingService;
+
+        private readonly string fileName;
+
         public bool IsFolder { get; }
         public string ParentID { get; }
         public string Id { get; }
@@ -89,17 +100,24 @@ namespace raumPlayer.ViewModels
             get { return imageArt; }
             set { SetProperty(ref imageArt, value); }
         }
-        private SolidColorBrush averageColorImageArt;
-        public SolidColorBrush AverageColorImageArt
+
+        private SolidColorBrush averageColorBrushImageArt;
+        public SolidColorBrush AverageColorBrushImageArt
         {
-            get { return averageColorImageArt; }
-            set { SetProperty(ref averageColorImageArt, value); }
+            get { return averageColorBrushImageArt; }
+            set { SetProperty(ref averageColorBrushImageArt, value); }
         }
 
-        public ElementBase() { }
-
-        public ElementBase(DIDLItem item)
+        public ElementBase()
         {
+            Element = this;
+        }
+
+        public ElementBase(IEventAggregator eventAggregatorInstance, ICachingService cachingServiceInstance, DIDLItem item)
+        {
+            eventAggregator = eventAggregatorInstance;
+            cachingService = cachingServiceInstance;
+
             IsFolder = false;
             ParentID = item?.ParentID ?? string.Empty;
             Id = item?.Id ?? string.Empty;
@@ -154,9 +172,19 @@ namespace raumPlayer.ViewModels
 
             Element = this;
             BrowsedMetaData = string.Empty;
+
+            fileName = $"{AlbumArtUri.ComputeMD5()}.png";
+
+            eventAggregator.GetEvent<DataCachedEvent>().Subscribe(onDataCached, ThreadOption.UIThread, false,
+                name => (name?.FileName ?? string.Empty) == fileName);
+
+            IntializeCommand.Execute(null);
         }
-        public ElementBase(DIDLContainer container)
+        public ElementBase(IEventAggregator eventAggregatorInstance, ICachingService cachingServiceInstance, DIDLContainer container)
         {
+            eventAggregator = eventAggregatorInstance;
+            cachingService = cachingServiceInstance;
+
             IsFolder = true;
             ParentID = container?.ParentID ?? string.Empty;
             Id = container?.Id ?? string.Empty;
@@ -234,6 +262,54 @@ namespace raumPlayer.ViewModels
 
             Element = this;
             BrowsedMetaData = string.Empty;
+
+            fileName = $"{AlbumArtUri.ComputeMD5()}.png";
+            eventAggregator.GetEvent<DataCachedEvent>().Subscribe(onDataCached, ThreadOption.UIThread,false,
+                data => (data?.ID ?? string.Empty) == Id);
+
+            IntializeCommand.Execute(null);
+        }
+
+        private ICommand intializeCommand;
+        public ICommand IntializeCommand
+        {
+            get
+            {
+                if (intializeCommand == null)
+                {
+                    intializeCommand = new DelegateCommand<object>(async (param) =>
+                    {
+                        CacheData cachedData = await cachingService.GetElementAsync($"{Id}");
+                        if (cachedData != null && !string.IsNullOrWhiteSpace(cachedData.ID))
+                        {
+                            eventAggregator.GetEvent<DataCachedEvent>().Publish(cachedData);
+                        }
+                        else
+                        {
+                            var t = Task<CacheData>.Run(async () => await cachingService.AddElementAsync(this)).ContinueWith(data => eventAggregator.GetEvent<DataCachedEvent>().Publish(data.Result)).ConfigureAwait(false);
+                        }
+                    });
+                }
+                return intializeCommand;
+            }
+        }
+
+        private void onDataCached(CacheData args)
+        {
+            if (args != null && !string.IsNullOrWhiteSpace(args.FileName))
+            {
+                ImageArt = new BitmapImage(new Uri($"ms-appdata:///local/cachedImages/{args.FileName}", UriKind.Absolute));
+                AverageColorBrushImageArt = new SolidColorBrush(ColorExtension.StringToColor(args.Color));
+            }
+            else
+            {
+                ImageArt = new BitmapImage(new Uri("ms-appx:///Assets/disc_gray.png", UriKind.Absolute));
+                AverageColorBrushImageArt = new SolidColorBrush(ColorExtension.StringToColor("#7F7F7F7F"));
+            }
+
+            RaisePropertyChanged(nameof(ImageArt));
+
+            eventAggregator.GetEvent<DataCachedEvent>().Unsubscribe(onDataCached);
         }
     }
 }

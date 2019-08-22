@@ -23,8 +23,6 @@
                ItemTemplate="{StaticResource PivotBrowseViewModelTemplate}"
                SelectedItem="{x:Bind ViewModel.SelectedPivotItem, Mode=TwoWay}"
                >
- 
-
             <Pivot.HeaderTemplate>
                 <DataTemplate x:DataType="vm:PivotItemViewModel">
                     <uc:TabHeader Label="{x:Bind PivotLabel}" SymbolAsString="{x:Bind PivotSymbol}"/>

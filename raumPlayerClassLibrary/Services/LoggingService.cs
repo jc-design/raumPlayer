@@ -26,12 +26,6 @@ namespace raumPlayer.Services
         private readonly SemaphoreSlim semaphoreLock;
         private static StorageFolder logFolder;
 
-        private static bool isLogged = false;
-        public static bool IsLooged
-        {
-            get { return isLogged; }
-        }
-
         public LoggingService()
         {
             logChannel = new LoggingChannel(LOG_CHANNEL_RESROUCE_NAME, new LoggingChannelOptions());
@@ -42,8 +36,6 @@ namespace raumPlayer.Services
 
             CoreApplication.UnhandledErrorDetected += OnUnhandledErrorDetected;
             PrismUnityApplication.Current.UnhandledException += OnUnhandledException;
-
-            isLogged = false;
         }
 
         private async void OnUnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
@@ -101,7 +93,6 @@ namespace raumPlayer.Services
                     try
                     {
                         await logSession.SaveToFileAsync(logFolder, fileName);
-                        isLogged = true;
                     }
                     finally
                     {
@@ -124,7 +115,6 @@ namespace raumPlayer.Services
                     try
                     {
                         await logSession.SaveToFileAsync(logFolder, fileName);
-                        isLogged = true;
                     }
                     finally
                     {

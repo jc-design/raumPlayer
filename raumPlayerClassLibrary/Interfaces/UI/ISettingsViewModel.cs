@@ -26,5 +26,7 @@ namespace raumPlayer.Interfaces
         ICommand SwitchTuneInStateCommand { get; }
 
         Task InitializeAsync();
+
+        Task RefreshCacheValuesAsync();
     }
 }

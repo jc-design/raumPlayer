@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 
 using Microsoft.Practices.Unity;
-
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Unity.Windows;
 using Prism.Windows.AppModel;
@@ -44,8 +44,9 @@ namespace raumPlayer
             Container.RegisterType<IFirstRunDisplayService, FirstRunDisplayService>(new ContainerControlledLifetimeManager());
             Container.RegisterInstance<IResourceLoader>(new ResourceLoaderAdapter(new ResourceLoader()));
 
-            //Container.RegisterType<ILoggingService, LoggingService>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<ILoggingService, LoggingService>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IMessagingService, MessagingService>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<ICachingService, CachingService>(new ContainerControlledLifetimeManager());
 
             Container.RegisterType<INetWorkDeviceWatcher, NetWorkDeviceWatcher>(new ContainerControlledLifetimeManager());
             Container.RegisterType<INetWorkSocketListener, NetWorkSocketListener>(new ContainerControlledLifetimeManager());
@@ -66,9 +67,8 @@ namespace raumPlayer
 
             Container.RegisterType<DIDLContainer>();
             Container.RegisterType<DIDLItem>();
-            Container.RegisterType<ElementBase, ElementBase>();
-            Container.RegisterType<ElementBase, ElementItem>();
-            Container.RegisterType<ElementBase, ElementContainer>();
+            Container.RegisterType<IElementBase, ElementBase>("DIDLItem",new InjectionConstructor(typeof(IEventAggregator), typeof(ICachingService), typeof(DIDLItem)));
+            Container.RegisterType<IElementBase, ElementBase>("DIDLContainer", new InjectionConstructor(typeof(IEventAggregator), typeof(ICachingService), typeof(DIDLContainer)));
         }
 
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
@@ -78,6 +78,8 @@ namespace raumPlayer
 
         private async Task launchApplicationAsync(string page, object launchParam)
         {
+            await Container.Resolve<ICachingService>().InitializeAsync();
+
             // For Desktop
             if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
             {

@@ -31,11 +31,6 @@ namespace raumPlayer.UserControls
     {
         #region Private Properties
 
-        private DropShadow dropShadow;
-        private SpriteVisual shadowVisual;
-        const float initialShadowBlurRadius = 15.0f;
-        const float initialShadowOpacity = 0.5f;
-
         #endregion
 
         /// <summary>
@@ -125,45 +120,50 @@ namespace raumPlayer.UserControls
 
         #endregion
 
+        //protected override Size MeasureOverride(Size availableSize)
+        //{
+        //    imageAlbumArt.Height = availableSize.Width;
+        //    return availableSize;
+        //}
 
         public ElementControl()
         {
             this.InitializeComponent();
-            SizeChanged += CompositionShadow_SizeChanged;
-            Loaded += (object sender, RoutedEventArgs e) =>
-            {
-                UpdateShadowSize();
-            };
+            //SizeChanged += CompositionShadow_SizeChanged;
+            //Loaded += (object sender, RoutedEventArgs e) =>
+            //{
+            //    UpdateShadowSize();
+            //};
 
-            Compositor compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
-            shadowVisual = compositor.CreateSpriteVisual();
-            dropShadow = compositor.CreateDropShadow();
-            dropShadow.BlurRadius = 10.0f;
+            //Compositor compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
+            //shadowVisual = compositor.CreateSpriteVisual();
+            //dropShadow = compositor.CreateDropShadow();
+            //dropShadow.BlurRadius = 10.0f;
 
-            if (RequestedTheme == ElementTheme.Light)
-            {
-                dropShadow.Color = (Color)Prism.Unity.Windows.PrismUnityApplication.Current.Resources["AppDarkShadeColor"];
-            }
-            else
-            {
-                dropShadow.Color = Color.FromArgb(170, 242, 242, 242);
-            }
-            dropShadow.Offset = new Vector3(0, 0, 0);
-            shadowVisual.Shadow = dropShadow;
+            //if (ThemeSelectorService.Theme == ElementTheme.Light)
+            //{
+            //    dropShadow.Color = (Color)Prism.Unity.Windows.PrismUnityApplication.Current.Resources["SystemBaseMediumColor"];
+            //}
+            //else
+            //{
+            //    dropShadow.Color = Color.FromArgb(170, 242, 242, 242);
+            //}
+            //dropShadow.Offset = new Vector3(0, 0, 0);
+            //shadowVisual.Shadow = dropShadow;
 
-            // SetElementChildVisual on the control itself ("this") would result in the shadow
-            // rendering on top of the content. To avoid this, CompositionShadow contains a Border
-            // (to host the shadow) and a ContentPresenter (to hose the actual content, "CastingElement").
-            ElementCompositionPreview.SetElementChildVisual(shadowBorder, shadowVisual);
+            //// SetElementChildVisual on the control itself ("this") would result in the shadow
+            //// rendering on top of the content. To avoid this, CompositionShadow contains a Border
+            //// (to host the shadow) and a ContentPresenter (to hose the actual content, "CastingElement").
+            //ElementCompositionPreview.SetElementChildVisual(shadowBorder, shadowVisual);
 
-            rootPanel.PointerEntered += Content_PointerEntered;
-            rootPanel.PointerExited += Content_PointerExited;
+            //rootPanel.PointerEntered += Content_PointerEntered;
+            //rootPanel.PointerExited += Content_PointerExited;
 
-            SetupAnimations();
+            //SetupAnimations();
 
-            var content = ElementCompositionPreview.GetElementVisual(shadowBorder);
-            content.Scale = new Vector3(0.5f, 0.5f, 25.0f);
-            Canvas.SetZIndex(shadowBorder, 0);
+            //var content = ElementCompositionPreview.GetElementVisual(shadowBorder);
+            //content.Scale = new Vector3(0.5f, 0.5f, 25.0f);
+            //Canvas.SetZIndex(shadowBorder, 0);
         }
 
         #region Private Methods
@@ -253,50 +253,58 @@ namespace raumPlayer.UserControls
             this.FavRemQueueClicked?.Invoke(this, new EventArgs<ElementBase>(Element));
         }
 
-        private void CompositionShadow_SizeChanged(object sender, SizeChangedEventArgs e)
+        public void panelData_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            UpdateShadowSize();
+            if (e.NewSize.Width != e.PreviousSize.Width)
+            {
+                imageAlbumArt.Height = e.NewSize.Width;
+            }
         }
 
-        private void UpdateShadowSize()
-        {
-            Vector2 newSize = new Vector2((float)shadowBorder.ActualWidth, (float)shadowBorder.ActualHeight);
-            shadowVisual.Size = newSize;
-        }
+        //private void CompositionShadow_SizeChanged(object sender, SizeChangedEventArgs e)
+        //{
+        //    UpdateShadowSize();
+        //}
 
-        private void SetupAnimations()
-        {
-            var content = ElementCompositionPreview.GetElementVisual(shadowBorder);
+        //private void UpdateShadowSize()
+        //{
+        //    Vector2 newSize = new Vector2((float)shadowBorder.ActualWidth, (float)shadowBorder.ActualHeight);
+        //    shadowVisual.Size = newSize;
+        //}
 
-            var compositor = content.Compositor;
-            var implicitAnimationVisual = compositor.CreateImplicitAnimationCollection();
+        //private void SetupAnimations()
+        //{
+        //    var content = ElementCompositionPreview.GetElementVisual(shadowBorder);
 
-            //Scale Animation Shadow 
-            var shadowScaleAnimation = compositor.CreateVector3KeyFrameAnimation();
-            shadowScaleAnimation.InsertExpressionKeyFrame(1.0f, "this.FinalValue");
-            shadowScaleAnimation.Duration = TimeSpan.FromSeconds(1);
-            shadowScaleAnimation.Target = "Scale";
+        //    var compositor = content.Compositor;
+        //    var implicitAnimationVisual = compositor.CreateImplicitAnimationCollection();
 
-            implicitAnimationVisual["Scale"] = shadowScaleAnimation;
+        //    //Scale Animation Shadow 
+        //    var shadowScaleAnimation = compositor.CreateVector3KeyFrameAnimation();
+        //    shadowScaleAnimation.InsertExpressionKeyFrame(1.0f, "this.FinalValue");
+        //    shadowScaleAnimation.Duration = TimeSpan.FromSeconds(1);
+        //    shadowScaleAnimation.Target = "Scale";
 
-            content.Properties.ImplicitAnimations = implicitAnimationVisual;
-        }
+        //    implicitAnimationVisual["Scale"] = shadowScaleAnimation;
 
-        private void Content_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            var content = ElementCompositionPreview.GetElementVisual(shadowBorder);
-            content.Scale = new Vector3(0.5f, 0.5f, 25.0f);
-            Canvas.SetZIndex(shadowBorder, 0);
-        }
+        //    content.Properties.ImplicitAnimations = implicitAnimationVisual;
+        //}
 
-        private void Content_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            var content = ElementCompositionPreview.GetElementVisual(shadowBorder);
-            content.CenterPoint = new Vector3((float)rootPanel.ActualWidth / 2, (float)rootPanel.ActualHeight / 2, 0f);
-            float xScale = (float)(rootPanel.ActualWidth + 8) / (float)rootPanel.ActualWidth;
-            float yScale = (float)(rootPanel.ActualHeight + 8) / (float)rootPanel.ActualHeight;
-            content.Scale = new Vector3(xScale, yScale, 1.0f);
-            Canvas.SetZIndex(shadowBorder, 0);
-        }
+        //private void Content_PointerExited(object sender, PointerRoutedEventArgs e)
+        //{
+        //    var content = ElementCompositionPreview.GetElementVisual(shadowBorder);
+        //    content.Scale = new Vector3(0.5f, 0.5f, 25.0f);
+        //    Canvas.SetZIndex(shadowBorder, 0);
+        //}
+
+        //private void Content_PointerEntered(object sender, PointerRoutedEventArgs e)
+        //{
+        //    var content = ElementCompositionPreview.GetElementVisual(shadowBorder);
+        //    content.CenterPoint = new Vector3((float)rootPanel.ActualWidth / 2, (float)rootPanel.ActualHeight / 2, 0f);
+        //    float xScale = (float)(rootPanel.ActualWidth + 8) / (float)rootPanel.ActualWidth;
+        //    float yScale = (float)(rootPanel.ActualHeight + 8) / (float)rootPanel.ActualHeight;
+        //    content.Scale = new Vector3(xScale, yScale, 1.0f);
+        //    Canvas.SetZIndex(shadowBorder, 0);
+        //}
     }
 }

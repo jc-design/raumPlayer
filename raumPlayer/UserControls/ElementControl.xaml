@@ -5,21 +5,27 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uc="using:raumPlayer.UserControls"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     >
 
-    <RelativePanel x:Name="rootPanel" RenderTransformOrigin="0.5,0.5">
+    <RelativePanel x:Name="rootPanel" RenderTransformOrigin="0.5,0.5"
+                   RelativePanel.AlignTopWithPanel="True"
+                   RelativePanel.AlignBottomWithPanel="True"
+                   RelativePanel.AlignLeftWithPanel="True"
+                   RelativePanel.AlignRightWithPanel="True">
         <!--<RelativePanel.Transform3D>
             <CompositeTransform3D />
         </RelativePanel.Transform3D>-->
-        <VisualStateManager.VisualStateGroups>
+        <!--<VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
                 <VisualState x:Name="VisualStateNarrow">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!--  TODO: change properties for narrow view  -->
+                        --><!--  TODO: change properties for narrow view  -->
                         <!--<Setter Target="rootPanel.(FrameworkElement.Margin)">
                             <Setter.Value>
                                 <Thickness>0,0,0,0</Thickness>
@@ -34,7 +40,7 @@
                             <Setter.Value>
                                 <Thickness>0,0,0,0</Thickness>
                             </Setter.Value>
-                        </Setter>-->
+                        </Setter>--><!--
                         <Setter Target="imageAlbumArt.(FrameworkElement.Margin)">
                             <Setter.Value>
                                 <Thickness>0,0,0,0</Thickness>
@@ -74,7 +80,7 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!--  TODO: change properties for normal view  -->
+                        --><!--  TODO: change properties for normal view  --><!--
                         <Setter Target="rootPanel.Width" Value="120"/>
                         <Setter Target="imageAlbumArt.(FrameworkElement.Width)" Value="112"/>
                         <Setter Target="imageAlbumArt.(FrameworkElement.Height)" Value="112"/>
@@ -85,69 +91,91 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!--  TODO: change properties for wide view  -->
+                        --><!--  TODO: change properties for wide view  --><!--
                         <Setter Target="rootPanel.Width" Value="160"/>
                         <Setter Target="imageAlbumArt.(FrameworkElement.Width)" Value="152"/>
                         <Setter Target="imageAlbumArt.(FrameworkElement.Height)" Value="152"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-        <Border x:Name="shadowBorder"
-                RelativePanel.AlignTopWithPanel="True"
-                RelativePanel.AlignBottomWithPanel="True"
-                RelativePanel.AlignLeftWithPanel="True"
-                RelativePanel.AlignRightWithPanel="True"
-                />
-        <Grid 
+        </VisualStateManager.VisualStateGroups>-->
+        <!--<Grid x:Name="backgroundGrid"
               RelativePanel.AlignTopWithPanel="True"
               RelativePanel.AlignBottomWithPanel="True"
               RelativePanel.AlignLeftWithPanel="True"
-              RelativePanel.AlignRightWithPanel="True"/>
+              RelativePanel.AlignRightWithPanel="True">
+        </Grid>-->
         <RelativePanel x:Name="panelData"
                        RelativePanel.AlignTopWithPanel="True"
                        RelativePanel.AlignBottomWithPanel="True"
                        RelativePanel.AlignLeftWithPanel="True"
                        RelativePanel.AlignRightWithPanel="True"
-                       Background="{x:Bind Element.AverageColorImageArt,Mode=OneWay}"
-                       >
-            <Border x:Name="imageAlbumArt"
-                    Margin="4,4,4,4"
-                    RelativePanel.AlignLeftWithPanel="True"
-                    RelativePanel.AlignRightWithPanel="True"
-                    RelativePanel.AlignTopWithPanel="True"
-                    Padding="4">
-                <Ellipse>
-                    <Ellipse.Fill>
-                        <ImageBrush Stretch="UniformToFill"
-                                    ImageSource="{x:Bind Element.ImageArt, Mode=OneWay}" >
-                        </ImageBrush>
-                    </Ellipse.Fill>
-                </Ellipse>
-            </Border>
-            <StackPanel x:Name="stackPanelText" Margin="4,0,4,4"
+                       Background="{x:Bind Element.AverageColorBrushImageArt,Mode=OneWay}"
+                       SizeChanged="{x:Bind panelData_SizeChanged}">
+            <i:Interaction.Behaviors>
+                <ic:EventTriggerBehavior EventName="PointerEntered">
+                    <ic:ChangePropertyAction TargetObject="{Binding ElementName=stackPanelPlayAndMore}" PropertyName="Visibility" Value="Visible"/>
+                </ic:EventTriggerBehavior>
+                <ic:EventTriggerBehavior EventName="PointerExited">
+                    <ic:ChangePropertyAction TargetObject="{Binding ElementName=stackPanelPlayAndMore}" PropertyName="Visibility" Value="Collapsed"/>
+                </ic:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
+            <Grid x:Name="imageAlbumArt"
+                  RelativePanel.AlignTopWithPanel="True"
+                  RelativePanel.AlignBottomWithPanel="False"
+                  RelativePanel.AlignLeftWithPanel="True"
+                  RelativePanel.AlignRightWithPanel="True"
+                  RelativePanel.Above="stackPanelText">
+                <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4">
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <ImageBrush Stretch="Uniform"
+                                        ImageSource="{x:Bind Element.ImageArt, Mode=OneWay}" >
+                            </ImageBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Border>
+                <StackPanel x:Name="stackPanelPlayAndMore"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Visibility="Collapsed">
+                    <Button x:Name="buttonPlay"
+                        Style="{StaticResource TransactionButtonStyle}"
+                        Background="Red"
+                        CornerRadius="24" Height="48" Width="48"
+                        Padding="8"
+                        Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}"
+                        Click="buttonNew_Click" >
+                        <SymbolIcon Symbol="Play" />
+                    </Button>
+                    <Button x:Name="buttonPlay2"
+                        Style="{StaticResource TransactionButtonStyle}"
+                        CornerRadius="24" Height="48" Width="48"
+                        Padding="8"
+                        Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}"
+                        Click="buttonNew_Click" >
+                        <SymbolIcon Symbol="Play" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <StackPanel x:Name="stackPanelText"
+                        RelativePanel.AlignTopWithPanel="False"
+                        RelativePanel.AlignBottomWithPanel="True"
                         RelativePanel.AlignLeftWithPanel="True"
                         RelativePanel.AlignRightWithPanel="True"
-                        RelativePanel.AlignTopWithPanel="False"
-                        RelativePanel.Below="imageAlbumArt">
+                        Height="56"
+                        Margin="0">
                 <uc:MarqueeUserControl x:Name="textBlockTitle" MarqueeText="{x:Bind Title, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10" FontWeight="Bold" />
                 <uc:MarqueeUserControl x:Name="textBlockLine1" MarqueeText="{x:Bind Line1, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10"/>
                 <uc:MarqueeUserControl x:Name="textBlockLine2" MarqueeText="{x:Bind Line2, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10"/>
             </StackPanel>
 
-            <Button x:Name="buttonPlay"
-                    Style="{StaticResource TransactionButtonStyle}"
-                    Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}"
-                    Margin="4,4,4,4"
-                    RelativePanel.AlignBottomWith="imageAlbumArt"
-                    RelativePanel.AlignLeftWith="imageAlbumArt"
-                    Click="buttonNew_Click" >
-                <SymbolIcon Symbol="Play" />
-            </Button>
-
             <Button x:Name="buttonMore"
                     Style="{StaticResource TransactionButtonStyle}"
-                    Margin="4,4,4,4"
+                    CornerRadius="16" Height="32" Width="32"
+                    Padding="8"
+
                     RelativePanel.AlignBottomWith="imageAlbumArt"
                     RelativePanel.AlignRightWith="imageAlbumArt" >
                 <Button.Flyout>

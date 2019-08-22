@@ -21,7 +21,7 @@ namespace raumPlayer.Interfaces
         int NumberOfTracks { get; set; }
         Uri CurrentTrackURI { get; set; }
         TimeSpan CurrentTrackDuration { get; set; }
-        ElementItem CurrentTrackMetaData { get; set; }
+        ElementBase CurrentTrackMetaData { get; set; }
         //string AlbumArtUri { get; set; }
         ElementBase AVTransportURIMetaData { get; set; }
         ObservableCollection<ElementBase> ZoneViewModelTracks { get; set; }

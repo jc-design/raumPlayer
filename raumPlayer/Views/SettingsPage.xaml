@@ -18,7 +18,7 @@
 
     <Grid Background="{ThemeResource RegionBrush}">
         <Hub>
-            <HubSection VerticalContentAlignment="Stretch" Width="240">
+            <HubSection VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Width="240">
                 <HubSection.HeaderTemplate>
                     <DataTemplate>
                         <TextBlock x:Uid="_Settings_appSettings" Text="APP_SETTINGS" Style="{StaticResource SettingsTextStyle}"/>
@@ -27,6 +27,7 @@
                 <DataTemplate x:DataType="vm:SettingsViewModel">
                     <Grid>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
@@ -75,6 +76,12 @@
                                     </ic:EventTriggerBehavior>
                                 </i:Interaction.Behaviors>
                             </RadioButton>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Row="2" >
+                            <TextBlock x:Uid="textBoxCache" Text="CACHE" Style="{StaticResource MenuTextStyle}" FontWeight="Bold"/>
+                            <TextBlock Text="{x:Bind CountCachedFiles, Mode=OneWay}"/>
+                            <TextBlock Text="{x:Bind SizeCachedFiles, Mode=OneWay}" />
+                            <Button x:Uid="buttonClearCache" Content="CLEAR CACHE" HorizontalAlignment="Stretch" Margin="0,8,0,8" Click="{x:Bind ClearCache}"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

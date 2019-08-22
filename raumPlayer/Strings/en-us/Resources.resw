@@ -117,14 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Main_Title.Text" xml:space="preserve">
-    <value>Main</value>
-    <comment>Page title for Main</comment>
-  </data>
-  <data name="Shell_Main" xml:space="preserve">
-    <value>Main</value>
-    <comment>Navigation view item name for Main</comment>
-  </data>
   <data name="ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty" xml:space="preserve">
     <value>File name is null or empty. Specify a valid file name</value>
     <comment>File name is null or empty to save file in settings storage extensions</comment>
@@ -176,10 +168,6 @@
   <data name="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" xml:space="preserve">
     <value>parameter must be an Enum name!</value>
     <comment>Parameter must be an Enum name in enum to boolean converter</comment>
-  </data>
-  <data name="Shell_Settings" xml:space="preserve">
-    <value>Settings</value>
-    <comment>Navigation view item name for Settings</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
     <value>Replace the content of this dialog with whatever content is appropriate to your app.
@@ -265,21 +253,11 @@ Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Ma
   <data name="Genre" xml:space="preserve">
     <value>Genre</value>
   </data>
-  <data name="greetingsCD.Text" xml:space="preserve">
-    <value>Danke für die hilfreichen Tips im Forum und das Zusenden von Beispielcode</value>
-  </data>
-  <data name="greetingsFO.Text" xml:space="preserve">
-    <value>Danke für die tolle Unterstütung
-http://www.hifi-forum.de/index.php?action=browseT&amp;forum_id=212&amp;thread=420</value>
-  </data>
   <data name="greetingsHub.Text" xml:space="preserve">
-    <value>Danksagung</value>
-  </data>
-  <data name="greetingsMP.Text" xml:space="preserve">
-    <value>Danke für das unermüdliche Testen und die guten Anregungen zur Appentwicklung</value>
+    <value>Greetings</value>
   </data>
   <data name="historyHeaderHub.Text" xml:space="preserve">
-    <value>Historie / Ideen</value>
+    <value>History / Ideas</value>
   </data>
   <data name="historyHub.Text" xml:space="preserve">
     <value>History</value>
@@ -307,9 +285,6 @@ http://www.hifi-forum.de/index.php?action=browseT&amp;forum_id=212&amp;thread=42
   </data>
   <data name="HowToDialog.Title" xml:space="preserve">
     <value>How To</value>
-  </data>
-  <data name="HowTp6.Source" xml:space="preserve">
-    <value>ms-appx:///Assets/6_rp_DE.png</value>
   </data>
   <data name="ideasHub.Text" xml:space="preserve">
     <value>Ideas</value>
@@ -360,55 +335,55 @@ http://www.hifi-forum.de/index.php?action=browseT&amp;forum_id=212&amp;thread=42
     <value>Zoneconfig</value>
   </data>
   <data name="NewZone" xml:space="preserve">
-    <value>Neue Zone</value>
+    <value>New zone</value>
   </data>
   <data name="NoZones" xml:space="preserve">
-    <value>Keine Zonen vorhanden</value>
+    <value>No zones available </value>
   </data>
   <data name="OkMessage" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="pivotItemBrowse.Header" xml:space="preserve">
-    <value>Musik</value>
+    <value>Music</value>
   </data>
   <data name="Playlists" xml:space="preserve">
-    <value>Wiedergabelisten</value>
+    <value>Playlists</value>
   </data>
   <data name="Radio" xml:space="preserve">
     <value>Radio</value>
   </data>
   <data name="radioButtonDirektOne.Content" xml:space="preserve">
-    <value>Direkt 1</value>
+    <value>Direct 1</value>
   </data>
   <data name="radioButtonFavorites.Content" xml:space="preserve">
-    <value>Favoriten</value>
+    <value>Favorites</value>
   </data>
   <data name="radioButtonIntro.Content" xml:space="preserve">
     <value>Intro</value>
   </data>
   <data name="radioButtonMyMusic.Content" xml:space="preserve">
-    <value>Musik</value>
+    <value>Music</value>
   </data>
   <data name="radioButtonNormal.Content" xml:space="preserve">
     <value>Normal</value>
   </data>
   <data name="radioButtonRandom.Content" xml:space="preserve">
-    <value>Zufall</value>
+    <value>Random</value>
   </data>
   <data name="radioButtonRepeatAll.Content" xml:space="preserve">
-    <value>Alles wiederholen</value>
+    <value>Repeall all</value>
   </data>
   <data name="radioButtonRepeatOne.Content" xml:space="preserve">
-    <value>1 wiederholen</value>
+    <value>Repeat one</value>
   </data>
   <data name="radioButtonShuffle.Content" xml:space="preserve">
-    <value>Mischen</value>
+    <value>Shuffle</value>
   </data>
   <data name="RadioLocal" xml:space="preserve">
-    <value>Lokal</value>
+    <value>Local</value>
   </data>
   <data name="RadioMusic" xml:space="preserve">
-    <value>Musik</value>
+    <value>Music</value>
   </data>
   <data name="RadioSport" xml:space="preserve">
     <value>Sport</value>
@@ -417,19 +392,10 @@ http://www.hifi-forum.de/index.php?action=browseT&amp;forum_id=212&amp;thread=42
     <value>Talk</value>
   </data>
   <data name="RateAppMessage" xml:space="preserve">
-    <value>App bewerten</value>
+    <value>Rate app</value>
   </data>
   <data name="RecentlyPlayed" xml:space="preserve">
-    <value>Kürzlich gespielt</value>
-  </data>
-  <data name="Settings_ThemeToggle.OffContent" xml:space="preserve">
-    <value>Dunkler Modus</value>
-  </data>
-  <data name="Settings_ThemeToggle.OnContent" xml:space="preserve">
-    <value>Heller Modus</value>
-  </data>
-  <data name="Settings_ThemeToggleHeader.Text" xml:space="preserve">
-    <value>App Modus</value>
+    <value>Recently played</value>
   </data>
   <data name="Shuffles" xml:space="preserve">
     <value>Shuffle playlist</value>
@@ -444,7 +410,7 @@ http://www.hifi-forum.de/index.php?action=browseT&amp;forum_id=212&amp;thread=42
     <value>To favorites</value>
   </data>
   <data name="textBlockFavRem.Text" xml:space="preserve">
-    <value>Aus Favoriten entfernen</value>
+    <value>Remove from favorites</value>
   </data>
   <data name="textBlockNewQueue.Text" xml:space="preserve">
     <value>Play</value>
@@ -459,11 +425,11 @@ http://www.hifi-forum.de/index.php?action=browseT&amp;forum_id=212&amp;thread=42
     <value>Rooms</value>
   </data>
   <data name="textblockScanning.Text" xml:space="preserve">
-    <value>Netzwerk wird nach Raumfeldgeräten durchsucht...</value>
+    <value>Scanning networt for Raumfeld devices</value>
   </data>
   <data name="textblockSkypeGroup.Text" xml:space="preserve">
-    <value>Wenn ihr aktiv mitwirken wollt, tretet doch der Skypegruppe bei.
-Wir werden versuchen auf eure Komentare und Wünsche direkt einzugehen.</value>
+    <value>If you want to be part of it join our Skypegroup.
+We will listen to your feedback.</value>
   </data>
   <data name="textBoxNavigation.Text" xml:space="preserve">
     <value>Start with...</value>
@@ -508,7 +474,7 @@ Wir werden versuchen auf eure Komentare und Wünsche direkt einzugehen.</value>
     <value>Cancel</value>
   </data>
   <data name="zoneDialog.Title" xml:space="preserve">
-    <value>Zonendefinition</value>
+    <value>Zonedefinition</value>
   </data>
   <data name="_Settings_appSettings.Text" xml:space="preserve">
     <value>App Settings</value>
@@ -533,5 +499,17 @@ Wir werden versuchen auf eure Komentare und Wünsche direkt einzugehen.</value>
   </data>
   <data name="_Settings_LoadGreetingsRTF" xml:space="preserve">
     <value>ms-appx:///Strings/en-us/greetings.rtf</value>
+  </data>
+  <data name="textBoxCache.Text" xml:space="preserve">
+    <value>Cachingdata</value>
+  </data>
+  <data name="buttonClearCache.Content" xml:space="preserve">
+    <value>Clear cache</value>
+  </data>
+  <data name="Files" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="navItem_ManageZones.Content" xml:space="preserve">
+    <value>Manage zones</value>
   </data>
 </root>

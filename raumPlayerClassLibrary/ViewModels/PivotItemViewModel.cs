@@ -142,7 +142,7 @@ namespace raumPlayer.ViewModels
                 {
                     if (value == null) { return; }
 
-                    for (int i = CacheElements.IndexOf(value) + 1; i < CacheElements.Count(); i++)
+                    for (int i = CacheElements.IndexOf(value) + 1; i < CacheElements.Count(); )
                     {
                         CacheElements.RemoveAt(i);
                     }
@@ -312,6 +312,44 @@ namespace raumPlayer.ViewModels
                 }
 
                 return querySubmittedSearchCommand;
+            }
+        }
+
+        /// <summary>
+        /// Filter Elements - in memory
+        /// </summary>
+        private ICommand itemClickedCommand;
+        public ICommand ItemClickedCommand
+        {
+            get
+            {
+                if (itemClickedCommand == null)
+                {
+                    itemClickedCommand = new DelegateCommand<ElementBase>(async (param) =>
+                    {
+                        IsScanning = true;
+
+                        CacheElements.Add(param);
+                        LastCacheElement = param;
+                        //await raumFeldService.BrowseChildren(Elements, param.Id, false);
+
+                        IsScanning = false;
+                    });
+                }
+
+                return itemClickedCommand;
+            }
+        }
+
+        public void OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            var cmd = ItemClickedCommand;
+            if (cmd != null)
+            {
+                if (cmd.CanExecute(e.ClickedItem))
+                {
+                    cmd.Execute(e.ClickedItem);
+                }
             }
         }
 

@@ -11,10 +11,12 @@
                     <Color x:Key="SystemChromeAltHighColor">#FF0D2644</Color>
                     <Color x:Key="SystemRevealListLowColor">#FF134B82</Color>
                     <Color x:Key="SystemRevealListMediumColor">#FF2F7BAD</Color>
+                    <RevealBackgroundBrush x:Key="SystemControlHighlightListLowRevealBackgroundBrush" TargetTheme="Dark" Color="{ThemeResource SystemRevealListMediumColor}" FallbackColor="{ StaticResource SystemListMediumColor}" />
                     <Color x:Key="RegionColor">#FF0D2644</Color>
                     <SolidColorBrush x:Key="RegionBrush" Color="{StaticResource RegionColor}" />
                     <SolidColorBrush x:Key="AccentColorBrush" Color="{ThemeResource SystemAccentColor}" />
 
+                    <SolidColorBrush x:Key="NavigationViewPanetitleBackground" Color="#7D000000" />
                     <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemRevealListMediumColor}" TintOpacity="0.6" FallbackColor="{ThemeResource SystemRevealListMediumColor}" />
                     <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemRevealListMediumColor}" TintOpacity="0.6" FallbackColor="{ThemeResource SystemRevealListMediumColor}" />
                 </ResourceDictionary>
@@ -33,6 +35,7 @@
                     <SolidColorBrush x:Key="RegionBrush" Color="{StaticResource RegionColor}" />
                     <SolidColorBrush x:Key="AccentColorBrush" Color="{ThemeResource SystemAccentColor}" />
 
+                    <SolidColorBrush x:Key="NavigationViewPanetitleBackground" Color="#7DFFFFFF" />
                     <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemRevealListMediumColor}" TintOpacity="0.6" FallbackColor="{ThemeResource SystemRevealListMediumColor}" />
                     <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemRevealListMediumColor}" TintOpacity="0.6" FallbackColor="{ThemeResource SystemRevealListMediumColor}" />
                 </ResourceDictionary>

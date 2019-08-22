@@ -37,5 +37,6 @@ namespace raumPlayer.Interfaces
         ICommand RefreshElementsCommand { get; }
         ICommand QuerySubmittedFilterCommand { get; }
         ICommand QuerySubmittedSearchCommand { get; }
+        ICommand ItemClickedCommand { get;}
     }
 }
