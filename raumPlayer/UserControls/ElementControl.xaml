@@ -15,96 +15,6 @@
                    RelativePanel.AlignBottomWithPanel="True"
                    RelativePanel.AlignLeftWithPanel="True"
                    RelativePanel.AlignRightWithPanel="True">
-        <!--<RelativePanel.Transform3D>
-            <CompositeTransform3D />
-        </RelativePanel.Transform3D>-->
-        <!--<VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
-                <VisualState x:Name="VisualStateNarrow">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        --><!--  TODO: change properties for narrow view  -->
-                        <!--<Setter Target="rootPanel.(FrameworkElement.Margin)">
-                            <Setter.Value>
-                                <Thickness>0,0,0,0</Thickness>
-                            </Setter.Value>
-                        </Setter>-->
-                        <!--<Setter Target="shadowBorder.(FrameworkElement.Margin)">
-                            <Setter.Value>
-                                <Thickness>0,0,0,0</Thickness>
-                            </Setter.Value>
-                        </Setter>
-                        <Setter Target="panelData.(FrameworkElement.Margin)">
-                            <Setter.Value>
-                                <Thickness>0,0,0,0</Thickness>
-                            </Setter.Value>
-                        </Setter>--><!--
-                        <Setter Target="imageAlbumArt.(FrameworkElement.Margin)">
-                            <Setter.Value>
-                                <Thickness>0,0,0,0</Thickness>
-                            </Setter.Value>
-                        </Setter>
-                        <Setter Target="rootPanel.(FrameworkElement.Height)" Value="80"/>
-                        <Setter Target="imageAlbumArt.(FrameworkElement.Width)" Value="80"/>
-                        <Setter Target="imageAlbumArt.(RelativePanel.AlignRightWithPanel)" Value="False"/>
-                        <Setter Target="imageAlbumArt.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
-                        <Setter Target="imageAlbumArt.(RelativePanel.Above)" Value=""/>
-                        <Setter Target="stackPanelText.(RelativePanel.AlignLeftWithPanel)" Value="False"/>
-                        <Setter Target="stackPanelText.(RelativePanel.AlignRightWithPanel)" Value="False"/>
-                        <Setter Target="stackPanelText.(RelativePanel.AlignTopWithPanel)" Value="False"/>
-                        <Setter Target="stackPanelText.(RelativePanel.AlignBottomWithPanel)" Value="False"/>
-                        <Setter Target="stackPanelText.(RelativePanel.LeftOf)" Value="borderNumber"/>
-                        <Setter Target="stackPanelText.(RelativePanel.RightOf)" Value="imageAlbumArt"/>
-                        <Setter Target="stackPanelText.(RelativePanel.AlignVerticalCenterWith)" Value="imageAlbumArt"/>
-                        <Setter Target="borderNumber.(RelativePanel.AlignTopWithPanel)" Value="True"/>
-                        <Setter Target="borderNumber.(RelativePanel.AlignRightWithPanel)" Value="True"/>
-                        <Setter Target="borderNumber.(RelativePanel.AlignLeftWith)" Value=""/>
-                        <Setter Target="borderNumber.(RelativePanel.AlignRightWith)" Value=""/>
-                        <Setter Target="borderNumber.(RelativePanel.AlignBottomWith)" Value=""/>
-                        <Setter Target="buttonMore.(RelativePanel.AlignRightWithPanel)" Value="True"/>
-                        <Setter Target="buttonMore.(RelativePanel.AlignRightWith)" Value=""/>
-                        <Setter Target="buttonPlay.(RelativePanel.AlignRightWith)" Value=""/>
-                        <Setter Target="buttonPlay.(RelativePanel.AlignLeftWith)" Value=""/>
-                        <Setter Target="buttonPlay.(RelativePanel.LeftOf)" Value="buttonMore"/>
-                        <Setter Target="stackPanelText.(FrameworkElement.Margin)">
-                            <Setter.Value>
-                                <Thickness>8,4,4,4</Thickness>
-                            </Setter.Value>
-                        </Setter>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="VisualStateNormal">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        --><!--  TODO: change properties for normal view  --><!--
-                        <Setter Target="rootPanel.Width" Value="120"/>
-                        <Setter Target="imageAlbumArt.(FrameworkElement.Width)" Value="112"/>
-                        <Setter Target="imageAlbumArt.(FrameworkElement.Height)" Value="112"/>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="VisualStateWide">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        --><!--  TODO: change properties for wide view  --><!--
-                        <Setter Target="rootPanel.Width" Value="160"/>
-                        <Setter Target="imageAlbumArt.(FrameworkElement.Width)" Value="152"/>
-                        <Setter Target="imageAlbumArt.(FrameworkElement.Height)" Value="152"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>-->
-        <!--<Grid x:Name="backgroundGrid"
-              RelativePanel.AlignTopWithPanel="True"
-              RelativePanel.AlignBottomWithPanel="True"
-              RelativePanel.AlignLeftWithPanel="True"
-              RelativePanel.AlignRightWithPanel="True">
-        </Grid>-->
         <RelativePanel x:Name="panelData"
                        RelativePanel.AlignTopWithPanel="True"
                        RelativePanel.AlignBottomWithPanel="True"
@@ -114,10 +24,10 @@
                        SizeChanged="{x:Bind panelData_SizeChanged}">
             <i:Interaction.Behaviors>
                 <ic:EventTriggerBehavior EventName="PointerEntered">
-                    <ic:ChangePropertyAction TargetObject="{Binding ElementName=stackPanelPlayAndMore}" PropertyName="Visibility" Value="Visible"/>
+                    <ic:ChangePropertyAction TargetObject="{Binding ElementName=itemTappedIconBorder}" PropertyName="Visibility" Value="Visible"/>
                 </ic:EventTriggerBehavior>
                 <ic:EventTriggerBehavior EventName="PointerExited">
-                    <ic:ChangePropertyAction TargetObject="{Binding ElementName=stackPanelPlayAndMore}" PropertyName="Visibility" Value="Collapsed"/>
+                    <ic:ChangePropertyAction TargetObject="{Binding ElementName=itemTappedIconBorder}" PropertyName="Visibility" Value="Collapsed"/>
                 </ic:EventTriggerBehavior>
             </i:Interaction.Behaviors>
             <Grid x:Name="imageAlbumArt"
@@ -126,7 +36,10 @@
                   RelativePanel.AlignLeftWithPanel="True"
                   RelativePanel.AlignRightWithPanel="True"
                   RelativePanel.Above="stackPanelText">
-                <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4">
+                <Border HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Margin="4"
+                        Tapped="image_Tapped">
                     <Ellipse>
                         <Ellipse.Fill>
                             <ImageBrush Stretch="Uniform"
@@ -135,29 +48,24 @@
                         </Ellipse.Fill>
                     </Ellipse>
                 </Border>
-                <StackPanel x:Name="stackPanelPlayAndMore"
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Visibility="Collapsed">
-                    <Button x:Name="buttonPlay"
-                        Style="{StaticResource TransactionButtonStyle}"
-                        Background="Red"
-                        CornerRadius="24" Height="48" Width="48"
-                        Padding="8"
-                        Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}"
-                        Click="buttonNew_Click" >
-                        <SymbolIcon Symbol="Play" />
-                    </Button>
-                    <Button x:Name="buttonPlay2"
-                        Style="{StaticResource TransactionButtonStyle}"
-                        CornerRadius="24" Height="48" Width="48"
-                        Padding="8"
-                        Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}"
-                        Click="buttonNew_Click" >
-                        <SymbolIcon Symbol="Play" />
-                    </Button>
-                </StackPanel>
+                <Grid x:Name="itemTappedIconBorder"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Margin="4"
+                        IsHitTestVisible="False"
+                        Visibility="Collapsed"
+                        >
+                    <Ellipse Fill="{ThemeResource ButtonBackgroundThemeBrush}"
+                             Stroke="{ThemeResource ButtonRevealBorderBrush}"
+                             StrokeThickness="2"
+                             />
+                    <FontIcon x:Name="itemTappedIcon"
+                              Foreground="{ThemeResource ButtonForegroundPointerOver}"
+                              FontFamily="Segoe MDL2 Assets"
+                              Glyph="{x:Bind GetItemTappedIcon(Element.IsPlayable), Mode=OneWay}"
+                              IsHitTestVisible="False"
+                              FontSize="40"/>
+                </Grid>
             </Grid>
             <StackPanel x:Name="stackPanelText"
                         RelativePanel.AlignTopWithPanel="False"
@@ -170,7 +78,6 @@
                 <uc:MarqueeUserControl x:Name="textBlockLine1" MarqueeText="{x:Bind Line1, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10"/>
                 <uc:MarqueeUserControl x:Name="textBlockLine2" MarqueeText="{x:Bind Line2, Mode=OneWay}" MarqueeDirection="FromRight" FontSize="10"/>
             </StackPanel>
-
             <Button x:Name="buttonMore"
                     Style="{StaticResource TransactionButtonStyle}"
                     CornerRadius="16" Height="32" Width="32"
@@ -190,7 +97,7 @@
                             </Style>
                         </Flyout.FlyoutPresenterStyle>
                         <StackPanel Orientation="Vertical" Margin="0">
-                            <Button x:Name="buttonNew" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonNew_Click" Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}" >
+                            <Button x:Name="buttonNew" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Tapped="buttonNew_Tapped" Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}" >
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="24"/>
@@ -200,7 +107,17 @@
                                     <TextBlock Grid.Column="1" x:Uid="textBlockNewQueue" Text="NEW QUEUE" VerticalAlignment="Center" FontSize="10" />
                                 </Grid>
                             </Button>
-                            <Button x:Name="buttonAdd" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonAdd_Click" Visibility="{x:Bind Element.IsPlayable, Mode=OneWay}" >
+                            <Button x:Name="buttonBrowse" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Tapped="buttonBrowse_Tapped" Visibility="{x:Bind Element.IsFolder, Mode=OneWay}" >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="24"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="&#xED25;" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets"  />
+                                    <TextBlock Grid.Column="1" x:Uid="textBlockBrowse" Text="BROWSE" VerticalAlignment="Center" FontSize="10" />
+                                </Grid>
+                            </Button>
+                            <Button x:Name="buttonAdd" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Tapped="buttonAdd_Tapped" Visibility="{x:Bind AddQueueButtonVisibility(Element.Id, Element.IsPlayable), Mode=OneWay}" >
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="24"/>
@@ -210,7 +127,7 @@
                                     <TextBlock Grid.Column="1" x:Uid="textBlockAddQueue" Text="ADD TO QUEUE" VerticalAlignment="Center" FontSize="10" />
                                 </Grid>
                             </Button>
-                            <Button x:Name="buttonRem" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonRem_Click" >
+                            <Button x:Name="buttonRem" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Tapped="buttonRem_Tapped" Visibility="{x:Bind RemQueueButtonVisibility(Element.Id, Element.IsPlayable), Mode=OneWay}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="24"/>
@@ -220,7 +137,7 @@
                                     <TextBlock Grid.Column="1" x:Uid="textBlockRemQueue" Text="REMOVE FROM QUEUE" VerticalAlignment="Center" FontSize="10" />
                                 </Grid>
                             </Button>
-                            <Button x:Name="buttonFav" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonFav_Click" >
+                            <Button x:Name="buttonFav" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Tapped="buttonFav_Tapped" Visibility="{x:Bind FavAddQueueButtonVisibility(Element.Id, Element.IsPlayable), Mode=OneWay}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="24"/>
@@ -230,7 +147,7 @@
                                     <TextBlock Grid.Column="1" x:Uid="textBlockFav" Text="ADD TO FAVOURITES" VerticalAlignment="Center" FontSize="10" />
                                 </Grid>
                             </Button>
-                            <Button x:Name="buttonFavRem" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Click="buttonFavRem_Click" >
+                            <Button x:Name="buttonFavRem" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Tapped="buttonFavRem_Tapped" Visibility="{x:Bind FavRemQueueButtonVisibility(Element.Id, Element.IsPlayable), Mode=OneWay}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="24"/>

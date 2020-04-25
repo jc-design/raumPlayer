@@ -31,5 +31,10 @@ namespace raumPlayer.UserControls
         {
             this.InitializeComponent();
         }
+
+        private void ElementControl_ItemTapped(object sender, Services.EventArgs<ElementBase> e)
+        {
+            int i = 0;
+        }
     }
 }

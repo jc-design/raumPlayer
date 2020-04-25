@@ -8,7 +8,6 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:vm="using:raumPlayer.ViewModels"
     xmlns:uc="using:raumPlayer.UserControls"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
@@ -29,22 +28,33 @@
                                VisibleCountVisibility="{x:Bind VisibleCountVisibility, Mode=OneWay}"
                                Width="{Binding ElementName=ItemWidthSlider, Path=Value }"
                                Margin="2">
+                <i:Interaction.Behaviors>
+                    <ic:EventTriggerBehavior EventName="ItemTapped">
+                        <ic:InvokeCommandAction Command="{Binding ElementName=Content, Path=DataContext.ItemTappedCommand}" CommandParameter="{x:Bind Element}"/>
+                    </ic:EventTriggerBehavior>
+                    <ic:EventTriggerBehavior EventName="BrowseTapped">
+                        <ic:InvokeCommandAction Command="{Binding ElementName=Content, Path=DataContext.BrowseTappedCommand}" CommandParameter="{x:Bind Element}"/>
+                    </ic:EventTriggerBehavior>
+                    <ic:EventTriggerBehavior EventName="NewQueueTapped">
+                        <ic:InvokeCommandAction Command="{Binding ElementName=Content, Path=DataContext.NewQueueTappedCommand}" CommandParameter="{x:Bind Element}"/>
+                    </ic:EventTriggerBehavior>
+                    <ic:EventTriggerBehavior EventName="AddQueueTapped">
+                        <ic:InvokeCommandAction Command="{Binding ElementName=Content, Path=DataContext.AddQueueTappedCommand}" CommandParameter="{x:Bind Element}"/>
+                    </ic:EventTriggerBehavior>
+                    <ic:EventTriggerBehavior EventName="RemQueueTapped">
+                        <ic:InvokeCommandAction Command="{Binding ElementName=Content, Path=DataContext.RemQueueTappedCommand}" CommandParameter="{x:Bind Element}"/>
+                    </ic:EventTriggerBehavior>
+                    <ic:EventTriggerBehavior EventName="FavQueueTapped">
+                        <ic:InvokeCommandAction Command="{Binding ElementName=Content, Path=DataContext.FavQueueTappedCommand}" CommandParameter="{x:Bind Element}"/>
+                    </ic:EventTriggerBehavior>
+                    <ic:EventTriggerBehavior EventName="FavRemQueueTapped">
+                        <ic:InvokeCommandAction Command="{Binding ElementName=Content, Path=DataContext.FavRemQueueCommand}" CommandParameter="{x:Bind Element}"/>
+                    </ic:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
             </uc:ElementControl>
         </DataTemplate>
-
-        <!--<DataTemplate x:Key="ListDataTemplate" x:DataType="vm:ElementBase">
-            <uc:ElementControl Element="{x:Bind Element, Mode=OneWay}"
-                                       ImageUri="{x:Bind AlbumArtUri, Mode=OneWay}"
-                                       Title="{x:Bind Title, Mode=OneWay}"
-                                       Line1="{x:Bind Line1, Mode=OneWay}"
-                                       Line2="{x:Bind Line2, Mode=OneWay}"
-                                       VisibleCount="{x:Bind VisibleCount, Mode=OneWay}"
-                                       VisibleCountVisibility="{x:Bind VisibleCountVisibility, Mode=OneWay}"
-                                       Margin="8,4,18,4"/>
-        </DataTemplate>-->
-
+        
     </UserControl.Resources>
-
 
     <Grid x:Name="Content" >
         <!--<VisualStateManager.VisualStateGroups>
@@ -54,7 +64,7 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        --><!--  TODO: change properties for narrow view  --><!--
+                        
                         <Setter Target="gridViewBrowse.ItemsPanel" Value="{StaticResource ListItemsPanelTemplate}"/>
                         <Setter Target="gridViewBrowse.ItemTemplate" Value="{StaticResource ListDataTemplate}"/>
                     </VisualState.Setters>
@@ -64,8 +74,7 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        --><!--  TODO: change properties for normal view  --><!--
-
+                        
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateWide">
@@ -73,8 +82,7 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        --><!--  TODO: change properties for wide view  --><!--
-
+                        
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -91,6 +99,7 @@
                 <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
             <ComboBox x:Name="comboxboxPathElement" Grid.Column="0"
                       HorizontalAlignment="Stretch"
@@ -99,14 +108,6 @@
                       IsEnabled="{x:Bind ViewModel.IsGoBackInCacheEnabled, Mode=OneWay}"
                       SelectedItem="{x:Bind ViewModel.LastCacheElement, Mode=TwoWay}"
                       >
-                <!--<i:Interaction.Behaviors>
-                    <ic:EventTriggerBehavior EventName="SelectionChanged">
-                        <ic:InvokeCommandAction Command="{Binding PathElementSelectionChangedCommand}" CommandParameter="{Binding ElementName=comboxboxPathElement}"/>
-                    </ic:EventTriggerBehavior>
-                    <ic:EventTriggerBehavior EventName="Loaded">
-                        <ic:InvokeCommandAction Command="{Binding PathElementLoadedCommand}" CommandParameter="{Binding ElementName=comboxboxPathElement}"/>
-                    </ic:EventTriggerBehavior>
-                </i:Interaction.Behaviors>-->
                 <ComboBox.ItemTemplate>
                     <DataTemplate x:DataType="vm:ElementBase">
                         <StackPanel Orientation="Horizontal">
@@ -126,18 +127,28 @@
                     Maximum="240"
                     VerticalAlignment="Center"
                     />
-            <Button Grid.Column="3"
+            <ProgressRing x:Name="progressBar"
+                          Grid.Column="3"
+                          IsActive="{x:Bind ViewModel.IsScanning, Mode=OneWay}"
+                          Visibility="Visible"
+                          />
+            <Button Grid.Column="4"
                     Command="{x:Bind ViewModel.RefreshElementsCommand}"
                     Style="{StaticResource TransactionButtonStyle}"
                     CornerRadius="16" Height="32" Width="32" Padding="8">
                 <SymbolIcon Symbol="Refresh" />
             </Button>
-            <Button Grid.Column="4" 
+            <Button Grid.Column="5" 
                     Style="{StaticResource TransactionButtonStyle}"
                     CornerRadius="16" Height="32" Width="32" Padding="8">
                 <Button.Flyout>
                     <Flyout Placement="Left">
-                        <AutoSuggestBox x:Name="autoSuggestBoxFilter" x:Uid="autoSuggestBoxFilter" Width="200" QueryIcon="Filter" PlaceholderText="FILTER" >
+                        <AutoSuggestBox x:Name="autoSuggestBoxFilter"
+                                        x:Uid="autoSuggestBoxFilter"
+                                        Width="200"
+                                        Text="{x:Bind ViewModel.FilterCriteria,Mode=TwoWay}"
+                                        QueryIcon="Filter"
+                                        PlaceholderText="FILTER" >
                             <i:Interaction.Behaviors>
                                 <ic:EventTriggerBehavior EventName="TextChanged">
                                     <ic:InvokeCommandAction Command="{x:Bind ViewModel.QuerySubmittedFilterCommand}" CommandParameter="{x:Bind autoSuggestBoxFilter}"/>
@@ -148,7 +159,7 @@
                 </Button.Flyout>
                 <SymbolIcon Symbol="Filter" />
             </Button>
-            <Button Grid.Column="5" IsEnabled="{x:Bind ViewModel.IsSearchEnabled, Mode=OneWay}"
+            <Button Grid.Column="6" IsEnabled="{x:Bind ViewModel.IsSearchEnabled, Mode=OneWay}"
                     Style="{StaticResource TransactionButtonStyle}"
                     CornerRadius="16" Height="32" Width="32" Padding="8">
                 <Button.Flyout>
@@ -206,7 +217,6 @@
                   SelectionMode="None"
                   ItemsSource="{x:Bind ViewModel.Elements, Mode=OneWay}"
                   ItemTemplate="{StaticResource GridDataTemplate}"
-                  ItemClick="{x:Bind ViewModel.OnItemClick, Mode=OneWay}"
                   Margin="0,4,0,4">
         </GridView>
 
@@ -221,6 +231,6 @@
                                    ItemClickCommand="{x:Bind ViewModel.ItemClickedCommand}"
                                    Margin="0,4,0,4"/>-->
 
-        <ProgressBar x:Name="progressBar" VerticalContentAlignment="Center" Height="16" Grid.Row="1" Visibility="{x:Bind ViewModel.IsScanningVisibility, Mode=OneWay}" IsIndeterminate="{x:Bind ViewModel.IsScanning, Mode=OneWay}" Canvas.ZIndex="100" />
+        
     </Grid>
 </UserControl>

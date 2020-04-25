@@ -34,34 +34,46 @@ namespace raumPlayer.UserControls
         #endregion
 
         /// <summary>
+        /// Event occurs when image is clicked
+        /// Param: EventArgs <Element>element</Element>
+        /// </summary>
+        public event EventHandler<EventArgs<ElementBase>> ItemTapped;
+
+        /// <summary>
+        /// Event occurs when Browse is clicked
+        /// Param: EventArgs <Element>element</Element>
+        /// </summary>
+        public event EventHandler<EventArgs<ElementBase>> BrowseTapped;
+
+        /// <summary>
         /// Event occurs when NewQueue is clicked
         /// Param: EventArgs <Element>element</Element>
         /// </summary>
-        public event EventHandler<EventArgs<ElementBase>> NewQueueClicked;
+        public event EventHandler<EventArgs<ElementBase>> NewQueueTapped;
 
         /// <summary>
         /// Event occurs when AddQueue is clicked
         /// Param: EventArgs <Element>element</Element>
         /// </summary>
-        public event EventHandler<EventArgs<ElementBase>> AddQueueClicked;
+        public event EventHandler<EventArgs<ElementBase>> AddQueueTapped;
 
         /// <summary>
         /// Event occurs when RemQueue is clicked
         /// Param: EventArgs <Element>element</Element>
         /// </summary>
-        public event EventHandler<EventArgs<ElementBase>> RemQueueClicked;
+        public event EventHandler<EventArgs<ElementBase>> RemQueueTapped;
 
         /// <summary>
         /// Event occurs when FavQueue is clicked
         /// Param: EventArgs <Element>element</Element>
         /// </summary>
-        public event EventHandler<EventArgs<ElementBase>> FavQueueClicked;
+        public event EventHandler<EventArgs<ElementBase>> FavQueueTapped;
 
         /// <summary>
         /// Event occurs when FavRemQueue is clicked
         /// Param: EventArgs <Element>element</Element>
         /// </summary>
-        public event EventHandler<EventArgs<ElementBase>> FavRemQueueClicked;
+        public event EventHandler<EventArgs<ElementBase>> FavRemQueueTapped;
 
         #region DependencyProperties
 
@@ -72,7 +84,6 @@ namespace raumPlayer.UserControls
             set
             {
                 SetValue(ElementProperty, value);
-                setInitValues();
             }
         }
 
@@ -120,137 +131,109 @@ namespace raumPlayer.UserControls
 
         #endregion
 
-        //protected override Size MeasureOverride(Size availableSize)
-        //{
-        //    imageAlbumArt.Height = availableSize.Width;
-        //    return availableSize;
-        //}
-
         public ElementControl()
         {
             this.InitializeComponent();
-            //SizeChanged += CompositionShadow_SizeChanged;
-            //Loaded += (object sender, RoutedEventArgs e) =>
-            //{
-            //    UpdateShadowSize();
-            //};
-
-            //Compositor compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
-            //shadowVisual = compositor.CreateSpriteVisual();
-            //dropShadow = compositor.CreateDropShadow();
-            //dropShadow.BlurRadius = 10.0f;
-
-            //if (ThemeSelectorService.Theme == ElementTheme.Light)
-            //{
-            //    dropShadow.Color = (Color)Prism.Unity.Windows.PrismUnityApplication.Current.Resources["SystemBaseMediumColor"];
-            //}
-            //else
-            //{
-            //    dropShadow.Color = Color.FromArgb(170, 242, 242, 242);
-            //}
-            //dropShadow.Offset = new Vector3(0, 0, 0);
-            //shadowVisual.Shadow = dropShadow;
-
-            //// SetElementChildVisual on the control itself ("this") would result in the shadow
-            //// rendering on top of the content. To avoid this, CompositionShadow contains a Border
-            //// (to host the shadow) and a ContentPresenter (to hose the actual content, "CastingElement").
-            //ElementCompositionPreview.SetElementChildVisual(shadowBorder, shadowVisual);
-
-            //rootPanel.PointerEntered += Content_PointerEntered;
-            //rootPanel.PointerExited += Content_PointerExited;
-
-            //SetupAnimations();
-
-            //var content = ElementCompositionPreview.GetElementVisual(shadowBorder);
-            //content.Scale = new Vector3(0.5f, 0.5f, 25.0f);
-            //Canvas.SetZIndex(shadowBorder, 0);
         }
 
         #region Private Methods
 
-        private void setInitValues()
+        public Visibility AddQueueButtonVisibility(string id, bool isplayable)
         {
-            switch (Element.Id)
+            if (id.Contains("0/Playlists/") || id.Contains("0/Favorites/"))
             {
-                case var checkID when checkID.Contains("0/Playlists/MyPlaylists/"):
-                    buttonAdd.Visibility = Visibility.Collapsed;
-                    buttonRem.Visibility = Visibility.Visible;
-                    buttonFav.Visibility = Visibility.Collapsed;
-                    buttonFavRem.Visibility = Visibility.Collapsed;
-                    break;
-                case var checkID when checkID.Contains("0/Playlists"):
-                    buttonAdd.Visibility = Visibility.Collapsed;
-                    buttonRem.Visibility = Visibility.Collapsed;
-                    buttonFav.Visibility = Visibility.Collapsed;
-                    buttonFavRem.Visibility = Visibility.Collapsed;
-                    break;
-                case var checkID when checkID.Contains("0/Favorites/MyFavorites/"):
-                    buttonAdd.Visibility = Visibility.Collapsed;
-                    buttonRem.Visibility = Visibility.Collapsed;
-                    buttonFav.Visibility = Visibility.Collapsed;
-                    buttonFavRem.Visibility = Visibility.Visible;
-                    break;
-                case var checkID when checkID.Contains("0/Favorites"):
-                    buttonAdd.Visibility = Visibility.Collapsed;
-                    buttonRem.Visibility = Visibility.Collapsed;
-                    buttonFav.Visibility = Visibility.Collapsed;
-                    buttonFavRem.Visibility = Visibility.Collapsed;
-                    break;
-                case null:
-                    buttonAdd.Visibility = Visibility.Collapsed;
-                    buttonRem.Visibility = Visibility.Collapsed;
-                    buttonFav.Visibility = Visibility.Collapsed;
-                    buttonFavRem.Visibility = Visibility.Collapsed;
-                    break;
-                default:
-                    buttonAdd.Visibility = Element.IsPlayable ? Visibility.Visible : Visibility.Collapsed;
-                    buttonRem.Visibility = Visibility.Collapsed;
-                    buttonFav.Visibility = Visibility.Visible;
-                    buttonFavRem.Visibility = Visibility.Collapsed;
-                    break;
+                return Visibility.Collapsed;
             }
-
-            //if (DataElement.IsFolder)
-            //{
-            //    borderNumber.Visibility = DataElement.ChildCount == 0 ? Visibility.Collapsed : Visibility.Visible;
-            //    textBlockNumber.Text = DataElement.ChildCount.ToString();
-            //    textBlockLine1.MarqueeText = DataElement?.Album ?? string.Empty;
-            //    textBlockLine2.MarqueeText = string.Format("{0} - {1}", DataElement?.Artist ?? string.Empty, DataElement?.Genre ?? string.Empty); 
-            //}
-            //else
-            //{
-            //    borderNumber.Visibility = DataElement.OriginalTrackNumber == 0 ? Visibility.Collapsed : Visibility.Visible;
-            //    textBlockNumber.Text = DataElement.OriginalTrackNumber.ToString();
-            //    textBlockLine1.MarqueeText = DataElement?.Album ?? string.Empty;
-            //    textBlockLine2.MarqueeText = string.Format("{0} - {1}", DataElement?.Artist ?? string.Empty, DataElement?.Genre ?? string.Empty);
-            //}
+            else
+            {
+                return isplayable ? Visibility.Visible : Visibility.Collapsed;
+            }
         }
+
+        public Visibility RemQueueButtonVisibility(string id, bool isplayable)
+        {
+            if (id.Contains("0/Playlists/MyPlaylists/"))
+            {
+                return Visibility.Visible;
+            }
+            else
+            {
+                return Visibility.Collapsed;
+            }
+        }
+
+        public Visibility FavAddQueueButtonVisibility(string id, bool isplayable)
+        {
+            if (id.Contains("0/Playlists/") || id.Contains("0/Favorites/"))
+            {
+                return Visibility.Collapsed;
+            }
+            else
+            {
+                return Visibility.Visible;
+            }
+        }
+
+        public Visibility FavRemQueueButtonVisibility(string id, bool isplayable)
+        {
+            if (id.Contains("0/Playlists/MyFavorites/"))
+            {
+                return Visibility.Visible;
+            }
+            else
+            {
+                return Visibility.Collapsed;
+            }
+        }
+
+        public string GetItemTappedIcon(bool isplayable)
+        {
+            if (isplayable)
+            {
+                return "\uEDB5";
+            }
+            else
+            {
+                return "\uED25";
+            }
+        }
+
 
         #endregion
 
-        private void buttonNew_Click(object sender, RoutedEventArgs arg)
+        private void image_Tapped(object sender, RoutedEventArgs arg)
         {
-            this.NewQueueClicked?.Invoke(this, new EventArgs<ElementBase>(Element));
+            this.ItemTapped?.Invoke(this, new EventArgs<ElementBase>(Element));
         }
 
-        private void buttonAdd_Click(object sender, RoutedEventArgs arg)
+        private void buttonBrowse_Tapped(object sender, RoutedEventArgs arg)
         {
-            this.AddQueueClicked?.Invoke(this, new EventArgs<ElementBase>(Element));
+            this.BrowseTapped?.Invoke(this, new EventArgs<ElementBase>(Element));
         }
 
-        private void buttonRem_Click(object sender, RoutedEventArgs arg)
+        private void buttonNew_Tapped(object sender, RoutedEventArgs arg)
         {
-            this.RemQueueClicked?.Invoke(this, new EventArgs<ElementBase>(Element));
+            this.NewQueueTapped?.Invoke(this, new EventArgs<ElementBase>(Element));
         }
 
-        private void buttonFav_Click(object sender, RoutedEventArgs arg)
+        private void buttonAdd_Tapped(object sender, RoutedEventArgs arg)
         {
-            this.FavQueueClicked?.Invoke(this, new EventArgs<ElementBase>(Element));
+            this.AddQueueTapped?.Invoke(this, new EventArgs<ElementBase>(Element));
         }
 
-        private void buttonFavRem_Click(object sender, RoutedEventArgs arg)
+        private void buttonRem_Tapped(object sender, RoutedEventArgs arg)
         {
-            this.FavRemQueueClicked?.Invoke(this, new EventArgs<ElementBase>(Element));
+            this.RemQueueTapped?.Invoke(this, new EventArgs<ElementBase>(Element));
+        }
+
+        private void buttonFav_Tapped(object sender, RoutedEventArgs arg)
+        {
+            this.FavQueueTapped?.Invoke(this, new EventArgs<ElementBase>(Element));
+        }
+
+        private void buttonFavRem_Tapped(object sender, RoutedEventArgs arg)
+        {
+            this.FavRemQueueTapped?.Invoke(this, new EventArgs<ElementBase>(Element));
         }
 
         public void panelData_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -260,51 +243,5 @@ namespace raumPlayer.UserControls
                 imageAlbumArt.Height = e.NewSize.Width;
             }
         }
-
-        //private void CompositionShadow_SizeChanged(object sender, SizeChangedEventArgs e)
-        //{
-        //    UpdateShadowSize();
-        //}
-
-        //private void UpdateShadowSize()
-        //{
-        //    Vector2 newSize = new Vector2((float)shadowBorder.ActualWidth, (float)shadowBorder.ActualHeight);
-        //    shadowVisual.Size = newSize;
-        //}
-
-        //private void SetupAnimations()
-        //{
-        //    var content = ElementCompositionPreview.GetElementVisual(shadowBorder);
-
-        //    var compositor = content.Compositor;
-        //    var implicitAnimationVisual = compositor.CreateImplicitAnimationCollection();
-
-        //    //Scale Animation Shadow 
-        //    var shadowScaleAnimation = compositor.CreateVector3KeyFrameAnimation();
-        //    shadowScaleAnimation.InsertExpressionKeyFrame(1.0f, "this.FinalValue");
-        //    shadowScaleAnimation.Duration = TimeSpan.FromSeconds(1);
-        //    shadowScaleAnimation.Target = "Scale";
-
-        //    implicitAnimationVisual["Scale"] = shadowScaleAnimation;
-
-        //    content.Properties.ImplicitAnimations = implicitAnimationVisual;
-        //}
-
-        //private void Content_PointerExited(object sender, PointerRoutedEventArgs e)
-        //{
-        //    var content = ElementCompositionPreview.GetElementVisual(shadowBorder);
-        //    content.Scale = new Vector3(0.5f, 0.5f, 25.0f);
-        //    Canvas.SetZIndex(shadowBorder, 0);
-        //}
-
-        //private void Content_PointerEntered(object sender, PointerRoutedEventArgs e)
-        //{
-        //    var content = ElementCompositionPreview.GetElementVisual(shadowBorder);
-        //    content.CenterPoint = new Vector3((float)rootPanel.ActualWidth / 2, (float)rootPanel.ActualHeight / 2, 0f);
-        //    float xScale = (float)(rootPanel.ActualWidth + 8) / (float)rootPanel.ActualWidth;
-        //    float yScale = (float)(rootPanel.ActualHeight + 8) / (float)rootPanel.ActualHeight;
-        //    content.Scale = new Vector3(xScale, yScale, 1.0f);
-        //    Canvas.SetZIndex(shadowBorder, 0);
-        //}
     }
 }

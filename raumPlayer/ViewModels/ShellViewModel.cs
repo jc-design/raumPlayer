@@ -43,7 +43,7 @@ namespace raumPlayer.ViewModels
         private readonly IRaumFeldService raumFeldService;
 
         private NavigationView navigationView;
-
+        private bool isLoadedFirstTime = false;
         public ICommand ItemInvokedCommand { get; }
 
         public ShellViewModel(INavigationService navigationServiceInstance, IEventAggregator eventAggregatorInstance, IMessagingService messagingServiceInstance, IRaumFeldService raumFeldServiceInstance)
@@ -60,6 +60,13 @@ namespace raumPlayer.ViewModels
             ZoneViewModels = new ObservableCollection<ZoneViewModel>();
 
             ItemInvokedCommand = new DelegateCommand<NavigationViewItemInvokedEventArgs>(OnItemInvoked);
+        }
+
+        private bool zoneListAvailable;
+        public bool ZoneListAvailable
+        {
+            get { return zoneListAvailable; }
+            set { SetProperty(ref zoneListAvailable, value); }
         }
 
         private bool isBackEnabled;
@@ -205,6 +212,25 @@ namespace raumPlayer.ViewModels
                 else { zone.IsActive = false; }
 
                 ZoneViewModels.Add(zone);
+            }
+
+            ZoneListAvailable = true;
+
+            if (!isLoadedFirstTime)
+            {
+                ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+
+                string page = (string)localSettings.Values["NAVIGATION"];
+                if (string.IsNullOrEmpty(page))
+                {
+                    navigationService.Navigate(PageTokens.SettingsPage, null);
+                }
+                else
+                {
+                    navigationService.Navigate(page, null);
+                }
+
+                isLoadedFirstTime = true;
             }
         }
     }

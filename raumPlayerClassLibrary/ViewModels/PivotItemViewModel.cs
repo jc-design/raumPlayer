@@ -20,7 +20,6 @@ namespace raumPlayer.ViewModels
         private void onCacheElementsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             IsGoBackInCacheEnabled = ((ICollection)sender).Count > 1;
-            //shellViewModel.SetBackbuttonVisibility(IsGoBackInCacheEnabled);
         }
 
         private readonly IEventAggregator eventAggregator;
@@ -67,34 +66,26 @@ namespace raumPlayer.ViewModels
             set { SetProperty(ref isScanningVisibility, value); }
         }
 
-        private bool isListview = false;
-        public bool IsListview
-        {
-            get { return isListview; }
-            set
-            {
-                SetProperty(ref isListview, value, () =>
-                {
-                    if (!value) { FilteredElements = null; }
-                    GroupVisibility = value ? Visibility.Collapsed : Visibility.Visible;
-                    ListVisibility = value ? Visibility.Visible : Visibility.Collapsed;
-                });
-            }
-        }
-
-        private Visibility groupVisibility = Visibility.Visible;
-        public Visibility GroupVisibility
-        {
-            get { return groupVisibility; }
-            set { SetProperty(ref groupVisibility, value); }
-        }
-
         private Visibility listVisibility = Visibility.Collapsed;
         public Visibility ListVisibility
         {
             get { return listVisibility; }
             set { SetProperty(ref listVisibility, value); }
         }
+
+        private bool isFiltering = false;
+
+        private string filterCriteria;
+        public string FilterCriteria
+        {
+            get { return filterCriteria; }
+            set
+            {
+                SetProperty(ref filterCriteria, value);
+            }
+        }
+
+        public List<ElementBase> RawElements { get; set; }
 
         private ObservableCollection<ElementBase> elements;
         public ObservableCollection<ElementBase> Elements
@@ -109,21 +100,6 @@ namespace raumPlayer.ViewModels
             get { return filteredElements; }
             set { SetProperty(ref filteredElements, value); }
         }
-
-        //private ObservableCollection<ElementGroup> groupedElements;
-        //public ObservableCollection<ElementGroup> GroupedElements
-        //{
-        //    get
-        //    {
-        //        if (groupedElements == null)
-        //        {
-        //            groupedElements = new ObservableCollection<ElementGroup>();
-        //        }
-
-        //        return groupedElements;
-        //    }
-        //    set { Set(ref groupedElements, value); }
-        //}
 
         private ObservableCollection<ElementBase> cacheElements;
         public ObservableCollection<ElementBase> CacheElements
@@ -234,7 +210,7 @@ namespace raumPlayer.ViewModels
 
                         IsScanning = true;
 
-                        await raumFeldService.BrowseChildren(Elements, CacheElements.Last().Id, false);
+                        await raumFeldService.BrowseChildren(this, CacheElements.Last().Id);
 
                         IsScanning = false;
                     }, () => (CacheElements?.Count() ?? 0) > 0);
@@ -265,18 +241,18 @@ namespace raumPlayer.ViewModels
                 {
                     querySubmittedFilterCommand = new DelegateCommand<AutoSuggestBox>((param) =>
                     {
-                        if (string.IsNullOrEmpty(param.Text)) { IsListview = false; }
+                        if (string.IsNullOrEmpty(param.Text)) { isFiltering = false; }
                         else
                         {
-                            IsListview = true;
+                            isFiltering = true;
 
-                            FilteredElements.Clear();
+                            Elements.Clear();
 
-                            IEnumerable<ElementBase> filteredList = Elements.Where(e => (e.Title + (e?.Genre ?? "") + (e?.Album ?? "") + (e?.Artist ?? "")).ToUpper().Contains(param.Text.ToUpper())).ToList();
+                            IEnumerable<ElementBase> filteredList = RawElements.Where(e => (e.Title + (e?.Genre ?? "") + (e?.Album ?? "") + (e?.Artist ?? "")).ToUpper().Contains(param.Text.ToUpper())).ToList();
 
                             foreach (var item in filteredList)
                             {
-                                FilteredElements.Add(item);
+                                Elements.Add(item);
                             }
                         }
                     });
@@ -318,38 +294,89 @@ namespace raumPlayer.ViewModels
         /// <summary>
         /// Filter Elements - in memory
         /// </summary>
-        private ICommand itemClickedCommand;
-        public ICommand ItemClickedCommand
+        private ICommand itemTappedCommand;
+        public ICommand ItemTappedCommand
         {
             get
             {
-                if (itemClickedCommand == null)
+                if (itemTappedCommand == null)
                 {
-                    itemClickedCommand = new DelegateCommand<ElementBase>(async (param) =>
+                    itemTappedCommand = new DelegateCommand<ElementBase>((param) =>
                     {
-                        IsScanning = true;
-
-                        CacheElements.Add(param);
-                        LastCacheElement = param;
-                        //await raumFeldService.BrowseChildren(Elements, param.Id, false);
-
-                        IsScanning = false;
+                        if (param.IsPlayable)
+                        {
+                            if (NewQueueTappedCommand != null)
+                            {
+                                if (NewQueueTappedCommand.CanExecute(param))
+                                {
+                                    NewQueueTappedCommand.Execute(param);
+                                }
+                            }
+                            return;
+                        }
+                        if (param.IsFolder)
+                        {
+                            if (BrowseTappedCommand != null)
+                            {
+                                if (BrowseTappedCommand.CanExecute(param))
+                                {
+                                    BrowseTappedCommand.Execute(param);
+                                }
+                            }
+                        }
                     });
                 }
 
-                return itemClickedCommand;
+                return itemTappedCommand;
             }
         }
 
-        public void OnItemClick(object sender, ItemClickEventArgs e)
+        /// <summary>
+        /// Browse folder
+        /// </summary>
+        private ICommand browseTappedCommand;
+        public ICommand BrowseTappedCommand
         {
-            var cmd = ItemClickedCommand;
-            if (cmd != null)
+            get
             {
-                if (cmd.CanExecute(e.ClickedItem))
+                if (browseTappedCommand == null)
                 {
-                    cmd.Execute(e.ClickedItem);
+                    browseTappedCommand = new DelegateCommand<ElementBase>((param) =>
+                    {
+                        CacheElements.Add(param);
+                        LastCacheElement = param;
+                    });
                 }
+
+                return browseTappedCommand;
+            }
+        }
+
+        /// <summary>
+        /// Start new queue
+        /// </summary>
+        private ICommand newQueueTappedCommand;
+        public ICommand NewQueueTappedCommand
+        {
+            get
+            {
+                if (newQueueTappedCommand == null)
+                {
+                    newQueueTappedCommand = new DelegateCommand<ElementBase>((param) =>
+                    {
+                        if (shellViewModel.ActiveZoneViewModel == null) { return; }
+
+                        if (shellViewModel.ActiveZoneViewModel.SetAVTransportUriCommand != null)
+                        {
+                            if (shellViewModel.ActiveZoneViewModel.SetAVTransportUriCommand.CanExecute(param))
+                            {
+                                shellViewModel.ActiveZoneViewModel.SetAVTransportUriCommand.Execute(param);
+                            }
+                        }
+                    });
+                }
+
+                return newQueueTappedCommand;
             }
         }
 

@@ -36,22 +36,25 @@
             </NavigationView.Header>
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader x:Uid="navItems_Groups" Content="NAV_GROUPS"/>
-                <NavigationViewItem x:Uid="NavItem_MyMusic" Content="MY_MUSIC" helpers:NavHelper.NavigateTo="MyMusic" >
+                <NavigationViewItem x:Uid="NavItem_MyMusic" Content="MY_MUSIC" helpers:NavHelper.NavigateTo="MyMusic"
+                                    IsEnabled="{x:Bind ViewModel.ZoneListAvailable, Mode=OneWay}" >
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE189;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="NavItem_Playlists" Content="PLAYLISTS" helpers:NavHelper.NavigateTo="Playlists" >
+                <NavigationViewItem x:Uid="NavItem_Playlists" Content="PLAYLISTS" helpers:NavHelper.NavigateTo="Playlists"
+                                    IsEnabled="{x:Bind ViewModel.ZoneListAvailable, Mode=OneWay}" >
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE90B;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="NavItem_Favorites" Content="FAVORITES" helpers:NavHelper.NavigateTo="MyMusic" >
+                <NavigationViewItem x:Uid="NavItem_Favorites" Content="FAVORITES" helpers:NavHelper.NavigateTo="Favorites"
+                                    IsEnabled="{x:Bind ViewModel.ZoneListAvailable, Mode=OneWay}" >
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEB51;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="NavItem_TuneIn" Content="TUNE_IN" helpers:NavHelper.NavigateTo="MyMusic" 
+                <NavigationViewItem x:Uid="NavItem_TuneIn" Content="TUNE_IN" helpers:NavHelper.NavigateTo="TuneIn" 
                                     IsEnabled="{x:Bind ViewModel.IsTuneInAvailable, Mode=OneWay}">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC05;"/>
@@ -61,12 +64,14 @@
                 <NavigationViewItemSeparator/>
                 <NavigationViewItemHeader x:Uid="navItem_ManageZones" Content="MANAGE_ZONES"/>
 
-                <NavigationViewItem x:Uid="NavItem_ActiveZone" Content="ACTIVE_ZONE" helpers:NavHelper.NavigateTo="MyMusic">
+                <NavigationViewItem x:Uid="NavItem_ActiveZone" Content="ACTIVE_ZONE" helpers:NavHelper.NavigateTo="MyMusic"
+                                    IsEnabled="{x:Bind ViewModel.ZoneListAvailable, Mode=OneWay}">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE965;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="NavItem_ZoneConfig" Content="SET_ZONE" helpers:NavHelper.NavigateTo="MyMusic">
+                <NavigationViewItem x:Uid="NavItem_ZoneConfig" Content="SET_ZONE" helpers:NavHelper.NavigateTo="MyMusic"
+                                    IsEnabled="{x:Bind ViewModel.ZoneListAvailable, Mode=OneWay}">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE15E;"/>
                     </NavigationViewItem.Icon>

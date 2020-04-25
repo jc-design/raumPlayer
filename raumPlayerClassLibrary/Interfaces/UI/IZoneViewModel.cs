@@ -73,5 +73,6 @@ namespace raumPlayer.Interfaces
         ICommand PauseCommand { get; }
         ICommand StopCommand { get; }
         ICommand NextCommand { get; }
+        ICommand SetAVTransportUriCommand { get; }
     }
 }

@@ -43,7 +43,7 @@ namespace raumPlayer.Services
         {
             try
             {
-                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}", FILENAME_CACHE_DB)))
+                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}", Path.Combine(ApplicationData.Current.LocalFolder.Path, FILENAME_CACHE_DB))))
                 {
                     db.Open();
 
@@ -69,7 +69,7 @@ namespace raumPlayer.Services
 
             try
             {
-                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}", FILENAME_CACHE_DB)))
+                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}", Path.Combine(ApplicationData.Current.LocalFolder.Path, FILENAME_CACHE_DB))))
                 {
                     db.Open();
 
@@ -123,7 +123,7 @@ namespace raumPlayer.Services
             //Save each element into database
             try
             {
-                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}", FILENAME_CACHE_DB)))
+                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}", Path.Combine(ApplicationData.Current.LocalFolder.Path, FILENAME_CACHE_DB))))
                 {
                     db.Open();
 
@@ -220,8 +220,8 @@ namespace raumPlayer.Services
             }
 
             try
-            { 
-                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}",FILENAME_CACHE_DB)))
+            {
+                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}", Path.Combine(ApplicationData.Current.LocalFolder.Path, FILENAME_CACHE_DB))))
                 {
                     db.Open();
 
@@ -260,7 +260,7 @@ namespace raumPlayer.Services
                 cacheFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("cachedImages", CreationCollisionOption.OpenIfExists);
                 await cacheFolder.DeleteAsync();
 
-                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}", FILENAME_CACHE_DB)))
+                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}", Path.Combine(ApplicationData.Current.LocalFolder.Path, FILENAME_CACHE_DB))))
                 {
                     db.Open();
 
@@ -288,7 +288,7 @@ namespace raumPlayer.Services
             float returnValue = 0;
             try
             {
-                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}", FILENAME_CACHE_DB)))
+                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}", Path.Combine(ApplicationData.Current.LocalFolder.Path, FILENAME_CACHE_DB))))
                 {
                     db.Open();
 
@@ -323,7 +323,7 @@ namespace raumPlayer.Services
             float returnValue = 0;
             try
             {
-                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}", FILENAME_CACHE_DB)))
+                using (SqliteConnection db = new SqliteConnection(string.Format("Filename={0}", Path.Combine(ApplicationData.Current.LocalFolder.Path, FILENAME_CACHE_DB))))
                 {
                     db.Open();
 

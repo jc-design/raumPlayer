@@ -512,4 +512,7 @@ We will listen to your feedback.</value>
   <data name="navItem_ManageZones.Content" xml:space="preserve">
     <value>Manage zones</value>
   </data>
+  <data name="textBlockBrowse" xml:space="preserve">
+    <value>Open folder</value>
+  </data>
 </root>

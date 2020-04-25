@@ -120,7 +120,7 @@ namespace raumPlayer.Models
 
                         if (response.StatusCode != Windows.Web.Http.HttpStatusCode.Ok)
                         {
-                            SubscriberDictionary.Remove(keyvaluePair.Key);
+                            //SubscriberDictionary.Remove(keyvaluePair.Key);
                             await subscribe(keyvaluePair.Key);
                         }
                     }
@@ -148,7 +148,7 @@ namespace raumPlayer.Models
 
                     HttpResponseMessage response = await httpClient.SendRequestAsync(request, HttpCompletionOption.ResponseHeadersRead);
 
-                    SubscriberDictionary.Remove(keyvaluePair.Key);
+                    //SubscriberDictionary.Remove(keyvaluePair.Key);
                     if (Timer != null)
                     {
                         Timer.Cancel();

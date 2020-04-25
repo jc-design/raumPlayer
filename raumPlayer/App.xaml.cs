@@ -73,7 +73,7 @@ namespace raumPlayer
 
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
-            return launchApplicationAsync(PageTokens.SettingsPage, null);
+            return launchApplicationAsync(PageTokens.SplashScreenPage, null);
         }
 
         private async Task launchApplicationAsync(string page, object launchParam)

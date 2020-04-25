@@ -9,6 +9,7 @@
     xmlns:helper="using:raumPlayer.Helpers"
     xmlns:vm="using:raumPlayer.ViewModels"
     xmlns:model="using:raumPlayer.Models"
+    xmlns:const="using:raumPlayer" 
     x:Class="raumPlayer.Views.SettingsPage"
     prismMvvm:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
@@ -56,6 +57,7 @@
                                          x:Uid="radioButtonMyMusic"
                                          GroupName="Navigation"
                                          Content="MyMusic"
+                                         Tag="{x:Bind const:PageTokens.MyMusicPage}"
                                          IsChecked="{x:Bind IsCheckedMyMusic, Mode=OneWay}"
                                          Style="{StaticResource appRadioButtonStyle}">
                                 <i:Interaction.Behaviors>
@@ -68,6 +70,7 @@
                                          x:Uid="radioButtonFavorites"
                                          GroupName="Navigation"
                                          Content="Favorites"
+                                         Tag="{x:Bind const:PageTokens.FavoritesPage}"
                                          IsChecked="{x:Bind IsCheckedFavorites, Mode=OneWay}"
                                          Style="{StaticResource appRadioButtonStyle}">
                                 <i:Interaction.Behaviors>

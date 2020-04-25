@@ -539,6 +539,10 @@ Wir hören auf dein Feedback.</target>
           <source>Manage zones</source>
           <target state="translated">Zoneneinstellungen</target>
         </trans-unit>
+        <trans-unit id="textBlockBrowse" translate="yes" xml:space="preserve">
+          <source>Open folder</source>
+          <target state="new">Open folder</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -71,8 +71,12 @@ namespace raumPlayer.Models
             }
             catch (Exception exception)
             {
-                throw new Exception();
-                await messagingService.ShowErrorDialogAsync(exception);
+                await StartListening(port + 1);
+
+                if (port > 22120)
+                {
+                    await messagingService.ShowErrorDialogAsync(exception);
+                }
             }
         }
 

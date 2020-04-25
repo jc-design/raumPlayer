@@ -20,14 +20,10 @@ namespace raumPlayer.Interfaces
 
         string PivotSymbol { get; set; }
         string PivotLabel { get; set; }
+        string FilterCriteria { get; set; }
 
-        Visibility IsScanningVisibility { get; set; }
-        Visibility GroupVisibility { get; set; }
-        Visibility ListVisibility { get; set; }
-
+        List<ElementBase> RawElements { get; set; }
         ObservableCollection<ElementBase> Elements { get; set; }
-        ObservableCollection<ElementBase> FilteredElements { get; set; }
-        //ObservableCollection<ElementGroup> GroupedElements { get; set; }
 
         ObservableCollection<ElementBase> CacheElements { get; set; }
         ElementBase LastCacheElement { get; set; }
@@ -37,6 +33,6 @@ namespace raumPlayer.Interfaces
         ICommand RefreshElementsCommand { get; }
         ICommand QuerySubmittedFilterCommand { get; }
         ICommand QuerySubmittedSearchCommand { get; }
-        ICommand ItemClickedCommand { get;}
+        ICommand ItemTappedCommand { get;}
     }
 }

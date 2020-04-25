@@ -14,6 +14,7 @@ namespace raumPlayer.Interfaces
         NavigationViewItem Selected { get; set; }
         string Header { get; set; }
 
+        bool ZoneListAvailable { get; set; }
         bool IsBackEnabled { get; set; }
         bool IsTuneInAvailable { get; set; }
         bool IsBusy { get; set; }

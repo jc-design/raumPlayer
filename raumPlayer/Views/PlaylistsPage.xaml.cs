@@ -1,4 +1,5 @@
-﻿using System;
+﻿using raumPlayer.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,12 @@ namespace raumPlayer.Views
     /// </summary>
     public sealed partial class PlaylistsPage : Page
     {
+        public PlaylistsViewModel ViewModel => DataContext as PlaylistsViewModel;
+
         public PlaylistsPage()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
     }
 }

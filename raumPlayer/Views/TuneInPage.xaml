@@ -1,0 +1,38 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+    xmlns:vm="using:raumPlayer.ViewModels"
+    xmlns:uc="using:raumPlayer.UserControls"
+    x:Class="raumPlayer.Views.TuneInPage"
+    prismMvvm:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="PivotBrowseViewModelTemplate" x:DataType="vm:PivotItemViewModel">
+            <uc:PivotItemView ViewModel="{x:Bind ViewModel}"/>
+        </DataTemplate>
+    </Page.Resources>
+
+    <RelativePanel Background="{ThemeResource RegionBrush}" Margin="0,0,0,0">
+        <Pivot Style="{StaticResource TabsStylePivotStyle}"
+               RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True"
+               ItemsSource="{x:Bind ViewModel.PivotItems}"
+               ItemTemplate="{StaticResource PivotBrowseViewModelTemplate}"
+               SelectedItem="{x:Bind ViewModel.SelectedPivotItem, Mode=TwoWay}"
+               >
+            <Pivot.HeaderTemplate>
+                <DataTemplate x:DataType="vm:PivotItemViewModel">
+                    <uc:TabHeader Label="{x:Bind PivotLabel}" SymbolAsString="{x:Bind PivotSymbol}"/>
+                </DataTemplate>
+            </Pivot.HeaderTemplate>
+            <Pivot.ItemContainerStyle>
+                <Style TargetType="PivotItem">
+                    <Setter Property="Margin" Value="0"/>
+                </Style>
+            </Pivot.ItemContainerStyle>
+        </Pivot>
+    </RelativePanel>
+</Page>

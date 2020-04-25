@@ -166,14 +166,14 @@ namespace raumPlayer.ViewModels
         private void SaveNavSettings(RadioButton e)
         {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-            localSettings.Values["NAVIGATION"] = e.Name;
+            localSettings.Values["NAVIGATION"] = e.Tag;
 
-            switch (e.Name)
+            switch (e.Tag)
             {
-                case "radioButtonMyMusic":
+                case PageTokens.MyMusicPage:
                     IsCheckedMyMusic = true;
                     break;
-                case "radioButtonFavorites":
+                case PageTokens.FavoritesPage:
                     IsCheckedFavorites = true;
                     break;
                 default:
@@ -195,6 +195,20 @@ namespace raumPlayer.ViewModels
             eventAggregator.GetEvent<SystemUpdateIDChangedEvent>().Subscribe(onSystemUpdateIDChanged, ThreadOption.UIThread);
 
             Presets = new ObservableCollection<Preset>();
+
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+
+            switch ((string)localSettings.Values["NAVIGATION"])
+            {
+                case PageTokens.MyMusicPage:
+                    IsCheckedMyMusic = true;
+                    break;
+                case PageTokens.FavoritesPage:
+                    IsCheckedFavorites = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
         public override void OnNavigatingFrom(NavigatingFromEventArgs e, Dictionary<string, object> viewModelState, bool suspending)

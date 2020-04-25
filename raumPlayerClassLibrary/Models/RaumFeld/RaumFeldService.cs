@@ -392,6 +392,19 @@ namespace raumPlayer.Models
             return newGuid;
         }
 
+        public string GetMediaServerUDN()
+        {
+            if (mediaServer != null)
+            {
+                return mediaServer.Udn;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+
         public async Task<bool> InitializeAsync()
         {
             devices = new Dictionary<string, IMediaDevice>();
@@ -628,8 +641,76 @@ namespace raumPlayer.Models
             }
             catch (Exception)
             {
-                throw new Exception();
+                return false;
+            }
+        }
 
+        public async Task<bool> BrowseChildren(IPivotItemViewModel viewmodel, string elementId)
+        {
+            var cancellationToken = await createNewToken();
+
+            try
+            {
+                int start = 0;
+                int limit = 10;
+                bool continueLoop = true;
+                viewmodel.RawElements = new List<ElementBase>();
+                viewmodel.Elements.Clear();
+
+                int index = 1;
+  
+                ServiceActionReturnMessage message;
+
+                do
+                {
+                    message = await mediaServer.Browse(elementId, start, limit);
+
+                    if (message.ActionStatus == ActionStatus.Okay && message.ReturnValue is List<ElementBase> partList)
+                    {
+                        if ((partList?.Count() ?? 0) > 0)
+                        {
+                            foreach (var item in partList)
+                            {
+                                cancellationToken.ThrowIfCancellationRequested();
+
+                                item.Index = index++;
+                                viewmodel.RawElements.Add(item);
+
+                                //Check if filtering is activated
+                                //If so, only copy filtered elements
+                                if (string.IsNullOrWhiteSpace(viewmodel.FilterCriteria))
+                                {
+                                    viewmodel.Elements.Add(item);
+                                }
+                                else
+                                {
+                                    if ((item.Title + (item?.Genre ?? "") + (item?.Album ?? "") + (item?.Artist ?? "")).ToUpper().Contains(viewmodel.FilterCriteria.ToUpper()))
+                                    {
+                                        viewmodel.Elements.Add(item);
+                                    }
+                                }
+                            }
+
+                            start = start + limit;
+                        }
+                        else { continueLoop = false; }
+                    }
+                    else
+                    {
+                        viewmodel.RawElements = null;
+                        viewmodel.Elements.Clear();
+                        continueLoop = false;
+                    }
+                } while (continueLoop);
+
+                return true;
+            }
+            catch (OperationCanceledException)
+            {
+                return true;
+            }
+            catch (Exception)
+            {
                 return false;
             }
         }
